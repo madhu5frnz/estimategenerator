@@ -364,13 +364,21 @@ def confirm(
     estimate_service.get_version(db, ctx, version_id, estimate_service.EDIT_ROLE, writable=True)
 
     section_title = (payload.get("section_title") or "").strip() or "Works from description"
-    estimate_service.add_section(db, ctx, version_id, section_title[:200], commit=False)
-    section_id = db.scalar(
-        select(EstimateSection.id)
-        .where(EstimateSection.version_id == version_id)
-        .order_by(EstimateSection.sequence.desc())
-        .limit(1)
-    )
+    if estimate_id:
+        estimate_service.add_section(db, ctx, version_id, section_title[:200], commit=False)
+        section = db.scalar(
+            select(EstimateSection)
+            .where(EstimateSection.version_id == version_id)
+            .order_by(EstimateSection.sequence.desc())
+            .limit(1)
+        )
+    else:
+        # A new estimate starts with one empty section: use it rather than adding another.
+        section = db.scalar(select(EstimateSection).where(EstimateSection.version_id == version_id))
+        assert section is not None
+        section.title = section_title[:200]
+    assert section is not None
+    section_id = section.id
 
     # ----------------------------------------------------------- parameters
     existing = {

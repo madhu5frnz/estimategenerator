@@ -43,6 +43,8 @@ input text / document chunks
 
 ## 6.3 Extraction providers (the app works without an AI key)
 
+*Implemented in M4:* `backend/app/ai/` (`rules.py`, `providers.py`, `postprocess.py`), with the golden set in `fixtures/golden/extraction/cases.json`.
+
 All extraction goes through one interface, `ExtractionProvider.extract(text, catalogue) -> ExtractionResult`. The rest of the pipeline in §6.2 (schema validation, guardrails, review UI, confirm → engine) does not know which provider produced the result. The provider is chosen by `AI_PROVIDER`:
 
 | Provider | When | Behaviour |

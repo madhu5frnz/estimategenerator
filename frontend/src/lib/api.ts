@@ -24,6 +24,10 @@ export type Item = Schemas["ItemOut"];
 export type Line = Schemas["LineOut"];
 export type LineCalculation = Schemas["LineCalculationOut"];
 export type Parameter = Schemas["ParameterOut"];
+export type Extraction = Schemas["ExtractionOut"];
+export type ExtractedComponent = Schemas["ComponentOut"];
+export type ExtractedParam = Schemas["ExtractedParamOut"];
+export type ConfirmResult = Schemas["ConfirmOut"];
 
 export class ApiError extends Error {
   constructor(

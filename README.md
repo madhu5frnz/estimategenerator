@@ -5,7 +5,7 @@ AI-assisted estimate, BOQ and quantity generation for Indian civil engineers and
 > **AI interprets. The deterministic engine calculates. The rate database supplies rates. The user verifies.**
 > Every important number traces back to a formula or a source.
 
-**Status:** M0 (foundation), M1 (units and quantity engine), M2 (accounts, projects, dashboard) and M3 (estimates, BOQ, measurements, parameters, versions) are done. Next: M4 (AI estimate: text → parameters, with the rules-based extractor when no AI key is set). See [milestones](docs/design/08-development-milestones.md).
+**Status:** M0 (foundation), M1 (units and quantity engine), M2 (accounts, projects, dashboard) and M3 (estimates, BOQ, measurements, parameters, versions) and M4 (AI estimate) are done. Next: M5 (rates, abstract, GST and charges, validation). See [milestones](docs/design/08-development-milestones.md).
 
 No AI API key is needed to develop or run the app. Without one, the rules-based extractor is used (see [doc 06 §6.3](docs/design/06-ai-prompt-architecture.md)).
 
@@ -58,6 +58,12 @@ cd frontend && npm run lint && npm run typecheck && npm run build
   * **Parameters:** named values such as road length or carriageway width. Formula lines can use them, and changing one recalculates every line that depends on it.
   * **Versions:** saving a version freezes it exactly as it is (read-only through the API and a database trigger), and work continues in the next draft. Old versions reopen unchanged.
   * **Audit log:** every change is recorded with its old and new value.
+* **AI Estimate (M4)**:
+  * **Describing the work:** you describe it in English, Telugu or Hindi, for example "500 m long CC road, 5.5 m wide and 150 mm thick with 100 mm GSB".
+  * **Reading it:** without an API key, a rules-based parser does this. It understands common phrasing and "L x B x D" notation. With `ANTHROPIC_API_KEY` set, Claude does it instead, using structured outputs.
+  * **Review:** each value is shown with the words it came from. Missing values become questions. Suggested defaults (e.g. GSB width = carriageway width) are only used if you tick "I accept". A value that can't be found in the text must be confirmed. The engine previews each quantity.
+  * **Create BOQ:** creates the parameters, BOQ items and formula lines. Each value keeps its origin: parsed, AI-extracted, entered by you, or default accepted.
+  * **Usage:** AI calls are logged with tokens and cost, and repeated descriptions reuse the earlier result. They count against the plan quota; the rules parser is free.
 * **Web**: the app shell with navigation and the disclaimer footer, plus a working **Quantity Calculator** page (`/calculator`).
 * **Typed API**: the frontend's API types are generated from the backend's OpenAPI schema (`npm run gen:api`), and CI fails if they drift.
 

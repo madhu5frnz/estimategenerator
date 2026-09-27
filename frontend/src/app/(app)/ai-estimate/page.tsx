@@ -1,7 +1,13 @@
-import { ComingSoon } from "@/components/ComingSoon";
+import { Suspense } from "react";
+
+import { AiEstimate } from "./AiEstimate";
 
 export const metadata = { title: "AI Estimate" };
 
-export default function Page() {
-  return <ComingSoon title="AI Estimate" milestone="M4 (works without an AI key using the rules-based extractor)" />;
+export default function AiEstimatePage() {
+  return (
+    <Suspense>
+      <AiEstimate />
+    </Suspense>
+  );
 }
