@@ -219,7 +219,7 @@ A job row (`jobs` table) holds `status`, `progress` (0–100), `stage` text, `re
 
 ## 1.9 Security architecture (summary)
 
-* **Auth:** email/password (Argon2id) and Google OAuth (OIDC, `authlib`). Short-lived access JWT (15 min) plus a rotating refresh token (30 days, hashed in DB, reuse detection), both in `HttpOnly Secure SameSite=Lax` cookies. A CSRF double-submit token protects state-changing requests.
+* **Auth:** email/password (Argon2id) and Google OAuth (OIDC authorization-code flow with PKCE, implemented directly with `httpx`). Short-lived access JWT (15 min) plus a rotating refresh token (30 days, hashed in DB, reuse detection), both in `HttpOnly Secure SameSite=Lax` cookies. A CSRF double-submit token protects state-changing requests.
 * **Authorisation:** org role (`owner/admin/member`) × project role (`admin/professional/contractor/viewer`) matrix, enforced in a FastAPI dependency and again in repository filters (`WHERE organization_id = :org`). Postgres Row-Level Security can be enabled in Phase 3 as defence in depth.
 * **Files:** extension + MIME sniffing (`python-magic`), size limits per plan, ClamAV scan before processing, private bucket, short-lived signed URLs (5 min), random object keys (no user-supplied names in paths).
 * **Rate limiting:** Redis token bucket per user and per IP. Stricter limits on `/auth/*` and `/ai/*`.

@@ -2,9 +2,9 @@ name: backend
 
 on:
   push:
-    paths: ["backend/**", "fixtures/**", "docs/design/03-database-schema.sql", ".github/workflows/backend.yml"]
+    paths: ["backend/**", "fixtures/**", "frontend/openapi.json", "docs/design/03-database-schema.sql", ".github/workflows/backend.yml"]
   pull_request:
-    paths: ["backend/**", "fixtures/**", "docs/design/03-database-schema.sql", ".github/workflows/backend.yml"]
+    paths: ["backend/**", "fixtures/**", "frontend/openapi.json", "docs/design/03-database-schema.sql", ".github/workflows/backend.yml"]
 
 jobs:
   test:
@@ -34,6 +34,8 @@ jobs:
       - run: uv run ruff check .
       - run: uv run ruff format --check .
       - run: uv run mypy
+      - name: OpenAPI schema committed for the frontend is up to date
+        run: uv run python -m app.openapi_dump | diff -u ../frontend/openapi.json - || (echo "Run: cd backend && uv run python -m app.openapi_dump > ../frontend/openapi.json" && exit 1)
       - run: uv run pytest --cov=app --cov-report=term-missing
       - name: Domain coverage gate (95 %)
         run: uv run pytest tests/unit --cov=app/domain --cov-fail-under=95 -q

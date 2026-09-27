@@ -22,11 +22,11 @@ Base path: `/api/v1`. JSON only. Auth via `HttpOnly` cookies (access plus refres
 
 | HTTP | error_code examples |
 |---|---|
-| 400 | `VALIDATION_ERROR`, `FORMULA_INVALID`, `UNIT_MISMATCH`, `MISSING_PARAMETER` |
-| 401 | `UNAUTHENTICATED`, `TOKEN_EXPIRED` |
-| 403 | `FORBIDDEN`, `PLAN_FEATURE_UNAVAILABLE` |
+| 400 | `VALIDATION_ERROR`, `WEAK_PASSWORD`, `LINK_INVALID`, `LINK_EXPIRED`, `FORMULA_INVALID`, `UNIT_MISMATCH`, `MISSING_PARAMETER` |
+| 401 | `UNAUTHENTICATED`, `TOKEN_EXPIRED` (client refreshes once and retries), `INVALID_CREDENTIALS`, `SESSION_REVOKED` (refresh-token reuse detected) |
+| 403 | `FORBIDDEN`, `CSRF_FAILED`, `ACCOUNT_DISABLED`, `PLAN_LIMIT_REACHED`, `PLAN_FEATURE_UNAVAILABLE` |
 | 404 | `NOT_FOUND` (also used for resources in another org, to avoid leaking their existence) |
-| 409 | `VERSION_FROZEN`, `RATE_OVERWRITE_REQUIRES_CONFIRMATION`, `STALE_WRITE` (optimistic concurrency via `If-Match`/`row_version`) |
+| 409 | `EMAIL_TAKEN`, `VERSION_FROZEN`, `RATE_OVERWRITE_REQUIRES_CONFIRMATION`, `STALE_WRITE` (optimistic concurrency via `If-Match`/`row_version`) |
 | 413 | `FILE_TOO_LARGE` |
 | 415 | `UNSUPPORTED_FILE_TYPE` |
 | 422 | `AI_OUTPUT_INVALID`, `DOCUMENT_UNREADABLE` |
@@ -36,6 +36,10 @@ Base path: `/api/v1`. JSON only. Auth via `HttpOnly` cookies (access plus refres
 Money and quantities are sent as **strings** (`"412.500"`) so they don't lose precision in JavaScript. Every numeric object that has a unit carries it: `{ "value": "412.500", "unit": "cum" }`.
 
 Legend: **MVP** = Phase 1, **P2/P3** = later phases.
+
+**Implemented so far (M0–M2):** calculations and units (§5.8), auth and account (§5.2), organisation settings (§5.3; `GET/PATCH /organizations/{org_id}` for the current workspace), dashboard summary (§5.4), projects and reference data (§5.5), `GET /system/info` (engine version, AI provider, whether Google sign-in is enabled), and health checks.
+
+**Project roles (M2).** Organisation owners and admins act as project admin on every project in the workspace. Other members see only the projects they belong to. Roles, lowest to highest: viewer, contractor, professional, admin. View needs viewer, editing details needs professional, and deleting needs admin. A project in another workspace always answers 404.
 
 ## 5.2 Auth & account
 

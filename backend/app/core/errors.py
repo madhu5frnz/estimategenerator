@@ -12,7 +12,6 @@ from __future__ import annotations
 
 from typing import Any
 
-import structlog
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
@@ -21,8 +20,6 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 from app.core.request_id import current_request_id
 from app.domain.quantity import CalculationError
 from app.domain.units import UnitError
-
-log = structlog.get_logger(__name__)
 
 
 class AppError(Exception):
@@ -97,12 +94,5 @@ def install_error_handlers(app: FastAPI) -> None:
         message = exc.detail if isinstance(exc.detail, str) else "Request failed."
         return error_response(exc.status_code, code, message)
 
-    @app.exception_handler(Exception)
-    async def _unhandled(request: Request, exc: Exception) -> JSONResponse:
-        log.exception("unhandled_error", path=request.url.path, error_type=type(exc).__name__)
-        return error_response(
-            500,
-            "INTERNAL_ERROR",
-            "Something went wrong on our side. Please try again; if it continues, "
-            "contact support with the request id.",
-        )
+    # Unexpected exceptions are handled by RequestIdMiddleware so the response keeps its
+    # request id; see app/core/request_id.py.

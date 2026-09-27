@@ -16,6 +16,7 @@ class SystemInfo(BaseModel):
     engine_version: str
     ai_provider: str
     environment: str
+    google_login_enabled: bool
 
 
 @router.get("/healthz", include_in_schema=False)
@@ -61,5 +62,6 @@ def system_info() -> Envelope[SystemInfo]:
             engine_version=ENGINE_VERSION,
             ai_provider=settings.effective_ai_provider,
             environment=settings.app_env,
+            google_login_enabled=settings.google_login_enabled,
         )
     )

@@ -170,6 +170,7 @@ def test_unhandled_error_hides_details(client: TestClient, monkeypatch: pytest.M
     assert status == 500
     assert body["error_code"] == "INTERNAL_ERROR"
     assert "secret" not in body["message"]
+    assert body["request_id"]
 
 
 def test_readyz_reports_unavailable_services(monkeypatch: pytest.MonkeyPatch) -> None:

@@ -5,7 +5,7 @@ AI-assisted estimate, BOQ and quantity generation for Indian civil engineers and
 > **AI interprets. The deterministic engine calculates. The rate database supplies rates. The user verifies.**
 > Every important number traces back to a formula or a source.
 
-**Status:** M0 (foundation) and M1 (units and quantity engine) are done. Next: M2 (accounts and projects). See [milestones](docs/design/08-development-milestones.md).
+**Status:** M0 (foundation), M1 (units and quantity engine) and M2 (accounts, projects, dashboard) are done. Next: M3 (estimates, BOQ, measurements and versions). See [milestones](docs/design/08-development-milestones.md).
 
 No AI API key is needed to develop or run the app. Without one, the rules-based extractor is used (see [doc 06 §6.3](docs/design/06-ai-prompt-architecture.md)).
 
@@ -46,9 +46,15 @@ cd frontend && npm run lint && npm run typecheck && npm run build
 
 * **Quantity engine** (`backend/app/domain`). This is pure Python using exact decimal arithmetic. It includes a safe formula evaluator that never calls `eval`, unit-dimension checks (a length cannot be added to an area), 10 versioned formula templates, custom formulas, and a step-by-step calculation trace. It also has Indian number formatting (₹12,34,567.00) and amount in words (lakh/crore).
 * **Units**: one central registry with aliases (`Cu.m`, `sft`, `mtrs` …) and exact conversions. No conversion factors appear anywhere else in the code.
-* **API**: `GET /api/v1/units`, `POST /api/v1/units/convert`, `GET /api/v1/calculation-templates`, `POST /api/v1/calculate`, `POST /api/v1/calculate/validate-expression`, `/healthz`, `/readyz`. Every error uses a structured format and carries a request id.
+* **API** (calculations): `GET /api/v1/units`, `POST /api/v1/units/convert`, `GET /api/v1/calculation-templates`, `POST /api/v1/calculate`, `POST /api/v1/calculate/validate-expression`, `/healthz`, `/readyz`. Every error uses a structured format and carries a request id.
 * **Database**: the initial Alembic migration creates the reviewed schema (37 tables), including the guard that makes frozen estimate versions read-only.
+* **Accounts (M2)**: register, sign in and out, Google sign-in (when configured), email confirmation, and password reset. Passwords are hashed with Argon2id. Sessions use a 15-minute access token and a rotating refresh token in HttpOnly cookies. Reusing a stolen refresh token ends every session in its family. All cookie-authenticated writes are CSRF-protected. Each new user gets a personal workspace on the Free plan.
+* **Projects (M2)**: a three-step creation wizard, list with search, filters and pagination, overview, edit, status changes and delete. Plan limits apply (Free: 3 projects). Project roles (viewer, contractor, professional, admin) are enforced by the server. Another workspace's projects are never visible (404). Every change is written to the audit log with old and new values.
+* **Dashboard and settings (M2)**: project counts, total estimated value in ₹ with Indian grouping, recent projects, plan usage, profile, and workspace details (name, GSTIN, state, address).
 * **Web**: the app shell with navigation and the disclaimer footer, plus a working **Quantity Calculator** page (`/calculator`).
+* **Typed API**: the frontend's API types are generated from the backend's OpenAPI schema (`npm run gen:api`), and CI fails if they drift.
+
+In development, emails (confirmation and reset links) are printed to the API log instead of being sent.
 
 ## Design package
 

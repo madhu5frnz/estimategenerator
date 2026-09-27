@@ -1,7 +1,13 @@
-import { ComingSoon } from "@/components/ComingSoon";
+import { Suspense } from "react";
+
+import { ProjectList } from "./ProjectList";
 
 export const metadata = { title: "Projects" };
 
-export default function Page() {
-  return <ComingSoon title="Projects" milestone="M2" />;
+export default function ProjectsPage() {
+  return (
+    <Suspense>
+      <ProjectList />
+    </Suspense>
+  );
 }

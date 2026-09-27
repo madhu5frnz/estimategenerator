@@ -1,102 +1,134 @@
-// Thin client for the FastAPI envelope. Types are hand-written until M2, when they will be
-// generated from the OpenAPI schema.
+// Client for the FastAPI envelope. Response types come from the generated OpenAPI schema
+// (npm run gen:api), so the frontend cannot drift from the backend.
+import type { components } from "./api-schema";
+
+type Schemas = components["schemas"];
+export type Me = Schemas["MeOut"];
+export type Project = Schemas["ProjectOut"];
+export type ProjectCreate = Schemas["ProjectCreate"];
+export type ProjectPatch = Schemas["ProjectPatch"];
+export type Dashboard = Schemas["DashboardOut"];
+export type Option = Schemas["Option"];
+export type WorkCategory = Schemas["CategoryOut"];
+export type Organization = Schemas["OrganizationOut"];
+export type SystemInfo = Schemas["SystemInfo"];
+export type Unit = Schemas["UnitOut"];
+export type Template = Schemas["TemplateOut"];
+export type Calculation = Schemas["CalculationOut"];
+export type ParamValue = { value: string; unit: string | null };
 
 export class ApiError extends Error {
   constructor(
     public readonly errorCode: string,
     message: string,
+    public readonly status: number = 0,
     public readonly details: Record<string, unknown> = {},
     public readonly requestId: string | null = null,
   ) {
     super(message);
   }
+
+  /** Field-level messages from a VALIDATION_ERROR, keyed by field name. */
+  fieldErrors(): Record<string, string> {
+    const out: Record<string, string> = {};
+    const fields = this.details.fields;
+    if (Array.isArray(fields)) {
+      for (const f of fields as { field: string; message: string }[]) {
+        out[f.field] = f.message.replace(/^Value error, /, "");
+      }
+    }
+    if (typeof this.details.field === "string") out[this.details.field] = this.message;
+    return out;
+  }
 }
 
-type Envelope<T> =
-  | { success: true; data: T; meta: { request_id: string | null } }
-  | {
-      success: false;
-      error_code: string;
-      message: string;
-      details?: Record<string, unknown>;
-      request_id: string | null;
-    };
+type ErrorBody = {
+  success: false;
+  error_code: string;
+  message: string;
+  details?: Record<string, unknown>;
+  request_id: string | null;
+};
 
-export async function api<T>(path: string, init?: RequestInit): Promise<T> {
+function readCookie(name: string): string | null {
+  if (typeof document === "undefined") return null;
+  const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+  return match?.[1] ? decodeURIComponent(match[1]) : null;
+}
+
+let refreshing: Promise<boolean> | null = null;
+
+/** One refresh at a time, shared by every request that hit an expired access token. */
+function refreshSession(): Promise<boolean> {
+  refreshing ??= fetch("/api/v1/auth/refresh", { method: "POST", credentials: "same-origin" })
+    .then((r) => r.ok)
+    .catch(() => false)
+    .finally(() => {
+      refreshing = null;
+    });
+  return refreshing;
+}
+
+function goToLogin() {
+  if (typeof window === "undefined") return;
+  const here = window.location.pathname + window.location.search;
+  if (!window.location.pathname.startsWith("/login")) {
+    // This module is not a component, so the Next.js router is not available here.
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination
+    window.location.assign(`/login?next=${encodeURIComponent(here)}`);
+  }
+}
+
+async function send(path: string, init: RequestInit): Promise<Response> {
+  const method = (init.method ?? "GET").toUpperCase();
+  const headers = new Headers(init.headers);
+  if (init.body !== undefined) headers.set("Content-Type", "application/json");
+  if (method !== "GET" && method !== "HEAD") {
+    const token = readCookie("eai_csrf");
+    if (token) headers.set("X-CSRF-Token", token);
+  }
+  return fetch(`/api/v1${path}`, { ...init, method, headers, credentials: "same-origin" });
+}
+
+export async function apiRaw<T>(
+  path: string,
+  init: RequestInit = {},
+  options: { redirectOn401?: boolean } = {},
+): Promise<{ data: T; meta: Record<string, unknown> }> {
   let response: Response;
   try {
-    response = await fetch(`/api/v1${path}`, {
-      ...init,
-      headers: { "Content-Type": "application/json", ...(init?.headers ?? {}) },
-    });
+    response = await send(path, init);
+    if (response.status === 401) {
+      const body = (await response.clone().json().catch(() => null)) as ErrorBody | null;
+      if (body?.error_code === "TOKEN_EXPIRED" && (await refreshSession())) {
+        response = await send(path, init);
+      }
+    }
   } catch {
     throw new ApiError("NETWORK_ERROR", "Could not reach the server. Check your connection.");
   }
-  let body: Envelope<T>;
+
+  let body: unknown;
   try {
-    body = (await response.json()) as Envelope<T>;
+    body = await response.json();
   } catch {
-    throw new ApiError("BAD_RESPONSE", `The server returned an unexpected response (${response.status}).`);
+    throw new ApiError("BAD_RESPONSE", `The server returned an unexpected response (${response.status}).`, response.status);
   }
-  if (!body.success) {
-    throw new ApiError(body.error_code, body.message, body.details ?? {}, body.request_id);
+  const envelope = body as { success: boolean; data?: T; meta?: Record<string, unknown> };
+  if (!envelope.success) {
+    const err = body as ErrorBody;
+    if (response.status === 401 && options.redirectOn401 !== false) goToLogin();
+    throw new ApiError(err.error_code, err.message, response.status, err.details ?? {}, err.request_id);
   }
-  return body.data;
+  return { data: envelope.data as T, meta: envelope.meta ?? {} };
 }
 
-export type Unit = {
-  code: string;
-  display_name: string;
-  dimension: string;
-  is_canonical: boolean;
-  decimal_places: number;
-  aliases: string[];
-};
+export async function api<T>(path: string, init: RequestInit = {}, options?: { redirectOn401?: boolean }): Promise<T> {
+  return (await apiRaw<T>(path, init, options)).data;
+}
 
-export type TemplateParameter = {
-  name: string;
-  label: string;
-  dimension: string;
-  required: boolean;
-  default: string | null;
-  canonical_unit: string | null;
-};
-
-export type Template = {
-  id: string;
-  version: number;
-  name: string;
-  category: string;
-  expression: string;
-  expression_display: string;
-  output_unit: string;
-  output_unit_display: string;
-  description: string;
-  parameters: TemplateParameter[];
-};
-
-export type Calculation = {
-  value: string;
-  value_raw: string;
-  display: string;
-  unit: string;
-  unit_display: string;
-  expression: string;
-  substituted: string;
-  inputs: {
-    name: string;
-    label: string;
-    value: string;
-    unit: string | null;
-    formula_value: string;
-    formula_unit: string | null;
-    source: string;
-  }[];
-  steps: { kind: string; text: string }[];
-  template_id: string | null;
-  template_version: number | null;
-  engine_version: string;
-  check: string;
-};
-
-export type ParamValue = { value: string; unit: string | null };
+export const post = <T>(path: string, body?: unknown, options?: { redirectOn401?: boolean }) =>
+  api<T>(path, { method: "POST", body: body === undefined ? undefined : JSON.stringify(body) }, options);
+export const patch = <T>(path: string, body: unknown) =>
+  api<T>(path, { method: "PATCH", body: JSON.stringify(body) });
+export const del = <T>(path: string) => api<T>(path, { method: "DELETE" });

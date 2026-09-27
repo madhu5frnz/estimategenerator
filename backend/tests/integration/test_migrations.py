@@ -49,8 +49,10 @@ def test_upgrade_downgrade_upgrade() -> None:
             )
         ).scalar_one()
         units = conn.execute(text("SELECT count(*) FROM units")).scalar_one()
+        plans = conn.execute(text("SELECT count(*) FROM plans")).scalar_one()
     assert tables == 37
     assert units == 20
+    assert plans == 4
 
 
 def test_frozen_version_is_immutable() -> None:
@@ -97,6 +99,12 @@ def test_frozen_version_is_immutable() -> None:
             ids,
         )
         conn.execute(text("UPDATE estimate_versions SET status = 'frozen'"))
-    with pytest.raises(DBAPIError, match="VERSION_FROZEN"), engine.begin() as conn:
-        conn.execute(text("UPDATE estimate_sections SET title = 'changed'"))
-    command.downgrade(_config(), "base")
+    try:
+        with pytest.raises(DBAPIError, match="VERSION_FROZEN"), engine.begin() as conn:
+            conn.execute(text("UPDATE estimate_sections SET title = 'changed'"))
+    finally:
+        # Frozen rows cannot be deleted row by row, so rebuild the schema; other test
+        # modules share this database and expect it at head.
+        engine.dispose()
+        command.downgrade(_config(), "base")
+        command.upgrade(_config(), "head")

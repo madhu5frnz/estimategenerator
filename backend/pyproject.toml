@@ -13,6 +13,10 @@ dependencies = [
     "psycopg[binary]>=3.2",
     "redis>=5.2",
     "structlog>=24.4",
+    "argon2-cffi>=23.1",
+    "pyjwt>=2.9",
+    "httpx>=0.28",
+    "email-validator>=2.2",
 ]
 
 [dependency-groups]
@@ -49,6 +53,9 @@ ignore = [
     "RUF002",
     "RUF003",
 ]
+
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["fastapi.Query", "fastapi.Depends"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["S"]

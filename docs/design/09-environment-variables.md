@@ -10,9 +10,8 @@ All secrets live in the deployment platform's secret store and are injected as e
 | `APP_BASE_URL` | ✔ | `https://app.estimateai.in` | used in emails and OAuth redirects |
 | `API_CORS_ORIGINS` | ✔ | `https://app.estimateai.in` | comma-separated |
 | `LOG_LEVEL` | | `INFO` | |
-| `SECRET_KEY` | ✔ 🔒 | 64 random bytes | CSRF and signing of misc tokens |
-| `JWT_SIGNING_KEY` | ✔ 🔒 | Ed25519 private key (PEM) | EdDSA JWT. Rotate with `JWT_SIGNING_KEY_PREVIOUS` |
-| `JWT_SIGNING_KEY_PREVIOUS` | | | verification-only during rotation |
+| `SECRET_KEY` | ✔ 🔒 | 32+ random characters | signs email-verification and password-reset links and the Google sign-in state cookie. Required outside development/test |
+| `JWT_SIGNING_KEY` | ✔ 🔒 | 32+ random characters | HS256 key for access tokens. Only the API issues and verifies them, so a shared secret is enough. Changing it signs everyone out of the 15-minute access token; refresh tokens keep working. Required outside development/test |
 | `ACCESS_TOKEN_TTL_SECONDS` | | `900` | |
 | `REFRESH_TOKEN_TTL_DAYS` | | `30` | |
 | `COOKIE_DOMAIN` | ✔ | `.estimateai.in` | |
@@ -47,7 +46,7 @@ All secrets live in the deployment platform's secret store and are injected as e
 | `RAZORPAY_KEY_ID` | ✔ | `rzp_live_…` | public; also sent to the browser via the API |
 | `RAZORPAY_KEY_SECRET` | ✔ 🔒 | | server-side API calls |
 | `RAZORPAY_WEBHOOK_SECRET` | ✔ 🔒 | | HMAC verification of webhooks |
-| `EMAIL_PROVIDER` | ✔ | `ses` \| `smtp` \| `resend` | |
+| `EMAIL_PROVIDER` | | `console` \| `smtp` | default `console`: emails (and their links) are written to the API log, so sign-up works without an email service. Use `smtp` in production (works with SES, Resend, etc. via SMTP) |
 | `EMAIL_FROM` | ✔ | `EstimateAI <no-reply@estimateai.in>` | |
 | `SMTP_HOST` / `SMTP_PORT` / `SMTP_USER` / `SMTP_PASSWORD` | (if smtp) 🔒 | | |
 | `SENTRY_DSN` | | | |
