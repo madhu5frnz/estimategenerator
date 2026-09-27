@@ -30,7 +30,7 @@ Next.js · React · TypeScript · Tailwind | Python · FastAPI · SQLAlchemy 2 �
 
 1. **Versioning in the MVP.** The brief places version control in Phase 2, but MVP acceptance test #17 ("previous version remains available") needs it. Proposal: the MVP ships freeze-and-clone versions with read-only viewing of old versions. The comparison UI waits for Phase 2. Audit data is captured from the MVP onward, and the audit UI comes in Phase 2.
 2. **Plan limits.** Full-quota LLM cost exceeds revenue for "unlimited" Pro/Business once document analysis is included (see doc 10). Proposal: explicit caps plus a separate `doc_pages` quota and top-up packs.
-3. **LLM provider and models.** Proposed: Claude, with configurable tiers (`claude-haiku-4-5` / `claude-sonnet-5` / `claude-opus-5`). Tiers are chosen by eval results, not cost alone.
+3. **LLM provider and models.** No AI key is needed to develop or run the app: a rules-based extractor is the default (doc 06 §6.3). When a key is added, the proposal is: Claude, with configurable tiers (`claude-haiku-4-5` / `claude-sonnet-5` / `claude-opus-5`). Tiers are chosen by eval results, not cost alone.
 4. **Hosting region.** Proposed: Indian region (Mumbai) for DB and storage, for DPDP Act compliance.
 5. **OCR.** Proposed: start with self-hosted Tesseract, and compare it against Claude vision on the eval set before paying for cloud OCR.
 6. **Brief errata.** The abstract example in §12 sums to ₹25,75,000, not ₹26,25,000 (2,50,000 + 4,50,000 + 15,50,000 + 3,25,000). The golden fixtures will use the corrected figure.

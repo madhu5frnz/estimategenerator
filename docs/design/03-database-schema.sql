@@ -16,7 +16,7 @@ CREATE EXTENSION IF NOT EXISTS pg_trgm;
 -- Enumerations
 -- ---------------------------------------------------------------------
 CREATE TYPE provenance AS ENUM (
-  'user_entered', 'ai_extracted', 'ai_suggested', 'default_accepted',
+  'user_entered', 'ai_extracted', 'rule_extracted', 'ai_suggested', 'default_accepted',
   'document_extracted', 'drawing_derived', 'rate_database', 'calculated'
 );
 CREATE TYPE org_role       AS ENUM ('owner', 'admin', 'member');

@@ -28,7 +28,8 @@ All secrets live in the deployment platform's secret store and are injected as e
 | `SIGNED_URL_TTL_SECONDS` | | `300` | |
 | `MAX_UPLOAD_MB_DEFAULT` | | `25` | plan limits can lower or raise it |
 | `CLAMAV_HOST` / `CLAMAV_PORT` | ✔ (P2) | `clamav` / `3310` | |
-| `ANTHROPIC_API_KEY` | ✔ 🔒 | | backend and workers only |
+| `AI_PROVIDER` | | `rules` \| `mock` \| `anthropic` | default: `anthropic` if `ANTHROPIC_API_KEY` is set, otherwise `rules` (see doc 06 §6.3) |
+| `ANTHROPIC_API_KEY` | optional 🔒 | | backend and workers only. **Not needed for development**; without it the rules-based extractor is used |
 | `AI_MODEL_FAST` | | `claude-haiku-4-5` | router tier |
 | `AI_MODEL_STANDARD` | | `claude-sonnet-5` | |
 | `AI_MODEL_DEEP` | | `claude-opus-5` | |
