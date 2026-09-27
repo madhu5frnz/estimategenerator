@@ -163,10 +163,10 @@ sequenceDiagram
 | `area_lb` | `L * B * N` | sq.m |
 | `road_layer` | `length * width * thickness` | cu.m |
 | `road_shoulder` | `length * (width_left + width_right) * thickness` | cu.m |
-| `wall_masonry` | `(L * H - openings_area) * T * N` | cu.m |
+| `wall_masonry` | `(L * H * N - openings_area) * T` (openings = total deducted area) | cu.m |
 | `plaster_area` | `L * H * faces - openings_area` | sq.m |
 | `excavation_trench` | `L * B * D * N` | cu.m |
-| `steel_weight` | `length * unit_weight * N` | kg |
+| `steel_weight` | `length * unit_weight * N` (unit weight in kg/m, entered by the user) | kg |
 | `pipe_volume` | `pi * D^2 / 4 * L` | cu.m |
 | `canal_lining_trapezoid` | bed + 2 × sloped side length, × thickness (Phase 3, see 08) | cu.m / sq.m |
 | `kerb_length` | `length * sides` | Rmt |

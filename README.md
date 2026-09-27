@@ -5,7 +5,50 @@ AI-assisted estimate, BOQ and quantity generation for Indian civil engineers and
 > **AI interprets. The deterministic engine calculates. The rate database supplies rates. The user verifies.**
 > Every important number traces back to a formula or a source.
 
-**Status:** design phase. The design package below is awaiting review. No application code has been written yet.
+**Status:** M0 (foundation) and M1 (units and quantity engine) are done. Next: M2 (accounts and projects). See [milestones](docs/design/08-development-milestones.md).
+
+No AI API key is needed to develop or run the app. Without one, the rules-based extractor is used (see [doc 06 §6.3](docs/design/06-ai-prompt-architecture.md)).
+
+## Getting started
+
+**With Docker** (Postgres, Redis, API, web):
+
+```bash
+cp .env.example .env
+docker compose up --build
+# Web: http://localhost:3000   API docs: http://localhost:8000/api/docs
+```
+
+**Without Docker** (Python 3.11+, [uv](https://docs.astral.sh/uv/), Node 22, a local Postgres 16 and Redis):
+
+```bash
+cd backend
+uv sync
+uv run alembic upgrade head          # uses DATABASE_URL
+uv run uvicorn app.main:app --reload # http://localhost:8000
+
+cd ../frontend
+npm install
+npm run dev                          # http://localhost:3000 (proxies /api to :8000)
+```
+
+**Checks** (the same ones CI runs):
+
+```bash
+cd backend && uv run ruff check . && uv run ruff format --check . && uv run mypy && uv run pytest
+# Migration tests need a disposable database:
+TEST_DATABASE_URL=postgresql+psycopg://user:pass@localhost:5432/estimateai_test uv run pytest
+
+cd frontend && npm run lint && npm run typecheck && npm run build
+```
+
+## What works now
+
+* **Quantity engine** (`backend/app/domain`). This is pure Python using exact decimal arithmetic. It includes a safe formula evaluator that never calls `eval`, unit-dimension checks (a length cannot be added to an area), 10 versioned formula templates, custom formulas, and a step-by-step calculation trace. It also has Indian number formatting (₹12,34,567.00) and amount in words (lakh/crore).
+* **Units**: one central registry with aliases (`Cu.m`, `sft`, `mtrs` …) and exact conversions. No conversion factors appear anywhere else in the code.
+* **API**: `GET /api/v1/units`, `POST /api/v1/units/convert`, `GET /api/v1/calculation-templates`, `POST /api/v1/calculate`, `POST /api/v1/calculate/validate-expression`, `/healthz`, `/readyz`. Every error uses a structured format and carries a request id.
+* **Database**: the initial Alembic migration creates the reviewed schema (37 tables), including the guard that makes frozen estimate versions read-only.
+* **Web**: the app shell with navigation and the disclaimer footer, plus a working **Quantity Calculator** page (`/calculator`).
 
 ## Design package
 

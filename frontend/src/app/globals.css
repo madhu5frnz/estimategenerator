@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #1f2933;
+  --color-muted: #616e7c;
+  --color-line: #d9e2ec;
+  --color-panel: #f5f7fa;
+  --color-accent: #0f609b;
+  --color-accent-soft: #e6f0f8;
+  --color-ok: #1f7a4d;
+  --color-warn: #a86300;
+  --color-bad: #b42318;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+html,
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+}
+
+/* Engineering numbers line up in columns. */
+.num {
+  font-variant-numeric: tabular-nums;
+}

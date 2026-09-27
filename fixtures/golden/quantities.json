@@ -1,0 +1,71 @@
+{
+  "_comment": "Golden quantity cases. Used by backend unit tests; later also by integration tests and the AI extraction eval. Expected values are hand-computed.",
+  "cases": [
+    {
+      "name": "Brief §1: 500 m CC road, 5.5 m wide, 150 mm thick",
+      "template_id": "road_layer",
+      "inputs": {"length": ["500", "m"], "width": ["5.5", "m"], "thickness": ["150", "mm"]},
+      "expected": {"value": "412.500", "unit": "cum", "substituted": "500 × 5.5 × 0.15"}
+    },
+    {
+      "name": "Brief §39 demo: CC 1000 m × 5.5 m × 150 mm",
+      "template_id": "road_layer",
+      "inputs": {"length": ["1", "km"], "width": ["5.5", "m"], "thickness": ["150", "mm"]},
+      "expected": {"value": "825.000", "unit": "cum", "substituted": "1000 × 5.5 × 0.15"}
+    },
+    {
+      "name": "Brief §39 demo: GSB 1000 m × 5.5 m × 150 mm",
+      "template_id": "road_layer",
+      "inputs": {"length": ["1000", "m"], "width": ["5.5", "m"], "thickness": ["0.15", "m"]},
+      "expected": {"value": "825.000", "unit": "cum", "substituted": "1000 × 5.5 × 0.15"}
+    },
+    {
+      "name": "Brief §15: earthwork excavation 100 × 2 × 1",
+      "template_id": "excavation_trench",
+      "inputs": {"L": ["100", "m"], "B": ["2", "m"], "D": ["1", "m"]},
+      "expected": {"value": "200.000", "unit": "cum", "substituted": "100 × 2 × 1 × 1"}
+    },
+    {
+      "name": "Brief §35: 500 m road, GSB 100 mm",
+      "template_id": "road_layer",
+      "inputs": {"length": ["500", "m"], "width": ["5.5", "m"], "thickness": ["100", "mm"]},
+      "expected": {"value": "275.000", "unit": "cum", "substituted": "500 × 5.5 × 0.1"}
+    },
+    {
+      "name": "Brief §6 JSON example: GSB 2000 × 5.5 × 0.05",
+      "template_id": "road_layer",
+      "inputs": {"length": ["2", "km"], "width": ["5.5", "m"], "thickness": ["50", "mm"]},
+      "expected": {"value": "550.000", "unit": "cum", "substituted": "2000 × 5.5 × 0.05"}
+    },
+    {
+      "name": "Shoulders: 1 km, 1.0 m left, 1.5 m right, 150 mm",
+      "template_id": "road_shoulder",
+      "inputs": {"length": ["1", "km"], "width_left": ["1", "m"], "width_right": ["1.5", "m"], "thickness": ["150", "mm"]},
+      "expected": {"value": "375.000", "unit": "cum", "substituted": "1000 × (1 + 1.5) × 0.15"}
+    },
+    {
+      "name": "Brickwork 10 m × 3 m × 230 mm less 2 × (1.0 × 2.1) door",
+      "template_id": "wall_masonry",
+      "inputs": {"L": ["10", "m"], "H": ["3", "m"], "T": ["230", "mm"], "openings_area": ["4.2", "sqm"]},
+      "expected": {"value": "5.934", "unit": "cum", "substituted": "(10 × 3 × 1 - 4.2) × 0.23"}
+    },
+    {
+      "name": "Pipe bore 300 mm dia, 100 m",
+      "template_id": "pipe_volume",
+      "inputs": {"D": ["300", "mm"], "L": ["100", "m"]},
+      "expected": {"value": "7.069", "unit": "cum", "substituted": "π × 0.3² / 4 × 100"}
+    },
+    {
+      "name": "Steel 12 mm bars: 12 m × 0.888 kg/m × 50 nos",
+      "template_id": "steel_weight",
+      "inputs": {"length": ["12", "m"], "unit_weight": ["0.888", "kg/m"], "N": ["50", "nos"]},
+      "expected": {"value": "532.800", "unit": "kg", "substituted": "12 × 0.888 × 50"}
+    },
+    {
+      "name": "Imperial input: 100 ft × 10 ft area",
+      "template_id": "area_lb",
+      "inputs": {"L": ["100", "ft"], "B": ["10", "ft"]},
+      "expected": {"value": "92.90", "unit": "sqm", "substituted": "30.48 × 3.048 × 1"}
+    }
+  ]
+}

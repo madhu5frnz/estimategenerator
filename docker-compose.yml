@@ -1,0 +1,49 @@
+# Local development stack: docker compose up --build
+# Web: http://localhost:3000   API docs: http://localhost:8000/api/docs
+# S3-compatible storage is added in M6 (exports), when it is first needed.
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: estimateai
+      POSTGRES_PASSWORD: estimateai
+      POSTGRES_DB: estimateai
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U estimateai"]
+      interval: 3s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      retries: 20
+
+  api:
+    build: ./backend
+    environment:
+      APP_ENV: development
+      DATABASE_URL: postgresql+psycopg://estimateai:estimateai@postgres:5432/estimateai
+      REDIS_URL: redis://redis:6379/0
+      API_CORS_ORIGINS: http://localhost:3000
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+    command: sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"
+    ports: ["8000:8000"]
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
+  web:
+    build:
+      context: ./frontend
+      args:
+        BACKEND_URL: http://api:8000
+    ports: ["3000:3000"]
+    depends_on: [api]
+
+volumes:
+  pgdata:
