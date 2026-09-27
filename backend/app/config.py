@@ -1,10 +1,11 @@
 from __future__ import annotations
 
+import json
 from functools import lru_cache
-from typing import Literal
+from typing import Annotated, Literal
 
 from pydantic import SecretStr, field_validator, model_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 _DEV_SECRET = "dev-only-insecure-secret-change-me-0123456789abcdef"  # noqa: S105
 
@@ -17,7 +18,8 @@ class Settings(BaseSettings):
     app_env: Literal["development", "test", "staging", "production"] = "development"
     app_base_url: str = "http://localhost:3000"
     log_level: str = "INFO"
-    api_cors_origins: list[str] = ["http://localhost:3000"]
+    # Comma-separated in the environment (e.g. "http://a,http://b"), or a JSON list.
+    api_cors_origins: Annotated[list[str], NoDecode] = ["http://localhost:3000"]
 
     database_url: str = "postgresql+psycopg://estimateai:estimateai@localhost:5432/estimateai"
     redis_url: str = "redis://localhost:6379/0"
@@ -58,7 +60,9 @@ class Settings(BaseSettings):
     @field_validator("api_cors_origins", mode="before")
     @classmethod
     def _split_origins(cls, value: object) -> object:
-        if isinstance(value, str) and not value.strip().startswith("["):
+        if isinstance(value, str):
+            if value.strip().startswith("["):
+                return json.loads(value)
             return [v.strip() for v in value.split(",") if v.strip()]
         return value
 
