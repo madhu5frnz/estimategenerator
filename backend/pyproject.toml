@@ -60,6 +60,7 @@ extend-immutable-calls = ["fastapi.Query", "fastapi.Depends"]
 
 [tool.ruff.lint.per-file-ignores]
 "app/ai/rules.py" = ["E501"]  # multilingual lexicon tables read best one entry per line
+"app/domain/validation/rules.py" = ["E501"]  # one finding message per line
 "tests/**" = ["S", "E501"]
 
 [tool.mypy]

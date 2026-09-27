@@ -17,10 +17,11 @@ from sqlalchemy.orm import Session
 
 from app.api.deps import DB, Auth
 from app.api.envelope import Envelope, ok
-from app.domain.money import format_inr
+from app.domain.money import amount_in_words, format_inr
 from app.domain.numeric import round_half_up
 from app.domain.units import default_registry
 from app.models import Calculation, Project, User
+from app.services import abstract as abstract_service
 from app.services import estimates as service
 from app.services.context import AuthContext
 from app.services.projects import ROLE_RANK
@@ -119,6 +120,18 @@ class LineOut(BaseModel):
     calculation: LineCalculationOut | None
 
 
+class RateInfoOut(BaseModel):
+    rate_item_id: uuid.UUID | None
+    item_code: str
+    sor_name: str
+    year: str
+    unit: str
+    basic_rate: str
+    verification_status: str
+    is_demo: bool
+    label: str
+
+
 class ItemOut(BaseModel):
     id: uuid.UUID
     line_key: uuid.UUID
@@ -134,6 +147,7 @@ class ItemOut(BaseModel):
     quantity_source: str
     rate: str | None
     rate_source_type: str | None
+    rate_info: RateInfoOut | None
     amount: str | None
     remarks: str | None
     provenance: str
@@ -168,6 +182,9 @@ class TotalsOut(BaseModel):
     works_subtotal: str
     works_subtotal_display: str
     amount_in_words: str
+    grand_total: str
+    grand_total_display: str
+    grand_total_in_words: str
     item_count: int
     unpriced_count: int
 
@@ -239,6 +256,11 @@ class ItemPatch(BaseModel):
     quantity: Number = None
     rate: Number = None
     remarks: str | None = Field(default=None, max_length=1000)
+
+
+class SetRateIn(BaseModel):
+    rate_item_id: uuid.UUID
+    confirm_overwrite: bool = False
 
 
 class FormulaInput(BaseModel):
@@ -314,6 +336,32 @@ def _calc_out(c: Calculation | None) -> LineCalculationOut | None:
     )
 
 
+def rate_info(i: Any) -> RateInfoOut | None:
+    snap = i.rate_snapshot
+    if i.rate_source_type != "rate_database" or not snap:
+        return None
+    demo = snap.get("verification_status") == "demo"
+    return RateInfoOut(
+        rate_item_id=i.rate_item_id,
+        item_code=snap.get("item_code", ""),
+        sor_name=snap.get("sor_name", ""),
+        year=snap.get("year", ""),
+        unit=snap.get("unit", ""),
+        basic_rate=snap.get("basic_rate", ""),
+        verification_status=snap.get("verification_status", ""),
+        is_demo=demo,
+        label=f"{snap.get('item_code', '')} · {snap.get('sor_name', '')} {snap.get('year', '')}",
+    )
+
+
+def _grand_total(db: Session, view: service.VersionView) -> Decimal:
+    snap = view.version.totals_snapshot
+    if view.version.status == "frozen" and snap and "grand_total" in snap:
+        return Decimal(snap["grand_total"])
+    result, _ = abstract_service.compute(view, abstract_service.charges_of(db, view.version.id))
+    return result.grand_total
+
+
 def version_out(
     db: Session,
     ctx: AuthContext,
@@ -351,6 +399,7 @@ def version_out(
                     quantity_source=i.quantity_source,
                     rate=_s(i.rate),
                     rate_source_type=i.rate_source_type,
+                    rate_info=rate_info(i),
                     amount=_s(i.amount),
                     remarks=i.remarks,
                     provenance=i.provenance,
@@ -397,6 +446,7 @@ def version_out(
             )
         )
     total = view.display_total
+    grand = _grand_total(db, view)
     return VersionOut(
         version=VersionInfo(
             id=v.id,
@@ -436,6 +486,9 @@ def version_out(
             works_subtotal=format(total, "f"),
             works_subtotal_display=format_inr(total),
             amount_in_words=view.words,
+            grand_total=format(grand, "f"),
+            grand_total_display=format_inr(grand),
+            grand_total_in_words=amount_in_words(grand) if grand >= 0 else "",
             item_count=view.item_count,
             unpriced_count=view.unpriced_count,
         ),
@@ -592,6 +645,14 @@ def patch_item(item_id: uuid.UUID, body: ItemPatch, auth: Auth, db: DB) -> Envel
 @router.delete("/boq-items/{item_id}", response_model=Envelope[VersionOut])
 def delete_item(item_id: uuid.UUID, auth: Auth, db: DB) -> Envelope[VersionOut]:
     return _reload(db, auth, service.delete_item(db, auth, item_id))
+
+
+@router.post("/boq-items/{item_id}/set-rate", response_model=Envelope[VersionOut])
+def set_rate(item_id: uuid.UUID, body: SetRateIn, auth: Auth, db: DB) -> Envelope[VersionOut]:
+    scope = service.set_rate(
+        db, auth, item_id, body.rate_item_id, confirm_overwrite=body.confirm_overwrite
+    )
+    return _reload(db, auth, scope, focus_id=item_id)
 
 
 @router.post("/boq-items/{item_id}/duplicate", response_model=Envelope[VersionOut])

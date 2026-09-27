@@ -243,6 +243,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/boq-items/{item_id}/set-rate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Set Rate */
+        post: operations["set_rate_api_v1_boq_items__item_id__set_rate_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/calculate": {
         parameters: {
             query?: never;
@@ -292,6 +309,24 @@ export interface paths {
         options?: never;
         head?: never;
         patch?: never;
+        trace?: never;
+    };
+    "/api/v1/charges/{charge_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Delete Charge */
+        delete: operations["delete_charge_api_v1_charges__charge_id__delete"];
+        options?: never;
+        head?: never;
+        /** Patch Charge */
+        patch: operations["patch_charge_api_v1_charges__charge_id__patch"];
         trace?: never;
     };
     "/api/v1/dashboard/summary": {
@@ -435,6 +470,24 @@ export interface paths {
         patch: operations["patch_organization_api_v1_organizations__org_id__patch"];
         trace?: never;
     };
+    "/api/v1/organizations/{org_id}/settings/estimate-defaults": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Defaults */
+        get: operations["get_defaults_api_v1_organizations__org_id__settings_estimate_defaults_get"];
+        /** Put Defaults */
+        put: operations["put_defaults_api_v1_organizations__org_id__settings_estimate_defaults_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/parameters/{param_id}": {
         parameters: {
             query?: never;
@@ -519,6 +572,94 @@ export interface paths {
         put?: never;
         /** Create Estimate */
         post: operations["create_estimate_api_v1_projects__project_id__estimates_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/rate-items": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Search Items */
+        get: operations["search_items_api_v1_rate_items_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/rate-items/{item_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Delete Item */
+        delete: operations["delete_item_api_v1_rate_items__item_id__delete"];
+        options?: never;
+        head?: never;
+        /** Patch Item */
+        patch: operations["patch_item_api_v1_rate_items__item_id__patch"];
+        trace?: never;
+    };
+    "/api/v1/rate-sources": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Sources */
+        get: operations["list_sources_api_v1_rate_sources_get"];
+        put?: never;
+        /** Create Source */
+        post: operations["create_source_api_v1_rate_sources_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/rate-sources/{source_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Delete Source */
+        delete: operations["delete_source_api_v1_rate_sources__source_id__delete"];
+        options?: never;
+        head?: never;
+        /** Patch Source */
+        patch: operations["patch_source_api_v1_rate_sources__source_id__patch"];
+        trace?: never;
+    };
+    "/api/v1/rate-sources/{source_id}/items": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Create Item */
+        post: operations["create_item_api_v1_rate_sources__source_id__items_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -611,6 +752,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/versions/{version_id}/abstract": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Abstract */
+        get: operations["get_abstract_api_v1_versions__version_id__abstract_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/versions/{version_id}/boq-items": {
         parameters: {
             query?: never;
@@ -645,6 +803,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/versions/{version_id}/charges": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Add Charge */
+        post: operations["add_charge_api_v1_versions__version_id__charges_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/versions/{version_id}/charges/reorder": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Reorder Charges */
+        post: operations["reorder_charges_api_v1_versions__version_id__charges_reorder_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/versions/{version_id}/freeze": {
         parameters: {
             query?: never;
@@ -662,6 +854,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/versions/{version_id}/gst": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Put Gst */
+        put: operations["put_gst_api_v1_versions__version_id__gst_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/versions/{version_id}/parameters": {
         parameters: {
             query?: never;
@@ -673,6 +882,23 @@ export interface paths {
         put?: never;
         /** Add Parameter */
         post: operations["add_parameter_api_v1_versions__version_id__parameters_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/versions/{version_id}/rounding": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Put Rounding */
+        put: operations["put_rounding_api_v1_versions__version_id__rounding_put"];
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -713,6 +939,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/versions/{version_id}/validation": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Validate Version */
+        get: operations["validate_version_api_v1_versions__version_id__validation_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/work-categories": {
         parameters: {
             query?: never;
@@ -734,6 +977,79 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /** AbstractOut */
+        AbstractOut: {
+            /** Amount In Words */
+            amount_in_words: string;
+            /** Can Edit */
+            can_edit: boolean;
+            /** Charges */
+            charges: components["schemas"]["ChargeOut"][];
+            /** Grand Total */
+            grand_total: string;
+            /** Grand Total Display */
+            grand_total_display: string;
+            /** Gst */
+            gst: components["schemas"]["GstLineOut"][];
+            /** Gst Added */
+            gst_added: string;
+            /** Gst Added Display */
+            gst_added_display: string;
+            gst_config: components["schemas"]["GstConfigOut"];
+            /** Notes */
+            notes: string[];
+            problem: components["schemas"]["ProblemOut"] | null;
+            /** Rounding */
+            rounding: string;
+            /** Rounding Adjustment */
+            rounding_adjustment: string;
+            /** Sections */
+            sections: components["schemas"]["AbstractSectionOut"][];
+            /** Status */
+            status: string;
+            /** Subtotal Before Gst */
+            subtotal_before_gst: string;
+            /** Subtotal Before Gst Display */
+            subtotal_before_gst_display: string;
+            /** Total Before Rounding */
+            total_before_rounding: string;
+            /** Total Before Rounding Display */
+            total_before_rounding_display: string;
+            /**
+             * Version Id
+             * Format: uuid
+             */
+            version_id: string;
+            /** Version No */
+            version_no: number;
+            /** Works Subtotal */
+            works_subtotal: string;
+            /** Works Subtotal Display */
+            works_subtotal_display: string;
+        };
+        /** AbstractSectionOut */
+        AbstractSectionOut: {
+            /** Amount */
+            amount: string;
+            /** Amount Display */
+            amount_display: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Item Count */
+            item_count: number;
+            /**
+             * Line Key
+             * Format: uuid
+             */
+            line_key: string;
+            /** Sl No */
+            sl_no: number;
+            /** Title */
+            title: string;
+        };
         /** CalculateIn */
         CalculateIn: {
             /** Expression */
@@ -793,6 +1109,86 @@ export interface components {
             name: string;
             /** Project Type */
             project_type: string;
+        };
+        /** ChargeCreate */
+        ChargeCreate: {
+            /**
+             * Base
+             * @default works_subtotal
+             * @enum {string}
+             */
+            base: "works_subtotal" | "running_total" | "sections";
+            /**
+             * Enabled
+             * @default true
+             */
+            enabled: boolean;
+            /** Fixed Amount */
+            fixed_amount?: string | number | null;
+            /**
+             * Kind
+             * @default other
+             * @enum {string}
+             */
+            kind: "contingency" | "work_charged_establishment" | "labour_cess" | "seigniorage" | "royalty" | "other";
+            /** Name */
+            name: string;
+            /** Percentage */
+            percentage?: string | number | null;
+            /** Section Keys */
+            section_keys?: string[];
+        };
+        /** ChargeOut */
+        ChargeOut: {
+            /** Amount */
+            amount: string;
+            /** Amount Display */
+            amount_display: string;
+            /** Base */
+            base: string;
+            /** Base Amount */
+            base_amount: string;
+            /** Base Label */
+            base_label: string;
+            /** Enabled */
+            enabled: boolean;
+            /** Fixed Amount */
+            fixed_amount: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Kind */
+            kind: string;
+            /**
+             * Line Key
+             * Format: uuid
+             */
+            line_key: string;
+            /** Name */
+            name: string;
+            /** Percentage */
+            percentage: string | null;
+            /** Section Keys */
+            section_keys: string[];
+        };
+        /** ChargePatch */
+        ChargePatch: {
+            /** Base */
+            base?: ("works_subtotal" | "running_total" | "sections") | null;
+            /** Enabled */
+            enabled?: boolean | null;
+            /** Fixed Amount */
+            fixed_amount?: string | number | null;
+            /** Kind */
+            kind?: ("contingency" | "work_charged_establishment" | "labour_cess" | "seigniorage" | "royalty" | "other") | null;
+            /** Name */
+            name?: string | null;
+            /** Percentage */
+            percentage?: string | number | null;
+            /** Section Keys */
+            section_keys?: string[] | null;
         };
         /** ComponentChoice */
         ComponentChoice: {
@@ -928,6 +1324,79 @@ export interface components {
             total_projects: number;
             usage: components["schemas"]["UsageOut"];
         };
+        /** DefaultChargeIn */
+        DefaultChargeIn: {
+            /**
+             * Base
+             * @default works_subtotal
+             * @enum {string}
+             */
+            base: "works_subtotal" | "running_total";
+            /**
+             * Enabled
+             * @default true
+             */
+            enabled: boolean;
+            /** Fixed Amount */
+            fixed_amount?: string | number | null;
+            /**
+             * Kind
+             * @default other
+             * @enum {string}
+             */
+            kind: "contingency" | "work_charged_establishment" | "labour_cess" | "seigniorage" | "royalty" | "other";
+            /** Name */
+            name: string;
+            /** Percentage */
+            percentage?: string | number | null;
+        };
+        /** DefaultChargeOut */
+        DefaultChargeOut: {
+            /** Base */
+            base: string;
+            /** Enabled */
+            enabled: boolean;
+            /** Fixed Amount */
+            fixed_amount: string | null;
+            /** Kind */
+            kind: string;
+            /** Name */
+            name: string;
+            /** Percentage */
+            percentage: string | null;
+        };
+        /** DefaultsIn */
+        DefaultsIn: {
+            /** Charges */
+            charges?: components["schemas"]["DefaultChargeIn"][];
+            gst: components["schemas"]["GstIn"];
+            /**
+             * Rounding
+             * @default nearest_rupee
+             * @enum {string}
+             */
+            rounding: "none" | "nearest_rupee" | "nearest_10" | "nearest_100" | "nearest_1000";
+        };
+        /** DefaultsOut */
+        DefaultsOut: {
+            /** Can Edit */
+            can_edit: boolean;
+            /** Charges */
+            charges: components["schemas"]["DefaultChargeOut"][];
+            gst: components["schemas"]["GstConfigOut"];
+            /** Rounding */
+            rounding: string;
+        };
+        /** Envelope[AbstractOut] */
+        Envelope_AbstractOut_: {
+            data: components["schemas"]["AbstractOut"];
+            meta: components["schemas"]["Meta"];
+            /**
+             * Success
+             * @default true
+             */
+            success: boolean;
+        };
         /** Envelope[CalculationOut] */
         Envelope_CalculationOut_: {
             data: components["schemas"]["CalculationOut"];
@@ -961,6 +1430,16 @@ export interface components {
         /** Envelope[DashboardOut] */
         Envelope_DashboardOut_: {
             data: components["schemas"]["DashboardOut"];
+            meta: components["schemas"]["Meta"];
+            /**
+             * Success
+             * @default true
+             */
+            success: boolean;
+        };
+        /** Envelope[DefaultsOut] */
+        Envelope_DefaultsOut_: {
+            data: components["schemas"]["DefaultsOut"];
             meta: components["schemas"]["Meta"];
             /**
              * Success
@@ -1048,9 +1527,49 @@ export interface components {
              */
             success: boolean;
         };
+        /** Envelope[RateItemOut] */
+        Envelope_RateItemOut_: {
+            data: components["schemas"]["RateItemOut"];
+            meta: components["schemas"]["Meta"];
+            /**
+             * Success
+             * @default true
+             */
+            success: boolean;
+        };
+        /** Envelope[RateSearchOut] */
+        Envelope_RateSearchOut_: {
+            data: components["schemas"]["RateSearchOut"];
+            meta: components["schemas"]["Meta"];
+            /**
+             * Success
+             * @default true
+             */
+            success: boolean;
+        };
+        /** Envelope[RateSourceOut] */
+        Envelope_RateSourceOut_: {
+            data: components["schemas"]["RateSourceOut"];
+            meta: components["schemas"]["Meta"];
+            /**
+             * Success
+             * @default true
+             */
+            success: boolean;
+        };
         /** Envelope[SystemInfo] */
         Envelope_SystemInfo_: {
             data: components["schemas"]["SystemInfo"];
+            meta: components["schemas"]["Meta"];
+            /**
+             * Success
+             * @default true
+             */
+            success: boolean;
+        };
+        /** Envelope[ValidationOut] */
+        Envelope_ValidationOut_: {
+            data: components["schemas"]["ValidationOut"];
             meta: components["schemas"]["Meta"];
             /**
              * Success
@@ -1107,6 +1626,17 @@ export interface components {
         Envelope_list_Option__: {
             /** Data */
             data: components["schemas"]["Option"][];
+            meta: components["schemas"]["Meta"];
+            /**
+             * Success
+             * @default true
+             */
+            success: boolean;
+        };
+        /** Envelope[list[RateSourceOut]] */
+        Envelope_list_RateSourceOut__: {
+            /** Data */
+            data: components["schemas"]["RateSourceOut"][];
             meta: components["schemas"]["Meta"];
             /**
              * Success
@@ -1333,6 +1863,24 @@ export interface components {
             /** Warnings */
             warnings: string[];
         };
+        /** FindingOut */
+        FindingOut: {
+            /** Entity Id */
+            entity_id: string | null;
+            /** Entity Type */
+            entity_type: string | null;
+            /** Message */
+            message: string;
+            /** Rule Id */
+            rule_id: string;
+            /**
+             * Severity
+             * @enum {string}
+             */
+            severity: "red" | "yellow";
+            /** Sl No */
+            sl_no: string | null;
+        };
         /** ForgotIn */
         ForgotIn: {
             /**
@@ -1355,32 +1903,72 @@ export interface components {
             /** Change Note */
             change_note: string;
         };
+        /** GstConfigOut */
+        GstConfigOut: {
+            /** Applicable */
+            applicable: boolean;
+            /**
+             * Base
+             * @enum {string}
+             */
+            base: "after_charges" | "works_subtotal";
+            /**
+             * Mode
+             * @enum {string}
+             */
+            mode: "exclusive" | "inclusive";
+            /** Rate Pct */
+            rate_pct: string | null;
+            /**
+             * Supply
+             * @enum {string}
+             */
+            supply: "intra" | "inter";
+        };
+        /** GstIn */
+        GstIn: {
+            /** Applicable */
+            applicable: boolean;
+            /**
+             * Base
+             * @default after_charges
+             * @enum {string}
+             */
+            base: "after_charges" | "works_subtotal";
+            /**
+             * Mode
+             * @default exclusive
+             * @enum {string}
+             */
+            mode: "exclusive" | "inclusive";
+            /** Rate Pct */
+            rate_pct?: string | number | null;
+            /**
+             * Supply
+             * @default intra
+             * @enum {string}
+             */
+            supply: "intra" | "inter";
+        };
+        /** GstLineOut */
+        GstLineOut: {
+            /** Amount */
+            amount: string;
+            /** Amount Display */
+            amount_display: string;
+            /** Base Amount */
+            base_amount: string;
+            /** Included */
+            included: boolean;
+            /** Name */
+            name: string;
+            /** Rate Pct */
+            rate_pct: string;
+        };
         /** HTTPValidationError */
         HTTPValidationError: {
             /** Detail */
             detail?: components["schemas"]["ValidationError"][];
-        };
-        /** ItemCreate */
-        ItemCreate: {
-            /** Description */
-            description: string;
-            /** Item No */
-            item_no?: string | null;
-            /** Quantity */
-            quantity?: string | number | null;
-            /** Rate */
-            rate?: string | number | null;
-            /** Remarks */
-            remarks?: string | null;
-            /**
-             * Section Id
-             * Format: uuid
-             */
-            section_id: string;
-            /** Specification */
-            specification?: string | null;
-            /** Unit */
-            unit?: string | null;
         };
         /** ItemOrderIn */
         ItemOrderIn: {
@@ -1422,6 +2010,7 @@ export interface components {
             quantity_source: string;
             /** Rate */
             rate: string | null;
+            rate_info: components["schemas"]["RateInfoOut"] | null;
             /** Rate Source Type */
             rate_source_type: string | null;
             /** Remarks */
@@ -1439,25 +2028,6 @@ export interface components {
             unit: string | null;
             /** Unit Display */
             unit_display: string | null;
-        };
-        /** ItemPatch */
-        ItemPatch: {
-            /** Description */
-            description?: string | null;
-            /** Item No */
-            item_no?: string | null;
-            /** Quantity */
-            quantity?: string | number | null;
-            /** Rate */
-            rate?: string | number | null;
-            /** Remarks */
-            remarks?: string | null;
-            /** Section Id */
-            section_id?: string | null;
-            /** Specification */
-            specification?: string | null;
-            /** Unit */
-            unit?: string | null;
         };
         /** LineCalculationOut */
         LineCalculationOut: {
@@ -1606,11 +2176,6 @@ export interface components {
             /** Label */
             label: string;
         };
-        /** OrderIn */
-        OrderIn: {
-            /** Ids */
-            ids: string[];
-        };
         /** OrganizationOut */
         OrganizationOut: {
             /** Address */
@@ -1718,6 +2283,13 @@ export interface components {
             unit_display: string;
             /** Value */
             value: string;
+        };
+        /** ProblemOut */
+        ProblemOut: {
+            /** Code */
+            code: string;
+            /** Message */
+            message: string;
         };
         /** ProjectCreate */
         ProjectCreate: {
@@ -1849,6 +2421,119 @@ export interface components {
             /** Work Category Id */
             work_category_id?: string | null;
         };
+        /** RateInfoOut */
+        RateInfoOut: {
+            /** Basic Rate */
+            basic_rate: string;
+            /** Is Demo */
+            is_demo: boolean;
+            /** Item Code */
+            item_code: string;
+            /** Label */
+            label: string;
+            /** Rate Item Id */
+            rate_item_id: string | null;
+            /** Sor Name */
+            sor_name: string;
+            /** Unit */
+            unit: string;
+            /** Verification Status */
+            verification_status: string;
+            /** Year */
+            year: string;
+        };
+        /** RateItemOut */
+        RateItemOut: {
+            /** Can Edit */
+            can_edit: boolean;
+            /** Description */
+            description: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Is Demo */
+            is_demo: boolean;
+            /** Is Expired */
+            is_expired: boolean;
+            /** Item Code */
+            item_code: string;
+            /** Rate */
+            rate: string;
+            /** Rate Display */
+            rate_display: string;
+            /**
+             * Source Id
+             * Format: uuid
+             */
+            source_id: string;
+            /** Source Label */
+            source_label: string;
+            /** Specification */
+            specification: string | null;
+            /** Unit */
+            unit: string;
+            /** Unit Display */
+            unit_display: string;
+            /** Verification Status */
+            verification_status: string;
+        };
+        /** RateSearchOut */
+        RateSearchOut: {
+            /** Items */
+            items: components["schemas"]["RateItemOut"][];
+            /** Limit */
+            limit: number;
+            /** Offset */
+            offset: number;
+            /** Total */
+            total: number;
+        };
+        /** RateSourceOut */
+        RateSourceOut: {
+            /** Can Edit */
+            can_edit: boolean;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Department */
+            department: string;
+            /**
+             * Effective From
+             * Format: date
+             */
+            effective_from: string;
+            /** Effective To */
+            effective_to: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Is Demo */
+            is_demo: boolean;
+            /** Is Expired */
+            is_expired: boolean;
+            /** Item Count */
+            item_count: number;
+            /** Notes */
+            notes: string | null;
+            /** Owned */
+            owned: boolean;
+            /** Sor Name */
+            sor_name: string;
+            /** Source Reference */
+            source_reference: string | null;
+            /** State */
+            state: string;
+            /** Verification Status */
+            verification_status: string;
+            /** Year */
+            year: string;
+        };
         /** RegisterIn */
         RegisterIn: {
             /**
@@ -1902,6 +2587,14 @@ export interface components {
              */
             version_id: string;
         };
+        /** RoundingIn */
+        RoundingIn: {
+            /**
+             * Grand Total
+             * @enum {string}
+             */
+            grand_total: "none" | "nearest_rupee" | "nearest_10" | "nearest_100" | "nearest_1000";
+        };
         /** SectionOut */
         SectionOut: {
             /**
@@ -1928,6 +2621,60 @@ export interface components {
             title: string;
             /** Unpriced Count */
             unpriced_count: number;
+        };
+        /** SetRateIn */
+        SetRateIn: {
+            /**
+             * Confirm Overwrite
+             * @default false
+             */
+            confirm_overwrite: boolean;
+            /**
+             * Rate Item Id
+             * Format: uuid
+             */
+            rate_item_id: string;
+        };
+        /** SourceCreate */
+        SourceCreate: {
+            /** Department */
+            department: string;
+            /**
+             * Effective From
+             * Format: date
+             */
+            effective_from: string;
+            /** Effective To */
+            effective_to?: string | null;
+            /** Notes */
+            notes?: string | null;
+            /** Sor Name */
+            sor_name: string;
+            /** Source Reference */
+            source_reference?: string | null;
+            /** State */
+            state: string;
+            /** Year */
+            year: string;
+        };
+        /** SourcePatch */
+        SourcePatch: {
+            /** Department */
+            department?: string | null;
+            /** Effective From */
+            effective_from?: string | null;
+            /** Effective To */
+            effective_to?: string | null;
+            /** Notes */
+            notes?: string | null;
+            /** Sor Name */
+            sor_name?: string | null;
+            /** Source Reference */
+            source_reference?: string | null;
+            /** State */
+            state?: string | null;
+            /** Year */
+            year?: string | null;
         };
         /** StepOut */
         StepOut: {
@@ -2030,6 +2777,12 @@ export interface components {
         TotalsOut: {
             /** Amount In Words */
             amount_in_words: string;
+            /** Grand Total */
+            grand_total: string;
+            /** Grand Total Display */
+            grand_total_display: string;
+            /** Grand Total In Words */
+            grand_total_in_words: string;
             /** Item Count */
             item_count: number;
             /** Unpriced Count */
@@ -2093,6 +2846,27 @@ export interface components {
             msg: string;
             /** Error Type */
             type: string;
+        };
+        /** ValidationOut */
+        ValidationOut: {
+            /** Findings */
+            findings: components["schemas"]["FindingOut"][];
+            /** Message */
+            message: string;
+            /** Red Count */
+            red_count: number;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "green" | "yellow" | "red";
+            /**
+             * Version Id
+             * Format: uuid
+             */
+            version_id: string;
+            /** Yellow Count */
+            yellow_count: number;
         };
         /** VersionInfo */
         VersionInfo: {
@@ -2161,6 +2935,83 @@ export interface components {
             works_subtotal: string;
             /** Works Subtotal Display */
             works_subtotal_display: string;
+        };
+        /** OrderIn */
+        app__api__v1__abstract__OrderIn: {
+            /** Ids */
+            ids: string[];
+        };
+        /** ItemCreate */
+        app__api__v1__estimates__ItemCreate: {
+            /** Description */
+            description: string;
+            /** Item No */
+            item_no?: string | null;
+            /** Quantity */
+            quantity?: string | number | null;
+            /** Rate */
+            rate?: string | number | null;
+            /** Remarks */
+            remarks?: string | null;
+            /**
+             * Section Id
+             * Format: uuid
+             */
+            section_id: string;
+            /** Specification */
+            specification?: string | null;
+            /** Unit */
+            unit?: string | null;
+        };
+        /** ItemPatch */
+        app__api__v1__estimates__ItemPatch: {
+            /** Description */
+            description?: string | null;
+            /** Item No */
+            item_no?: string | null;
+            /** Quantity */
+            quantity?: string | number | null;
+            /** Rate */
+            rate?: string | number | null;
+            /** Remarks */
+            remarks?: string | null;
+            /** Section Id */
+            section_id?: string | null;
+            /** Specification */
+            specification?: string | null;
+            /** Unit */
+            unit?: string | null;
+        };
+        /** OrderIn */
+        app__api__v1__estimates__OrderIn: {
+            /** Ids */
+            ids: string[];
+        };
+        /** ItemCreate */
+        app__api__v1__rates__ItemCreate: {
+            /** Description */
+            description: string;
+            /** Item Code */
+            item_code: string;
+            /** Rate */
+            rate: string | number;
+            /** Specification */
+            specification?: string | null;
+            /** Unit */
+            unit: string;
+        };
+        /** ItemPatch */
+        app__api__v1__rates__ItemPatch: {
+            /** Description */
+            description?: string | null;
+            /** Item Code */
+            item_code?: string | null;
+            /** Rate */
+            rate?: string | number | null;
+            /** Specification */
+            specification?: string | null;
+            /** Unit */
+            unit?: string | null;
         };
     };
     responses: never;
@@ -2537,7 +3388,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["ItemPatch"];
+                "application/json": components["schemas"]["app__api__v1__estimates__ItemPatch"];
             };
         };
         responses: {
@@ -2609,6 +3460,41 @@ export interface operations {
         responses: {
             /** @description Successful Response */
             201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_VersionOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    set_rate_api_v1_boq_items__item_id__set_rate_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                item_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SetRateIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -2711,6 +3597,72 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Envelope_list_TemplateOut__"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_charge_api_v1_charges__charge_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                charge_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_AbstractOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    patch_charge_api_v1_charges__charge_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                charge_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ChargePatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_AbstractOut_"];
                 };
             };
             /** @description Validation Error */
@@ -3119,6 +4071,72 @@ export interface operations {
             };
         };
     };
+    get_defaults_api_v1_organizations__org_id__settings_estimate_defaults_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_DefaultsOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    put_defaults_api_v1_organizations__org_id__settings_estimate_defaults_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DefaultsIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_DefaultsOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     delete_parameter_api_v1_parameters__param_id__delete: {
         parameters: {
             query?: never;
@@ -3436,6 +4454,262 @@ export interface operations {
             };
         };
     };
+    search_items_api_v1_rate_items_get: {
+        parameters: {
+            query?: {
+                q?: string | null;
+                source_id?: string | null;
+                unit?: string | null;
+                include_expired?: boolean;
+                limit?: number;
+                offset?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_RateSearchOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_item_api_v1_rate_items__item_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                item_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_dict_str__bool__"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    patch_item_api_v1_rate_items__item_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                item_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["app__api__v1__rates__ItemPatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_RateItemOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_sources_api_v1_rate_sources_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_list_RateSourceOut__"];
+                };
+            };
+        };
+    };
+    create_source_api_v1_rate_sources_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SourceCreate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_RateSourceOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_source_api_v1_rate_sources__source_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_dict_str__bool__"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    patch_source_api_v1_rate_sources__source_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SourcePatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_RateSourceOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    create_item_api_v1_rate_sources__source_id__items_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["app__api__v1__rates__ItemCreate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_RateItemOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     delete_section_api_v1_sections__section_id__delete: {
         parameters: {
             query?: never;
@@ -3606,6 +4880,37 @@ export interface operations {
             };
         };
     };
+    get_abstract_api_v1_versions__version_id__abstract_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_AbstractOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     add_item_api_v1_versions__version_id__boq_items_post: {
         parameters: {
             query?: never;
@@ -3617,7 +4922,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["ItemCreate"];
+                "application/json": components["schemas"]["app__api__v1__estimates__ItemCreate"];
             };
         };
         responses: {
@@ -3676,6 +4981,76 @@ export interface operations {
             };
         };
     };
+    add_charge_api_v1_versions__version_id__charges_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ChargeCreate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_AbstractOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    reorder_charges_api_v1_versions__version_id__charges_reorder_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["app__api__v1__abstract__OrderIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_AbstractOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     freeze_version_api_v1_versions__version_id__freeze_post: {
         parameters: {
             query?: never;
@@ -3711,6 +5086,41 @@ export interface operations {
             };
         };
     };
+    put_gst_api_v1_versions__version_id__gst_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["GstIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_AbstractOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     add_parameter_api_v1_versions__version_id__parameters_post: {
         parameters: {
             query?: never;
@@ -3733,6 +5143,41 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Envelope_VersionOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    put_rounding_api_v1_versions__version_id__rounding_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RoundingIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_AbstractOut_"];
                 };
             };
             /** @description Validation Error */
@@ -3792,7 +5237,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["OrderIn"];
+                "application/json": components["schemas"]["app__api__v1__estimates__OrderIn"];
             };
         };
         responses: {
@@ -3803,6 +5248,37 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Envelope_VersionOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    validate_version_api_v1_versions__version_id__validation_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_ValidationOut_"];
                 };
             };
             /** @description Validation Error */

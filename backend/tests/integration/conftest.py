@@ -29,6 +29,7 @@ CLEANUP = [
     "DELETE FROM calculations",
     "DELETE FROM estimate_items",
     "DELETE FROM boq_items",
+    "DELETE FROM estimate_charges",
     "DELETE FROM estimate_sections",
     "DELETE FROM quantity_inputs",
     "DELETE FROM estimate_versions",
@@ -42,6 +43,10 @@ CLEANUP = [
     "DELETE FROM subscriptions",
     "DELETE FROM audit_logs",
     "DELETE FROM work_categories WHERE organization_id IS NOT NULL",
+    "DELETE FROM rate_items WHERE rate_source_id IN"
+    " (SELECT id FROM rate_sources WHERE organization_id IS NOT NULL)",
+    "DELETE FROM rate_sources WHERE organization_id IS NOT NULL",
+    "DELETE FROM settings WHERE scope <> 'platform'",
     "DELETE FROM users",
     "DELETE FROM organizations",
     "SET session_replication_role = DEFAULT",

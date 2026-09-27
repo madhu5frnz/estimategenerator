@@ -1,6 +1,192 @@
 {
   "components": {
     "schemas": {
+      "AbstractOut": {
+        "properties": {
+          "amount_in_words": {
+            "title": "Amount In Words",
+            "type": "string"
+          },
+          "can_edit": {
+            "title": "Can Edit",
+            "type": "boolean"
+          },
+          "charges": {
+            "items": {
+              "$ref": "#/components/schemas/ChargeOut"
+            },
+            "title": "Charges",
+            "type": "array"
+          },
+          "grand_total": {
+            "title": "Grand Total",
+            "type": "string"
+          },
+          "grand_total_display": {
+            "title": "Grand Total Display",
+            "type": "string"
+          },
+          "gst": {
+            "items": {
+              "$ref": "#/components/schemas/GstLineOut"
+            },
+            "title": "Gst",
+            "type": "array"
+          },
+          "gst_added": {
+            "title": "Gst Added",
+            "type": "string"
+          },
+          "gst_added_display": {
+            "title": "Gst Added Display",
+            "type": "string"
+          },
+          "gst_config": {
+            "$ref": "#/components/schemas/GstConfigOut"
+          },
+          "notes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Notes",
+            "type": "array"
+          },
+          "problem": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ProblemOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "rounding": {
+            "title": "Rounding",
+            "type": "string"
+          },
+          "rounding_adjustment": {
+            "title": "Rounding Adjustment",
+            "type": "string"
+          },
+          "sections": {
+            "items": {
+              "$ref": "#/components/schemas/AbstractSectionOut"
+            },
+            "title": "Sections",
+            "type": "array"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "subtotal_before_gst": {
+            "title": "Subtotal Before Gst",
+            "type": "string"
+          },
+          "subtotal_before_gst_display": {
+            "title": "Subtotal Before Gst Display",
+            "type": "string"
+          },
+          "total_before_rounding": {
+            "title": "Total Before Rounding",
+            "type": "string"
+          },
+          "total_before_rounding_display": {
+            "title": "Total Before Rounding Display",
+            "type": "string"
+          },
+          "version_id": {
+            "format": "uuid",
+            "title": "Version Id",
+            "type": "string"
+          },
+          "version_no": {
+            "title": "Version No",
+            "type": "integer"
+          },
+          "works_subtotal": {
+            "title": "Works Subtotal",
+            "type": "string"
+          },
+          "works_subtotal_display": {
+            "title": "Works Subtotal Display",
+            "type": "string"
+          }
+        },
+        "required": [
+          "version_id",
+          "version_no",
+          "status",
+          "can_edit",
+          "sections",
+          "works_subtotal",
+          "works_subtotal_display",
+          "charges",
+          "subtotal_before_gst",
+          "subtotal_before_gst_display",
+          "gst_config",
+          "gst",
+          "gst_added",
+          "gst_added_display",
+          "total_before_rounding",
+          "total_before_rounding_display",
+          "rounding",
+          "rounding_adjustment",
+          "grand_total",
+          "grand_total_display",
+          "amount_in_words",
+          "notes",
+          "problem"
+        ],
+        "title": "AbstractOut",
+        "type": "object"
+      },
+      "AbstractSectionOut": {
+        "properties": {
+          "amount": {
+            "title": "Amount",
+            "type": "string"
+          },
+          "amount_display": {
+            "title": "Amount Display",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "item_count": {
+            "title": "Item Count",
+            "type": "integer"
+          },
+          "line_key": {
+            "format": "uuid",
+            "title": "Line Key",
+            "type": "string"
+          },
+          "sl_no": {
+            "title": "Sl No",
+            "type": "integer"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "line_key",
+          "sl_no",
+          "title",
+          "amount",
+          "amount_display",
+          "item_count"
+        ],
+        "title": "AbstractSectionOut",
+        "type": "object"
+      },
       "CalculateIn": {
         "properties": {
           "expression": {
@@ -178,6 +364,298 @@
           "name"
         ],
         "title": "CategoryOut",
+        "type": "object"
+      },
+      "ChargeCreate": {
+        "properties": {
+          "base": {
+            "default": "works_subtotal",
+            "enum": [
+              "works_subtotal",
+              "running_total",
+              "sections"
+            ],
+            "title": "Base",
+            "type": "string"
+          },
+          "enabled": {
+            "default": true,
+            "title": "Enabled",
+            "type": "boolean"
+          },
+          "fixed_amount": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fixed Amount"
+          },
+          "kind": {
+            "default": "other",
+            "enum": [
+              "contingency",
+              "work_charged_establishment",
+              "labour_cess",
+              "seigniorage",
+              "royalty",
+              "other"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "name": {
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "percentage": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Percentage"
+          },
+          "section_keys": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "maxItems": 200,
+            "title": "Section Keys",
+            "type": "array"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "title": "ChargeCreate",
+        "type": "object"
+      },
+      "ChargeOut": {
+        "properties": {
+          "amount": {
+            "title": "Amount",
+            "type": "string"
+          },
+          "amount_display": {
+            "title": "Amount Display",
+            "type": "string"
+          },
+          "base": {
+            "title": "Base",
+            "type": "string"
+          },
+          "base_amount": {
+            "title": "Base Amount",
+            "type": "string"
+          },
+          "base_label": {
+            "title": "Base Label",
+            "type": "string"
+          },
+          "enabled": {
+            "title": "Enabled",
+            "type": "boolean"
+          },
+          "fixed_amount": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fixed Amount"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "line_key": {
+            "format": "uuid",
+            "title": "Line Key",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "percentage": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Percentage"
+          },
+          "section_keys": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Section Keys",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "line_key",
+          "name",
+          "kind",
+          "percentage",
+          "fixed_amount",
+          "base",
+          "section_keys",
+          "enabled",
+          "base_label",
+          "base_amount",
+          "amount",
+          "amount_display"
+        ],
+        "title": "ChargeOut",
+        "type": "object"
+      },
+      "ChargePatch": {
+        "properties": {
+          "base": {
+            "anyOf": [
+              {
+                "enum": [
+                  "works_subtotal",
+                  "running_total",
+                  "sections"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Base"
+          },
+          "enabled": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Enabled"
+          },
+          "fixed_amount": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fixed Amount"
+          },
+          "kind": {
+            "anyOf": [
+              {
+                "enum": [
+                  "contingency",
+                  "work_charged_establishment",
+                  "labour_cess",
+                  "seigniorage",
+                  "royalty",
+                  "other"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kind"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "maxLength": 120,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "percentage": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Percentage"
+          },
+          "section_keys": {
+            "anyOf": [
+              {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "maxItems": 200,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Section Keys"
+          }
+        },
+        "title": "ChargePatch",
         "type": "object"
       },
       "ComponentChoice": {
@@ -547,6 +1025,217 @@
         "title": "DashboardOut",
         "type": "object"
       },
+      "DefaultChargeIn": {
+        "properties": {
+          "base": {
+            "default": "works_subtotal",
+            "enum": [
+              "works_subtotal",
+              "running_total"
+            ],
+            "title": "Base",
+            "type": "string"
+          },
+          "enabled": {
+            "default": true,
+            "title": "Enabled",
+            "type": "boolean"
+          },
+          "fixed_amount": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fixed Amount"
+          },
+          "kind": {
+            "default": "other",
+            "enum": [
+              "contingency",
+              "work_charged_establishment",
+              "labour_cess",
+              "seigniorage",
+              "royalty",
+              "other"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "name": {
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "percentage": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Percentage"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "title": "DefaultChargeIn",
+        "type": "object"
+      },
+      "DefaultChargeOut": {
+        "properties": {
+          "base": {
+            "title": "Base",
+            "type": "string"
+          },
+          "enabled": {
+            "title": "Enabled",
+            "type": "boolean"
+          },
+          "fixed_amount": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fixed Amount"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "percentage": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Percentage"
+          }
+        },
+        "required": [
+          "name",
+          "kind",
+          "percentage",
+          "fixed_amount",
+          "base",
+          "enabled"
+        ],
+        "title": "DefaultChargeOut",
+        "type": "object"
+      },
+      "DefaultsIn": {
+        "properties": {
+          "charges": {
+            "items": {
+              "$ref": "#/components/schemas/DefaultChargeIn"
+            },
+            "maxItems": 20,
+            "title": "Charges",
+            "type": "array"
+          },
+          "gst": {
+            "$ref": "#/components/schemas/GstIn"
+          },
+          "rounding": {
+            "default": "nearest_rupee",
+            "enum": [
+              "none",
+              "nearest_rupee",
+              "nearest_10",
+              "nearest_100",
+              "nearest_1000"
+            ],
+            "title": "Rounding",
+            "type": "string"
+          }
+        },
+        "required": [
+          "gst"
+        ],
+        "title": "DefaultsIn",
+        "type": "object"
+      },
+      "DefaultsOut": {
+        "properties": {
+          "can_edit": {
+            "title": "Can Edit",
+            "type": "boolean"
+          },
+          "charges": {
+            "items": {
+              "$ref": "#/components/schemas/DefaultChargeOut"
+            },
+            "title": "Charges",
+            "type": "array"
+          },
+          "gst": {
+            "$ref": "#/components/schemas/GstConfigOut"
+          },
+          "rounding": {
+            "title": "Rounding",
+            "type": "string"
+          }
+        },
+        "required": [
+          "gst",
+          "charges",
+          "rounding",
+          "can_edit"
+        ],
+        "title": "DefaultsOut",
+        "type": "object"
+      },
+      "Envelope_AbstractOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AbstractOut"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "success": {
+            "default": true,
+            "title": "Success",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Envelope[AbstractOut]",
+        "type": "object"
+      },
       "Envelope_CalculationOut_": {
         "properties": {
           "data": {
@@ -629,6 +1318,27 @@
           "meta"
         ],
         "title": "Envelope[DashboardOut]",
+        "type": "object"
+      },
+      "Envelope_DefaultsOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/DefaultsOut"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "success": {
+            "default": true,
+            "title": "Success",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Envelope[DefaultsOut]",
         "type": "object"
       },
       "Envelope_EstimateOut_": {
@@ -799,6 +1509,69 @@
         "title": "Envelope[ProjectOut]",
         "type": "object"
       },
+      "Envelope_RateItemOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/RateItemOut"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "success": {
+            "default": true,
+            "title": "Success",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Envelope[RateItemOut]",
+        "type": "object"
+      },
+      "Envelope_RateSearchOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/RateSearchOut"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "success": {
+            "default": true,
+            "title": "Success",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Envelope[RateSearchOut]",
+        "type": "object"
+      },
+      "Envelope_RateSourceOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/RateSourceOut"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "success": {
+            "default": true,
+            "title": "Success",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Envelope[RateSourceOut]",
+        "type": "object"
+      },
       "Envelope_SystemInfo_": {
         "properties": {
           "data": {
@@ -818,6 +1591,27 @@
           "meta"
         ],
         "title": "Envelope[SystemInfo]",
+        "type": "object"
+      },
+      "Envelope_ValidationOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ValidationOut"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "success": {
+            "default": true,
+            "title": "Success",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Envelope[ValidationOut]",
         "type": "object"
       },
       "Envelope_VersionOut_": {
@@ -939,6 +1733,31 @@
           "meta"
         ],
         "title": "Envelope[list[Option]]",
+        "type": "object"
+      },
+      "Envelope_list_RateSourceOut__": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/RateSourceOut"
+            },
+            "title": "Data",
+            "type": "array"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "success": {
+            "default": true,
+            "title": "Success",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Envelope[list[RateSourceOut]]",
         "type": "object"
       },
       "Envelope_list_TemplateOut__": {
@@ -1580,6 +2399,69 @@
         "title": "ExtractionOut",
         "type": "object"
       },
+      "FindingOut": {
+        "properties": {
+          "entity_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Entity Id"
+          },
+          "entity_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Entity Type"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "rule_id": {
+            "title": "Rule Id",
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "red",
+              "yellow"
+            ],
+            "title": "Severity",
+            "type": "string"
+          },
+          "sl_no": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sl No"
+          }
+        },
+        "required": [
+          "rule_id",
+          "severity",
+          "message",
+          "entity_type",
+          "entity_id",
+          "sl_no"
+        ],
+        "title": "FindingOut",
+        "type": "object"
+      },
       "ForgotIn": {
         "properties": {
           "email": {
@@ -1656,6 +2538,153 @@
         "title": "FreezeIn",
         "type": "object"
       },
+      "GstConfigOut": {
+        "properties": {
+          "applicable": {
+            "title": "Applicable",
+            "type": "boolean"
+          },
+          "base": {
+            "enum": [
+              "after_charges",
+              "works_subtotal"
+            ],
+            "title": "Base",
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "exclusive",
+              "inclusive"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "rate_pct": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate Pct"
+          },
+          "supply": {
+            "enum": [
+              "intra",
+              "inter"
+            ],
+            "title": "Supply",
+            "type": "string"
+          }
+        },
+        "required": [
+          "applicable",
+          "mode",
+          "supply",
+          "rate_pct",
+          "base"
+        ],
+        "title": "GstConfigOut",
+        "type": "object"
+      },
+      "GstIn": {
+        "properties": {
+          "applicable": {
+            "title": "Applicable",
+            "type": "boolean"
+          },
+          "base": {
+            "default": "after_charges",
+            "enum": [
+              "after_charges",
+              "works_subtotal"
+            ],
+            "title": "Base",
+            "type": "string"
+          },
+          "mode": {
+            "default": "exclusive",
+            "enum": [
+              "exclusive",
+              "inclusive"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "rate_pct": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate Pct"
+          },
+          "supply": {
+            "default": "intra",
+            "enum": [
+              "intra",
+              "inter"
+            ],
+            "title": "Supply",
+            "type": "string"
+          }
+        },
+        "required": [
+          "applicable"
+        ],
+        "title": "GstIn",
+        "type": "object"
+      },
+      "GstLineOut": {
+        "properties": {
+          "amount": {
+            "title": "Amount",
+            "type": "string"
+          },
+          "amount_display": {
+            "title": "Amount Display",
+            "type": "string"
+          },
+          "base_amount": {
+            "title": "Base Amount",
+            "type": "string"
+          },
+          "included": {
+            "title": "Included",
+            "type": "boolean"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "rate_pct": {
+            "title": "Rate Pct",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "rate_pct",
+          "base_amount",
+          "amount",
+          "amount_display",
+          "included"
+        ],
+        "title": "GstLineOut",
+        "type": "object"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -1667,109 +2696,6 @@
           }
         },
         "title": "HTTPValidationError",
-        "type": "object"
-      },
-      "ItemCreate": {
-        "properties": {
-          "description": {
-            "maxLength": 5000,
-            "minLength": 1,
-            "title": "Description",
-            "type": "string"
-          },
-          "item_no": {
-            "anyOf": [
-              {
-                "maxLength": 50,
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Item No"
-          },
-          "quantity": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "integer"
-              },
-              {
-                "type": "number"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Quantity"
-          },
-          "rate": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "integer"
-              },
-              {
-                "type": "number"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Rate"
-          },
-          "remarks": {
-            "anyOf": [
-              {
-                "maxLength": 1000,
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Remarks"
-          },
-          "section_id": {
-            "format": "uuid",
-            "title": "Section Id",
-            "type": "string"
-          },
-          "specification": {
-            "anyOf": [
-              {
-                "maxLength": 5000,
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Specification"
-          },
-          "unit": {
-            "anyOf": [
-              {
-                "maxLength": 40,
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Unit"
-          }
-        },
-        "required": [
-          "section_id",
-          "description"
-        ],
-        "title": "ItemCreate",
         "type": "object"
       },
       "ItemOrderIn": {
@@ -1876,6 +2802,16 @@
             ],
             "title": "Rate"
           },
+          "rate_info": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RateInfoOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "rate_source_type": {
             "anyOf": [
               {
@@ -1956,124 +2892,13 @@
           "quantity_source",
           "rate",
           "rate_source_type",
+          "rate_info",
           "amount",
           "remarks",
           "provenance",
           "lines"
         ],
         "title": "ItemOut",
-        "type": "object"
-      },
-      "ItemPatch": {
-        "properties": {
-          "description": {
-            "anyOf": [
-              {
-                "maxLength": 5000,
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Description"
-          },
-          "item_no": {
-            "anyOf": [
-              {
-                "maxLength": 50,
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Item No"
-          },
-          "quantity": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "integer"
-              },
-              {
-                "type": "number"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Quantity"
-          },
-          "rate": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "integer"
-              },
-              {
-                "type": "number"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Rate"
-          },
-          "remarks": {
-            "anyOf": [
-              {
-                "maxLength": 1000,
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Remarks"
-          },
-          "section_id": {
-            "anyOf": [
-              {
-                "format": "uuid",
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Section Id"
-          },
-          "specification": {
-            "anyOf": [
-              {
-                "maxLength": 5000,
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Specification"
-          },
-          "unit": {
-            "anyOf": [
-              {
-                "maxLength": 40,
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Unit"
-          }
-        },
-        "title": "ItemPatch",
         "type": "object"
       },
       "LineCalculationOut": {
@@ -2610,25 +3435,6 @@
         "title": "Option",
         "type": "object"
       },
-      "OrderIn": {
-        "properties": {
-          "ids": {
-            "items": {
-              "format": "uuid",
-              "type": "string"
-            },
-            "maxItems": 2000,
-            "minItems": 1,
-            "title": "Ids",
-            "type": "array"
-          }
-        },
-        "required": [
-          "ids"
-        ],
-        "title": "OrderIn",
-        "type": "object"
-      },
       "OrganizationOut": {
         "properties": {
           "address": {
@@ -3036,6 +3842,24 @@
           "substituted"
         ],
         "title": "PreviewOut",
+        "type": "object"
+      },
+      "ProblemOut": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "ProblemOut",
         "type": "object"
       },
       "ProjectCreate": {
@@ -3608,6 +4432,298 @@
         "title": "ProjectPatch",
         "type": "object"
       },
+      "RateInfoOut": {
+        "properties": {
+          "basic_rate": {
+            "title": "Basic Rate",
+            "type": "string"
+          },
+          "is_demo": {
+            "title": "Is Demo",
+            "type": "boolean"
+          },
+          "item_code": {
+            "title": "Item Code",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "rate_item_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate Item Id"
+          },
+          "sor_name": {
+            "title": "Sor Name",
+            "type": "string"
+          },
+          "unit": {
+            "title": "Unit",
+            "type": "string"
+          },
+          "verification_status": {
+            "title": "Verification Status",
+            "type": "string"
+          },
+          "year": {
+            "title": "Year",
+            "type": "string"
+          }
+        },
+        "required": [
+          "rate_item_id",
+          "item_code",
+          "sor_name",
+          "year",
+          "unit",
+          "basic_rate",
+          "verification_status",
+          "is_demo",
+          "label"
+        ],
+        "title": "RateInfoOut",
+        "type": "object"
+      },
+      "RateItemOut": {
+        "properties": {
+          "can_edit": {
+            "title": "Can Edit",
+            "type": "boolean"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "is_demo": {
+            "title": "Is Demo",
+            "type": "boolean"
+          },
+          "is_expired": {
+            "title": "Is Expired",
+            "type": "boolean"
+          },
+          "item_code": {
+            "title": "Item Code",
+            "type": "string"
+          },
+          "rate": {
+            "title": "Rate",
+            "type": "string"
+          },
+          "rate_display": {
+            "title": "Rate Display",
+            "type": "string"
+          },
+          "source_id": {
+            "format": "uuid",
+            "title": "Source Id",
+            "type": "string"
+          },
+          "source_label": {
+            "title": "Source Label",
+            "type": "string"
+          },
+          "specification": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Specification"
+          },
+          "unit": {
+            "title": "Unit",
+            "type": "string"
+          },
+          "unit_display": {
+            "title": "Unit Display",
+            "type": "string"
+          },
+          "verification_status": {
+            "title": "Verification Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "source_id",
+          "source_label",
+          "verification_status",
+          "is_demo",
+          "is_expired",
+          "item_code",
+          "description",
+          "specification",
+          "unit",
+          "unit_display",
+          "rate",
+          "rate_display",
+          "can_edit"
+        ],
+        "title": "RateItemOut",
+        "type": "object"
+      },
+      "RateSearchOut": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RateItemOut"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "limit": {
+            "title": "Limit",
+            "type": "integer"
+          },
+          "offset": {
+            "title": "Offset",
+            "type": "integer"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "title": "RateSearchOut",
+        "type": "object"
+      },
+      "RateSourceOut": {
+        "properties": {
+          "can_edit": {
+            "title": "Can Edit",
+            "type": "boolean"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "department": {
+            "title": "Department",
+            "type": "string"
+          },
+          "effective_from": {
+            "format": "date",
+            "title": "Effective From",
+            "type": "string"
+          },
+          "effective_to": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective To"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "is_demo": {
+            "title": "Is Demo",
+            "type": "boolean"
+          },
+          "is_expired": {
+            "title": "Is Expired",
+            "type": "boolean"
+          },
+          "item_count": {
+            "title": "Item Count",
+            "type": "integer"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          },
+          "owned": {
+            "title": "Owned",
+            "type": "boolean"
+          },
+          "sor_name": {
+            "title": "Sor Name",
+            "type": "string"
+          },
+          "source_reference": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Reference"
+          },
+          "state": {
+            "title": "State",
+            "type": "string"
+          },
+          "verification_status": {
+            "title": "Verification Status",
+            "type": "string"
+          },
+          "year": {
+            "title": "Year",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "state",
+          "department",
+          "sor_name",
+          "year",
+          "effective_from",
+          "effective_to",
+          "verification_status",
+          "is_demo",
+          "is_expired",
+          "source_reference",
+          "notes",
+          "item_count",
+          "owned",
+          "can_edit",
+          "created_at"
+        ],
+        "title": "RateSourceOut",
+        "type": "object"
+      },
       "RegisterIn": {
         "properties": {
           "email": {
@@ -3743,6 +4859,26 @@
         "title": "ResultOut",
         "type": "object"
       },
+      "RoundingIn": {
+        "properties": {
+          "grand_total": {
+            "enum": [
+              "none",
+              "nearest_rupee",
+              "nearest_10",
+              "nearest_100",
+              "nearest_1000"
+            ],
+            "title": "Grand Total",
+            "type": "string"
+          }
+        },
+        "required": [
+          "grand_total"
+        ],
+        "title": "RoundingIn",
+        "type": "object"
+      },
       "SectionOut": {
         "properties": {
           "id": {
@@ -3799,6 +4935,205 @@
           "items"
         ],
         "title": "SectionOut",
+        "type": "object"
+      },
+      "SetRateIn": {
+        "properties": {
+          "confirm_overwrite": {
+            "default": false,
+            "title": "Confirm Overwrite",
+            "type": "boolean"
+          },
+          "rate_item_id": {
+            "format": "uuid",
+            "title": "Rate Item Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "rate_item_id"
+        ],
+        "title": "SetRateIn",
+        "type": "object"
+      },
+      "SourceCreate": {
+        "properties": {
+          "department": {
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Department",
+            "type": "string"
+          },
+          "effective_from": {
+            "format": "date",
+            "title": "Effective From",
+            "type": "string"
+          },
+          "effective_to": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective To"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "maxLength": 2000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          },
+          "sor_name": {
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Sor Name",
+            "type": "string"
+          },
+          "source_reference": {
+            "anyOf": [
+              {
+                "maxLength": 300,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Reference"
+          },
+          "state": {
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "State",
+            "type": "string"
+          },
+          "year": {
+            "maxLength": 7,
+            "minLength": 7,
+            "title": "Year",
+            "type": "string"
+          }
+        },
+        "required": [
+          "state",
+          "department",
+          "sor_name",
+          "year",
+          "effective_from"
+        ],
+        "title": "SourceCreate",
+        "type": "object"
+      },
+      "SourcePatch": {
+        "properties": {
+          "department": {
+            "anyOf": [
+              {
+                "maxLength": 120,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Department"
+          },
+          "effective_from": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective From"
+          },
+          "effective_to": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective To"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "maxLength": 2000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          },
+          "sor_name": {
+            "anyOf": [
+              {
+                "maxLength": 200,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sor Name"
+          },
+          "source_reference": {
+            "anyOf": [
+              {
+                "maxLength": 300,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Reference"
+          },
+          "state": {
+            "anyOf": [
+              {
+                "maxLength": 80,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "State"
+          },
+          "year": {
+            "anyOf": [
+              {
+                "maxLength": 7,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Year"
+          }
+        },
+        "title": "SourcePatch",
         "type": "object"
       },
       "StepOut": {
@@ -4074,6 +5409,18 @@
             "title": "Amount In Words",
             "type": "string"
           },
+          "grand_total": {
+            "title": "Grand Total",
+            "type": "string"
+          },
+          "grand_total_display": {
+            "title": "Grand Total Display",
+            "type": "string"
+          },
+          "grand_total_in_words": {
+            "title": "Grand Total In Words",
+            "type": "string"
+          },
           "item_count": {
             "title": "Item Count",
             "type": "integer"
@@ -4095,6 +5442,9 @@
           "works_subtotal",
           "works_subtotal_display",
           "amount_in_words",
+          "grand_total",
+          "grand_total_display",
+          "grand_total_in_words",
           "item_count",
           "unpriced_count"
         ],
@@ -4249,6 +5599,53 @@
           "type"
         ],
         "title": "ValidationError",
+        "type": "object"
+      },
+      "ValidationOut": {
+        "properties": {
+          "findings": {
+            "items": {
+              "$ref": "#/components/schemas/FindingOut"
+            },
+            "title": "Findings",
+            "type": "array"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "red_count": {
+            "title": "Red Count",
+            "type": "integer"
+          },
+          "status": {
+            "enum": [
+              "green",
+              "yellow",
+              "red"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "version_id": {
+            "format": "uuid",
+            "title": "Version Id",
+            "type": "string"
+          },
+          "yellow_count": {
+            "title": "Yellow Count",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "version_id",
+          "status",
+          "message",
+          "red_count",
+          "yellow_count",
+          "findings"
+        ],
+        "title": "ValidationOut",
         "type": "object"
       },
       "VersionInfo": {
@@ -4462,6 +5859,386 @@
           "works_subtotal_display"
         ],
         "title": "VersionSummaryOut",
+        "type": "object"
+      },
+      "app__api__v1__abstract__OrderIn": {
+        "properties": {
+          "ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "maxItems": 100,
+            "minItems": 1,
+            "title": "Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "ids"
+        ],
+        "title": "OrderIn",
+        "type": "object"
+      },
+      "app__api__v1__estimates__ItemCreate": {
+        "properties": {
+          "description": {
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Description",
+            "type": "string"
+          },
+          "item_no": {
+            "anyOf": [
+              {
+                "maxLength": 50,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Item No"
+          },
+          "quantity": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quantity"
+          },
+          "rate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate"
+          },
+          "remarks": {
+            "anyOf": [
+              {
+                "maxLength": 1000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remarks"
+          },
+          "section_id": {
+            "format": "uuid",
+            "title": "Section Id",
+            "type": "string"
+          },
+          "specification": {
+            "anyOf": [
+              {
+                "maxLength": 5000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Specification"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          }
+        },
+        "required": [
+          "section_id",
+          "description"
+        ],
+        "title": "ItemCreate",
+        "type": "object"
+      },
+      "app__api__v1__estimates__ItemPatch": {
+        "properties": {
+          "description": {
+            "anyOf": [
+              {
+                "maxLength": 5000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "item_no": {
+            "anyOf": [
+              {
+                "maxLength": 50,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Item No"
+          },
+          "quantity": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quantity"
+          },
+          "rate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate"
+          },
+          "remarks": {
+            "anyOf": [
+              {
+                "maxLength": 1000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remarks"
+          },
+          "section_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Section Id"
+          },
+          "specification": {
+            "anyOf": [
+              {
+                "maxLength": 5000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Specification"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          }
+        },
+        "title": "ItemPatch",
+        "type": "object"
+      },
+      "app__api__v1__estimates__OrderIn": {
+        "properties": {
+          "ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "maxItems": 2000,
+            "minItems": 1,
+            "title": "Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "ids"
+        ],
+        "title": "OrderIn",
+        "type": "object"
+      },
+      "app__api__v1__rates__ItemCreate": {
+        "properties": {
+          "description": {
+            "maxLength": 5000,
+            "minLength": 1,
+            "title": "Description",
+            "type": "string"
+          },
+          "item_code": {
+            "maxLength": 50,
+            "minLength": 1,
+            "title": "Item Code",
+            "type": "string"
+          },
+          "rate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "title": "Rate"
+          },
+          "specification": {
+            "anyOf": [
+              {
+                "maxLength": 5000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Specification"
+          },
+          "unit": {
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "Unit",
+            "type": "string"
+          }
+        },
+        "required": [
+          "item_code",
+          "description",
+          "unit",
+          "rate"
+        ],
+        "title": "ItemCreate",
+        "type": "object"
+      },
+      "app__api__v1__rates__ItemPatch": {
+        "properties": {
+          "description": {
+            "anyOf": [
+              {
+                "maxLength": 5000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "item_code": {
+            "anyOf": [
+              {
+                "maxLength": 50,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Item Code"
+          },
+          "rate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate"
+          },
+          "specification": {
+            "anyOf": [
+              {
+                "maxLength": 5000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Specification"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          }
+        },
+        "title": "ItemPatch",
         "type": "object"
       }
     }
@@ -4937,7 +6714,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ItemPatch"
+                "$ref": "#/components/schemas/app__api__v1__estimates__ItemPatch"
               }
             }
           },
@@ -5062,6 +6839,59 @@
           }
         },
         "summary": "Add Line",
+        "tags": [
+          "estimates"
+        ]
+      }
+    },
+    "/api/v1/boq-items/{item_id}/set-rate": {
+      "post": {
+        "operationId": "set_rate_api_v1_boq_items__item_id__set_rate_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetRateIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_VersionOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Set Rate",
         "tags": [
           "estimates"
         ]
@@ -5195,6 +7025,100 @@
         "summary": "List Templates",
         "tags": [
           "calculations"
+        ]
+      }
+    },
+    "/api/v1/charges/{charge_id}": {
+      "delete": {
+        "operationId": "delete_charge_api_v1_charges__charge_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "charge_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Charge Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_AbstractOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Delete Charge",
+        "tags": [
+          "abstract"
+        ]
+      },
+      "patch": {
+        "operationId": "patch_charge_api_v1_charges__charge_id__patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "charge_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Charge Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChargePatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_AbstractOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Patch Charge",
+        "tags": [
+          "abstract"
         ]
       }
     },
@@ -5733,6 +7657,100 @@
         ]
       }
     },
+    "/api/v1/organizations/{org_id}/settings/estimate-defaults": {
+      "get": {
+        "operationId": "get_defaults_api_v1_organizations__org_id__settings_estimate_defaults_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Org Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_DefaultsOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Defaults",
+        "tags": [
+          "abstract"
+        ]
+      },
+      "put": {
+        "operationId": "put_defaults_api_v1_organizations__org_id__settings_estimate_defaults_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Org Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DefaultsIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_DefaultsOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Put Defaults",
+        "tags": [
+          "abstract"
+        ]
+      }
+    },
     "/api/v1/parameters/{param_id}": {
       "delete": {
         "operationId": "delete_parameter_api_v1_parameters__param_id__delete",
@@ -6243,6 +8261,424 @@
         ]
       }
     },
+    "/api/v1/rate-items": {
+      "get": {
+        "operationId": "search_items_api_v1_rate_items_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 200,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Q"
+            }
+          },
+          {
+            "in": "query",
+            "name": "source_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Source Id"
+            }
+          },
+          {
+            "in": "query",
+            "name": "unit",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 40,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Unit"
+            }
+          },
+          {
+            "in": "query",
+            "name": "include_expired",
+            "required": false,
+            "schema": {
+              "default": false,
+              "title": "Include Expired",
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 200,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_RateSearchOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Search Items",
+        "tags": [
+          "rates"
+        ]
+      }
+    },
+    "/api/v1/rate-items/{item_id}": {
+      "delete": {
+        "operationId": "delete_item_api_v1_rate_items__item_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_dict_str__bool__"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Delete Item",
+        "tags": [
+          "rates"
+        ]
+      },
+      "patch": {
+        "operationId": "patch_item_api_v1_rate_items__item_id__patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/app__api__v1__rates__ItemPatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_RateItemOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Patch Item",
+        "tags": [
+          "rates"
+        ]
+      }
+    },
+    "/api/v1/rate-sources": {
+      "get": {
+        "operationId": "list_sources_api_v1_rate_sources_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_list_RateSourceOut__"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "List Sources",
+        "tags": [
+          "rates"
+        ]
+      },
+      "post": {
+        "operationId": "create_source_api_v1_rate_sources_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SourceCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_RateSourceOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Create Source",
+        "tags": [
+          "rates"
+        ]
+      }
+    },
+    "/api/v1/rate-sources/{source_id}": {
+      "delete": {
+        "operationId": "delete_source_api_v1_rate_sources__source_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_dict_str__bool__"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Delete Source",
+        "tags": [
+          "rates"
+        ]
+      },
+      "patch": {
+        "operationId": "patch_source_api_v1_rate_sources__source_id__patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SourcePatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_RateSourceOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Patch Source",
+        "tags": [
+          "rates"
+        ]
+      }
+    },
+    "/api/v1/rate-sources/{source_id}/items": {
+      "post": {
+        "operationId": "create_item_api_v1_rate_sources__source_id__items_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/app__api__v1__rates__ItemCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_RateItemOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Create Item",
+        "tags": [
+          "rates"
+        ]
+      }
+    },
     "/api/v1/sections/{section_id}": {
       "delete": {
         "operationId": "delete_section_api_v1_sections__section_id__delete",
@@ -6463,6 +8899,49 @@
         ]
       }
     },
+    "/api/v1/versions/{version_id}/abstract": {
+      "get": {
+        "operationId": "get_abstract_api_v1_versions__version_id__abstract_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_AbstractOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Abstract",
+        "tags": [
+          "abstract"
+        ]
+      }
+    },
     "/api/v1/versions/{version_id}/boq-items": {
       "post": {
         "operationId": "add_item_api_v1_versions__version_id__boq_items_post",
@@ -6482,7 +8961,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ItemCreate"
+                "$ref": "#/components/schemas/app__api__v1__estimates__ItemCreate"
               }
             }
           },
@@ -6569,6 +9048,112 @@
         ]
       }
     },
+    "/api/v1/versions/{version_id}/charges": {
+      "post": {
+        "operationId": "add_charge_api_v1_versions__version_id__charges_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChargeCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_AbstractOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Add Charge",
+        "tags": [
+          "abstract"
+        ]
+      }
+    },
+    "/api/v1/versions/{version_id}/charges/reorder": {
+      "post": {
+        "operationId": "reorder_charges_api_v1_versions__version_id__charges_reorder_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/app__api__v1__abstract__OrderIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_AbstractOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Reorder Charges",
+        "tags": [
+          "abstract"
+        ]
+      }
+    },
     "/api/v1/versions/{version_id}/freeze": {
       "post": {
         "operationId": "freeze_version_api_v1_versions__version_id__freeze_post",
@@ -6622,6 +9207,59 @@
         ]
       }
     },
+    "/api/v1/versions/{version_id}/gst": {
+      "put": {
+        "operationId": "put_gst_api_v1_versions__version_id__gst_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GstIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_AbstractOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Put Gst",
+        "tags": [
+          "abstract"
+        ]
+      }
+    },
     "/api/v1/versions/{version_id}/parameters": {
       "post": {
         "operationId": "add_parameter_api_v1_versions__version_id__parameters_post",
@@ -6672,6 +9310,59 @@
         "summary": "Add Parameter",
         "tags": [
           "estimates"
+        ]
+      }
+    },
+    "/api/v1/versions/{version_id}/rounding": {
+      "put": {
+        "operationId": "put_rounding_api_v1_versions__version_id__rounding_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoundingIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_AbstractOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Put Rounding",
+        "tags": [
+          "abstract"
         ]
       }
     },
@@ -6747,7 +9438,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OrderIn"
+                "$ref": "#/components/schemas/app__api__v1__estimates__OrderIn"
               }
             }
           },
@@ -6778,6 +9469,49 @@
         "summary": "Reorder Sections",
         "tags": [
           "estimates"
+        ]
+      }
+    },
+    "/api/v1/versions/{version_id}/validation": {
+      "get": {
+        "operationId": "validate_version_api_v1_versions__version_id__validation_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_ValidationOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Validate Version",
+        "tags": [
+          "abstract"
         ]
       }
     },

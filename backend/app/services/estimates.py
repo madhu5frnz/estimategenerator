@@ -66,6 +66,7 @@ from app.models import (
 )
 from app.services import audit
 from app.services import projects as project_service
+from app.services import rates as rate_service
 from app.services.context import AuthContext
 from app.services.projects import ProjectAccess
 
@@ -267,6 +268,9 @@ def create_estimate(
         )
         db.add(version)
         db.flush()
+        from app.services import abstract as abstract_service  # circular at import time
+
+        abstract_service.apply_defaults(db, version)
         db.add(
             EstimateSection(
                 id=new_id(),
@@ -468,9 +472,14 @@ def freeze(
             "VALIDATION_ERROR", "Describe what this version is (e.g. 'Initial estimate')."
         )
     scope = _scope_for(db, ctx, version_id)
-    view = load_version(db, scope)
+    from app.services import abstract as abstract_service  # circular at import time
+
+    loaded = abstract_service.load(db, scope)
     version = scope.version
-    version.totals_snapshot = view.snapshot()
+    version.totals_snapshot = {
+        **loaded.view.snapshot(),
+        "grand_total": format(loaded.result.grand_total, "f"),
+    }
     version.status = "frozen"
     version.change_note = note[:300]
     version.frozen_at = now_utc()
@@ -489,6 +498,7 @@ def freeze(
             "version_no": version.version_no,
             "change_note": version.change_note,
             "works_subtotal": version.totals_snapshot["works_subtotal"],
+            "grand_total": version.totals_snapshot["grand_total"],
         },
     )
     db.commit()
@@ -630,6 +640,9 @@ def _clone(db: Session, ctx: AuthContext, source: EstimateVersion) -> EstimateVe
                 **{f: getattr(p, f) for f in param_fields},
             )
         )
+    from app.services import abstract as abstract_service  # circular at import time
+
+    abstract_service.copy_charges(db, source.id, draft)
     db.flush()
     return draft
 
@@ -1046,6 +1059,72 @@ def update_item(
                 _set(db, ctx, scope, item, "section_id", target.id)
                 item.sequence = int(last or 0) + 1
     _reprice(item)
+    db.commit()
+    return scope
+
+
+def set_rate(
+    db: Session,
+    ctx: AuthContext,
+    item_id: uuid.UUID,
+    rate_item_id: uuid.UUID,
+    *,
+    confirm_overwrite: bool = False,
+) -> VersionScope:
+    """Take an item's rate from the rate list. The item keeps a snapshot of the rate."""
+    item, scope = _item(db, ctx, item_id)
+    rate_item, source = rate_service.get_item(db, ctx, rate_item_id)
+    registry = default_registry()
+    if item.unit_code is None:
+        _set(db, ctx, scope, item, "unit_code", rate_item.unit_code)
+        if item.quantity is not None:
+            item.quantity = round_half_up(item.quantity, _quantity_places(item.unit_code))
+            item.quantity_raw = item.quantity
+    elif item.unit_code != rate_item.unit_code:
+        raise AppError(
+            "UNIT_RATE_MISMATCH",
+            f"This item is measured in {registry.get(item.unit_code).display_name} but the rate "
+            f"is per {registry.get(rate_item.unit_code).display_name}. Pick a rate in the same "
+            "unit, or change the item's unit first.",
+            400,
+            {"item_unit": item.unit_code, "rate_unit": rate_item.unit_code},
+        )
+    if (
+        item.rate is not None
+        and item.rate_source_type != "rate_database"
+        and item.rate != rate_item.basic_rate
+        and not confirm_overwrite
+    ):
+        raise AppError(
+            "RATE_OVERWRITE_REQUIRES_CONFIRMATION",
+            f"This item already has a rate you entered ({format(item.rate, 'f')}). "
+            f"Replace it with {format(rate_item.basic_rate, 'f')} from {source.sor_name}?",
+            409,
+            {"current_rate": format(item.rate, "f"), "new_rate": format(rate_item.basic_rate, "f")},
+        )
+    old = {"rate": _json(item.rate), "source": (item.rate_snapshot or {}).get("item_code")}
+    item.rate = rate_item.basic_rate
+    item.rate_source_type = "rate_database"
+    item.rate_item_id = rate_item.id
+    item.rate_snapshot = rate_service.snapshot(rate_item, source)
+    _reprice(item)
+    _audit(
+        db,
+        ctx,
+        scope,
+        entity_type="boq_item",
+        entity_id=item.id,
+        action="set_rate",
+        field_name="rate",
+        old=old,
+        new={
+            "rate": _json(item.rate),
+            "source": rate_item.item_code,
+            "sor_name": source.sor_name,
+            "year": source.year,
+            "verification_status": source.verification_status,
+        },
+    )
     db.commit()
     return scope
 

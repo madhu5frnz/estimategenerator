@@ -172,3 +172,23 @@ class QuantityInput(Base):
     source_document_id: Mapped[uuid.UUID | None]
     confirmed_by: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
     confirmed_at: Mapped[datetime | None]
+
+
+class EstimateCharge(Base):
+    __tablename__ = "estimate_charges"
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True)
+    organization_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("organizations.id"))
+    version_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("estimate_versions.id", ondelete="CASCADE")
+    )
+    line_key: Mapped[uuid.UUID]
+    name: Mapped[str]
+    kind: Mapped[str]
+    percentage: Mapped[Decimal | None] = mapped_column(Numeric(7, 4))
+    fixed_amount: Mapped[Decimal | None] = mapped_column(Numeric(16, 2))
+    applies_to: Mapped[dict[str, Any]] = mapped_column(
+        JSONB, server_default='{"base":"works_subtotal"}'
+    )
+    enabled: Mapped[bool] = mapped_column(server_default="true")
+    sequence: Mapped[int]

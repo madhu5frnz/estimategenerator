@@ -29,3 +29,15 @@ class AuditLog(Base):
     request_id: Mapped[str | None]
     ip_address: Mapped[str | None] = mapped_column(INET)
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
+
+
+class Setting(Base):
+    __tablename__ = "settings"
+    __mapper_args__ = {"primary_key": ["scope", "scope_id", "key"]}  # noqa: RUF012
+
+    scope: Mapped[str]
+    scope_id: Mapped[uuid.UUID | None]
+    key: Mapped[str]
+    value: Mapped[Any] = mapped_column(JSONB)
+    updated_by: Mapped[uuid.UUID | None]
+    updated_at: Mapped[datetime] = mapped_column(server_default=func.now(), onupdate=func.now())
