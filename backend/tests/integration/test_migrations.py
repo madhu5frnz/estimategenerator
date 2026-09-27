@@ -11,6 +11,7 @@ from alembic.config import Config
 from sqlalchemy import create_engine, text
 from sqlalchemy.exc import DBAPIError
 
+from app.domain.quantity import BUILTIN_TEMPLATES
 from tests.conftest import REPO_ROOT
 
 DB_URL = os.environ.get("TEST_DATABASE_URL")
@@ -50,9 +51,14 @@ def test_upgrade_downgrade_upgrade() -> None:
         ).scalar_one()
         units = conn.execute(text("SELECT count(*) FROM units")).scalar_one()
         plans = conn.execute(text("SELECT count(*) FROM plans")).scalar_one()
+        templates = {
+            (row.id, row.version)
+            for row in conn.execute(text("SELECT id, version FROM calculation_templates"))
+        }
     assert tables == 37
     assert units == 20
     assert plans == 4
+    assert templates == {(t.id, t.version) for t in BUILTIN_TEMPLATES}
 
 
 def test_frozen_version_is_immutable() -> None:

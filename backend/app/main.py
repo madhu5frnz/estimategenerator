@@ -3,7 +3,7 @@ from __future__ import annotations
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.v1 import auth, calculations, dashboard, me, projects, system
+from app.api.v1 import auth, calculations, dashboard, estimates, me, projects, system
 from app.config import get_settings
 from app.core.errors import install_error_handlers
 from app.core.logging import configure_logging
@@ -33,7 +33,7 @@ def create_app() -> FastAPI:
     install_error_handlers(app)
 
     app.include_router(system.router)
-    for module in (calculations, auth, me, projects, dashboard):
+    for module in (calculations, auth, me, projects, estimates, dashboard):
         app.include_router(module.router, prefix="/api/v1")
     return app
 

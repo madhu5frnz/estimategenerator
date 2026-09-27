@@ -189,3 +189,29 @@ BUILTIN_TEMPLATES: tuple[CalculationTemplate, ...] = (
         "",
     ),
 )
+
+
+def template_rows() -> list[dict[str, object]]:
+    """Built-in templates as rows for the ``calculation_templates`` table."""
+    return [
+        {
+            "id": t.id,
+            "version": t.version,
+            "name": t.name,
+            "category": t.category,
+            "expression": t.expression,
+            "parameters": [
+                {
+                    "name": p.name,
+                    "label": p.label,
+                    "dimension": p.dimension.value,
+                    "required": p.required,
+                    "default": p.default,
+                }
+                for p in t.parameters
+            ],
+            "output_unit": t.output_unit,
+            "description": t.description,
+        }
+        for t in BUILTIN_TEMPLATES
+    ]

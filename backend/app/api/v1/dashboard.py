@@ -5,9 +5,11 @@ from pydantic import BaseModel
 
 from app.api.deps import DB, Auth
 from app.api.envelope import Envelope, ok
+from app.api.v1.estimates import EstimateOut, estimate_out
 from app.api.v1.me import SubscriptionOut, UsageOut, build_me
 from app.api.v1.projects import ProjectOut, project_out
 from app.domain.money import format_inr
+from app.services import estimates as estimate_service
 from app.services import projects as project_service
 
 router = APIRouter(tags=["dashboard"])
@@ -21,7 +23,7 @@ class DashboardOut(BaseModel):
     total_estimated_value: str
     total_estimated_value_display: str
     recent_projects: list[ProjectOut]
-    recent_estimates: list[dict[str, object]]  # filled from M3
+    recent_estimates: list[EstimateOut]
     recent_documents: list[dict[str, object]]  # filled from Phase 2
     subscription: SubscriptionOut
     usage: UsageOut
@@ -43,7 +45,7 @@ def dashboard(auth: Auth, db: DB) -> Envelope[DashboardOut]:
             total_estimated_value=format(value, "f"),
             total_estimated_value_display=format_inr(value),
             recent_projects=[project_out(p, roles.get(p.id, "viewer")) for p in recent],
-            recent_estimates=[],
+            recent_estimates=[estimate_out(s) for s in estimate_service.list_recent(db, auth, 5)],
             recent_documents=[],
             subscription=me.subscription,
             usage=me.usage,

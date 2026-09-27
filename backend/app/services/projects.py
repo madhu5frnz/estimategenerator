@@ -55,6 +55,11 @@ def _visible(ctx: AuthContext) -> Select[Project]:
     return query
 
 
+def visible_project_ids(ctx: AuthContext) -> Select[Any]:
+    """Subquery of project ids the caller may see (for filtering other tables)."""
+    return _visible(ctx).with_only_columns(Project.id)
+
+
 def get_access(
     db: Session, ctx: AuthContext, project_id: uuid.UUID, minimum: str = "viewer"
 ) -> ProjectAccess:

@@ -23,6 +23,15 @@ BACKEND = Path(__file__).resolve().parents[2]
 requires_db = pytest.mark.skipif(not DB_URL, reason="TEST_DATABASE_URL not set")
 
 CLEANUP = [
+    # Frozen estimate versions are protected by triggers; tests bypass them to reset.
+    "SET session_replication_role = replica",
+    "DELETE FROM calculations",
+    "DELETE FROM estimate_items",
+    "DELETE FROM boq_items",
+    "DELETE FROM estimate_sections",
+    "DELETE FROM quantity_inputs",
+    "DELETE FROM estimate_versions",
+    "DELETE FROM estimates",
     "DELETE FROM project_members",
     "DELETE FROM projects",
     "DELETE FROM refresh_tokens",
@@ -33,6 +42,7 @@ CLEANUP = [
     "DELETE FROM work_categories WHERE organization_id IS NOT NULL",
     "DELETE FROM users",
     "DELETE FROM organizations",
+    "SET session_replication_role = DEFAULT",
 ]
 
 
