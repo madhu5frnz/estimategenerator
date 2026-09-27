@@ -5,7 +5,7 @@ AI-assisted estimate, BOQ and quantity generation for Indian civil engineers and
 > **AI interprets. The deterministic engine calculates. The rate database supplies rates. The user verifies.**
 > Every important number traces back to a formula or a source.
 
-**Status:** M0 (foundation), M1 (units and quantity engine) and M2 (accounts, projects, dashboard) are done. Next: M3 (estimates, BOQ, measurements and versions). See [milestones](docs/design/08-development-milestones.md).
+**Status:** M0 (foundation), M1 (units and quantity engine), M2 (accounts, projects, dashboard) and M3 (estimates, BOQ, measurements, parameters, versions) are done. Next: M4 (AI estimate: text → parameters, with the rules-based extractor when no AI key is set). See [milestones](docs/design/08-development-milestones.md).
 
 No AI API key is needed to develop or run the app. Without one, the rules-based extractor is used (see [doc 06 §6.3](docs/design/06-ai-prompt-architecture.md)).
 
@@ -51,6 +51,13 @@ cd frontend && npm run lint && npm run typecheck && npm run build
 * **Accounts (M2)**: register, sign in and out, Google sign-in (when configured), email confirmation, and password reset. Passwords are hashed with Argon2id. Sessions use a 15-minute access token and a rotating refresh token in HttpOnly cookies. Reusing a stolen refresh token ends every session in its family. All cookie-authenticated writes are CSRF-protected. Each new user gets a personal workspace on the Free plan.
 * **Projects (M2)**: a three-step creation wizard, list with search, filters and pagination, overview, edit, status changes and delete. Plan limits apply (Free: 3 projects). Project roles (viewer, contractor, professional, admin) are enforced by the server. Another workspace's projects are never visible (404). Every change is written to the audit log with old and new values.
 * **Dashboard and settings (M2)**: project counts, total estimated value in ₹ with Indian grouping, recent projects, plan usage, profile, and workspace details (name, GSTIN, state, address).
+* **Estimates and BOQ (M3)**:
+  * Each project holds numbered estimates (EST-YYYY-NNNN), and each estimate has versions.
+  * **BOQ:** an inline-editable grid with sections, units, quantities, rates, amounts and remarks. Items can be added, duplicated, moved, reordered and deleted. Amount = quantity × rate, recalculated by the server on every change. Section subtotals, the works subtotal and the amount in words (lakh/crore) update with it.
+  * **Detailed estimate:** measurement lines per item. A line is either No × L × B × D/H, using the dimensions the item's unit needs, or a formula line built from a standard template or a custom formula. Deduction lines subtract. Each line has a **View calculation** step breakdown.
+  * **Parameters:** named values such as road length or carriageway width. Formula lines can use them, and changing one recalculates every line that depends on it.
+  * **Versions:** saving a version freezes it exactly as it is (read-only through the API and a database trigger), and work continues in the next draft. Old versions reopen unchanged.
+  * **Audit log:** every change is recorded with its old and new value.
 * **Web**: the app shell with navigation and the disclaimer footer, plus a working **Quantity Calculator** page (`/calculator`).
 * **Typed API**: the frontend's API types are generated from the backend's OpenAPI schema (`npm run gen:api`), and CI fails if they drift.
 

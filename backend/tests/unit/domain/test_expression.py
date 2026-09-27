@@ -138,7 +138,10 @@ def test_runtime_errors(expr: str, code: str) -> None:
 
 
 def test_names_exclude_functions_and_constants() -> None:
-    assert compile_expression("pi * D ^ 2 / 4 * L + max(a, b)").names == {"D", "L", "a", "b"}
+    compiled = compile_expression("pi * D ^ 2 / 4 * L + max(a, b)")
+    assert compiled.names == {"D", "L", "a", "b"}
+    assert compiled.ordered_names == ("D", "L", "a", "b")
+    assert compile_expression("nos * L * B * D * L").ordered_names == ("nos", "L", "B", "D")
 
 
 @pytest.mark.parametrize(

@@ -86,11 +86,19 @@ class CompiledExpression:
         self.source = source
         self._normalised = normalised
         self._tree = tree
-        self.names: frozenset[str] = frozenset(
-            node.id
-            for node in ast.walk(tree)
-            if isinstance(node, ast.Name) and node.id not in CONSTANTS and node.id not in FUNCTIONS
+        name_nodes = sorted(
+            (
+                node
+                for node in ast.walk(tree)
+                if isinstance(node, ast.Name)
+                and node.id not in CONSTANTS
+                and node.id not in FUNCTIONS
+            ),
+            key=lambda n: (n.lineno, n.col_offset),
         )
+        # Parameter names in the order they first appear in the formula.
+        self.ordered_names: tuple[str, ...] = tuple(dict.fromkeys(n.id for n in name_nodes))
+        self.names: frozenset[str] = frozenset(self.ordered_names)
 
     # ------------------------------------------------------------ evaluation
     def evaluate(self, values: Mapping[str, Quantity]) -> Quantity:

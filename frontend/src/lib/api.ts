@@ -16,6 +16,14 @@ export type Unit = Schemas["UnitOut"];
 export type Template = Schemas["TemplateOut"];
 export type Calculation = Schemas["CalculationOut"];
 export type ParamValue = { value: string; unit: string | null };
+export type Estimate = Schemas["EstimateOut"];
+export type Version = Schemas["VersionOut"];
+export type VersionSummary = Schemas["VersionSummaryOut"];
+export type Section = Schemas["SectionOut"];
+export type Item = Schemas["ItemOut"];
+export type Line = Schemas["LineOut"];
+export type LineCalculation = Schemas["LineCalculationOut"];
+export type Parameter = Schemas["ParameterOut"];
 
 export class ApiError extends Error {
   constructor(

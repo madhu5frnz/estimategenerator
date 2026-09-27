@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { EstimateList } from "@/components/EstimateList";
 import { Alert, ButtonLink, Card, StatusBadge } from "@/components/ui";
 import { api, ApiError, type Dashboard as DashboardData } from "@/lib/api";
 import { indianDate, inr } from "@/lib/format";
@@ -124,9 +125,23 @@ export function Dashboard() {
               <dd>{indianDate(data.subscription.current_period_end)}</dd>
             </div>
           </dl>
-          <p className="mt-4 text-xs text-muted">Recent estimates and documents appear here from M3.</p>
         </Card>
       </div>
+
+      <Card
+        title="Recent estimates"
+        actions={
+          <Link href="/boq" className="text-xs text-accent hover:underline">
+            All estimates
+          </Link>
+        }
+      >
+        {data.recent_estimates.length ? (
+          <EstimateList estimates={data.recent_estimates} showProject />
+        ) : (
+          <p className="text-muted">No estimates yet. Open a project and create one.</p>
+        )}
+      </Card>
     </div>
   );
 }

@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Alert, Badge, Button, Card, Select, StatusBadge } from "@/components/ui";
-import { api, ApiError, del, patch, type Project } from "@/lib/api";
+import { EstimateList } from "@/components/EstimateList";
+import { Alert, Badge, Button, Card, Field, Input, Select, StatusBadge } from "@/components/ui";
+import { api, ApiError, del, patch, post, type Estimate, type Project } from "@/lib/api";
 import { indianDate, inr, STATUS_LABELS } from "@/lib/format";
 
 import { checkStep, ProjectFields, type ProjectFormValues, toPayload } from "../ProjectFields";
@@ -190,15 +191,77 @@ export function ProjectOverview({ id }: { id: string }) {
         </Card>
       )}
 
-      <Card title="Estimates">
-        <p className="text-muted">
-          Estimates, BOQ and versions for this project arrive in M3. Until then you can try the{" "}
-          <Link href="/calculator" className="text-accent hover:underline">
-            Quantity Calculator
-          </Link>
-          .
-        </p>
-      </Card>
+      <ProjectEstimates projectId={id} canCreate={canEdit} />
     </div>
+  );
+}
+
+function ProjectEstimates({ projectId, canCreate }: { projectId: string; canCreate: boolean }) {
+  const router = useRouter();
+  const [estimates, setEstimates] = useState<Estimate[] | null>(null);
+  const [creating, setCreating] = useState(false);
+  const [title, setTitle] = useState("Detailed estimate");
+  const [number, setNumber] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+
+  useEffect(() => {
+    api<Estimate[]>(`/projects/${projectId}/estimates`)
+      .then(setEstimates)
+      .catch(() => setEstimates([]));
+  }, [projectId]);
+
+  async function create(event: React.FormEvent) {
+    event.preventDefault();
+    setBusy(true);
+    setError(null);
+    try {
+      const estimate = await post<Estimate>(`/projects/${projectId}/estimates`, {
+        title,
+        estimate_number: number.trim() || null,
+      });
+      router.push(`/projects/${projectId}/estimates/${estimate.id}`);
+    } catch (e) {
+      setError(e instanceof ApiError ? e.message : "Could not create the estimate.");
+      setBusy(false);
+    }
+  }
+
+  return (
+    <Card
+      title="Estimates"
+      actions={
+        canCreate && !creating ? (
+          <Button variant="secondary" onClick={() => setCreating(true)}>
+            New estimate
+          </Button>
+        ) : null
+      }
+    >
+      {creating ? (
+        <form onSubmit={create} className="mb-4 flex flex-wrap items-end gap-3">
+          <Field label="Title" className="min-w-64 flex-1">
+            <Input value={title} onChange={(e) => setTitle(e.target.value)} maxLength={200} autoFocus />
+          </Field>
+          <Field label="Estimate number" hint="Leave blank to number automatically">
+            <Input value={number} onChange={(e) => setNumber(e.target.value)} maxLength={50} placeholder="EST-…" />
+          </Field>
+          <Button type="submit" disabled={busy || !title.trim()}>
+            Create
+          </Button>
+          <Button type="button" variant="secondary" onClick={() => setCreating(false)}>
+            Cancel
+          </Button>
+          {error ? <div className="w-full"><Alert>{error}</Alert></div> : null}
+        </form>
+      ) : null}
+      {estimates === null ? (
+        <p className="text-muted">Loading…</p>
+      ) : estimates.length ? (
+        <EstimateList estimates={estimates} />
+      ) : (
+        <p className="text-muted">No estimates yet{canCreate ? ". Create one to start the BOQ." : "."}</p>
+      )}
+    </Card>
   );
 }

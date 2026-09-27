@@ -1,6 +1,11 @@
 # 02 — Database ER Diagram
 
-The full DDL is in [`03-database-schema.sql`](./03-database-schema.sql). This page shows the relationships.
+The full DDL is in [`03-database-schema.sql`](./03-database-schema.sql), which is the initial migration. This page shows the relationships.
+
+Later migrations (`backend/migrations/versions/`):
+* **0002** seeds plans and default work categories.
+* **0003** adds `estimate_items.mode` (`dimensions` or `formula`).
+* **0004** stores the built-in calculation templates, because stored calculations reference `(template_id, template_version)`.
 
 ## 2.1 Terminology used by the schema
 

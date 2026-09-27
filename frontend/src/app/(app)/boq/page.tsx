@@ -1,7 +1,7 @@
-import { ComingSoon } from "@/components/ComingSoon";
+import { RecentEstimates } from "./RecentEstimates";
 
 export const metadata = { title: "BOQ" };
 
-export default function Page() {
-  return <ComingSoon title="BOQ" milestone="M3" />;
+export default function BoqPage() {
+  return <RecentEstimates />;
 }

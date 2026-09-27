@@ -274,7 +274,7 @@ def evaluate_expression(
     """Custom formula: each parameter's dimension comes from the unit the user gives."""
     registry = registry or default_registry()
     compiled = compile_expression(expression)
-    slots = [_Slot(name, name, None, None) for name in sorted(compiled.names)]
+    slots = [_Slot(name, name, None, None) for name in compiled.ordered_names]
     return _run(compiled, slots, inputs, output_unit, registry, None)
 
 
