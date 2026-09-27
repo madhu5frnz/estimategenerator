@@ -5,7 +5,7 @@ AI-assisted estimate, BOQ and quantity generation for Indian civil engineers and
 > **AI interprets. The deterministic engine calculates. The rate database supplies rates. The user verifies.**
 > Every important number traces back to a formula or a source.
 
-**Status:** M0 (foundation), M1 (units and quantity engine), M2 (accounts, projects, dashboard) and M3 (estimates, BOQ, measurements, parameters, versions) and M4 (AI estimate) are done. Next: M5 (rates, abstract, GST and charges, validation). See [milestones](docs/design/08-development-milestones.md).
+**Status:** M0 (foundation), M1 (units and quantity engine), M2 (accounts, projects, dashboard), M3 (estimates, BOQ, measurements, parameters, versions), M4 (AI estimate) and M5 (rates, abstract, GST and charges, validation) are done. Next: M6 (exports: PDF, Excel, Word). See [milestones](docs/design/08-development-milestones.md).
 
 No AI API key is needed to develop or run the app. Without one, the rules-based extractor is used (see [doc 06 §6.3](docs/design/06-ai-prompt-architecture.md)).
 
@@ -64,6 +64,13 @@ cd frontend && npm run lint && npm run typecheck && npm run build
   * **Review:** each value is shown with the words it came from. Missing values become questions. Suggested defaults (e.g. GSB width = carriageway width) are only used if you tick "I accept". A value that can't be found in the text must be confirmed. The engine previews each quantity.
   * **Create BOQ:** creates the parameters, BOQ items and formula lines. Each value keeps its origin: parsed, AI-extracted, entered by you, or default accepted.
   * **Usage:** AI calls are logged with tokens and cost, and repeated descriptions reuse the earlier result. They count against the plan quota; the rules parser is free.
+* **Rates, abstract and validation (M5)**:
+  * **Rate Database:** a searchable rate list (description, item code, unit). The app ships a demo source labelled **"Demo Rates — Not Official SOR"**; it is read-only and every use of it is flagged. Workspace owners and admins add their own sources and rates (marked "entered by you"). A rate used by an estimate cannot be deleted.
+  * **Picking a rate:** "pick rate" on a BOQ row opens the rate list filtered to the item's unit. A rate in a different unit is refused. Replacing a rate you typed asks first. The item keeps a copy of the rate (source, year, code, unit), so later changes to the rate list never change an estimate.
+  * **Abstract:** section totals, then charges in order (contingencies, work-charged establishment, labour cess, seigniorage, royalty or your own), each as a percentage of the works subtotal, the running total or chosen sections, or a fixed amount. Then GST: CGST + SGST or IGST, added on top or shown as included, at the rate you enter (there is no default rate). Then optional rounding and the grand total in words. Everything is to the paisa.
+  * **Validation:** recalculates every measurement line and checks units, missing or zero quantities, missing rates, unit/rate mismatches, demo and expired rates, amounts that don't equal quantity × rate (including rows changed outside the app), duplicate items, unconfirmed AI or default values, and GST settings. A clean run says "Calculation checks passed", never that the engineering is confirmed.
+  * **Estimate defaults:** a workspace can set the GST, charges and rounding new estimates start with (Settings).
+  * Saving a version keeps its charges, GST and grand total; the next draft starts from them.
 * **Web**: the app shell with navigation and the disclaimer footer, plus a working **Quantity Calculator** page (`/calculator`).
 * **Typed API**: the frontend's API types are generated from the backend's OpenAPI schema (`npm run gen:api`), and CI fails if they drift.
 

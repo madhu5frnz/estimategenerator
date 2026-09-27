@@ -1,7 +1,7 @@
-import { ComingSoon } from "@/components/ComingSoon";
+import { RateDatabase } from "./RateDatabase";
 
 export const metadata = { title: "Rate Database" };
 
 export default function Page() {
-  return <ComingSoon title="Rate Database" milestone="M5 (manual rates); imports in Phase 2" />;
+  return <RateDatabase />;
 }

@@ -28,6 +28,16 @@ export type Extraction = Schemas["ExtractionOut"];
 export type ExtractedComponent = Schemas["ComponentOut"];
 export type ExtractedParam = Schemas["ExtractedParamOut"];
 export type ConfirmResult = Schemas["ConfirmOut"];
+export type RateInfo = Schemas["RateInfoOut"];
+export type RateSource = Schemas["RateSourceOut"];
+export type RateItem = Schemas["RateItemOut"];
+export type RateSearch = Schemas["RateSearchOut"];
+export type Abstract = Schemas["AbstractOut"];
+export type Charge = Schemas["ChargeOut"];
+export type GstConfig = Schemas["GstConfigOut"];
+export type Validation = Schemas["ValidationOut"];
+export type Finding = Schemas["FindingOut"];
+export type EstimateDefaults = Schemas["DefaultsOut"];
 
 export class ApiError extends Error {
   constructor(
@@ -143,4 +153,6 @@ export const post = <T>(path: string, body?: unknown, options?: { redirectOn401?
   api<T>(path, { method: "POST", body: body === undefined ? undefined : JSON.stringify(body) }, options);
 export const patch = <T>(path: string, body: unknown) =>
   api<T>(path, { method: "PATCH", body: JSON.stringify(body) });
+export const put = <T>(path: string, body: unknown) =>
+  api<T>(path, { method: "PUT", body: JSON.stringify(body) });
 export const del = <T>(path: string) => api<T>(path, { method: "DELETE" });

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { EstimateDefaultsCard } from "@/components/EstimateDefaults";
 import { useSession } from "@/components/Session";
 import { Alert, Badge, Button, Card, Field, Input, Select, Textarea } from "@/components/ui";
 import { ApiError, patch } from "@/lib/api";
@@ -131,6 +132,8 @@ export function Settings() {
           ) : null}
         </form>
       </Card>
+
+      <EstimateDefaultsCard orgId={me.organization.id} />
 
       <Card title="Plan">
         <dl className="grid gap-3 sm:grid-cols-3">

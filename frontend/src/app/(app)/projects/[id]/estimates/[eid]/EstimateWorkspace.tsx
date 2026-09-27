@@ -9,23 +9,23 @@ import { Alert, Badge, Button, Field, Input } from "@/components/ui";
 import { api, ApiError, post, type Estimate, type Template, type Unit, type Version, type VersionSummary } from "@/lib/api";
 import { indianDate } from "@/lib/format";
 
+import { AbstractTab } from "./AbstractTab";
 import { BoqTab } from "./BoqTab";
 import type { Mutate } from "./context";
 import { DetailedTab } from "./DetailedTab";
 import { ParametersTab } from "./ParametersTab";
+import { ValidationTab } from "./ValidationTab";
 import { VersionsTab } from "./VersionsTab";
 
 const TABS = [
   { key: "boq", label: "BOQ" },
   { key: "detailed", label: "Detailed estimate" },
   { key: "parameters", label: "Parameters" },
+  { key: "abstract", label: "Abstract" },
+  { key: "validation", label: "Validation" },
   { key: "versions", label: "Versions" },
 ] as const;
-const LATER = [
-  { label: "Abstract", milestone: "M5" },
-  { label: "Validation", milestone: "M5" },
-  { label: "Export", milestone: "M6" },
-];
+const LATER = [{ label: "Export", milestone: "M6" }];
 
 type Problem = { message: string; requestId: string | null };
 
@@ -208,6 +208,8 @@ export function EstimateWorkspace({ projectId, estimateId }: { projectId: string
       {tab === "boq" ? <BoqTab {...props} onShowLines={() => go({ tab: "detailed" })} /> : null}
       {tab === "detailed" ? <DetailedTab {...props} /> : null}
       {tab === "parameters" ? <ParametersTab {...props} /> : null}
+      {tab === "abstract" ? <AbstractTab {...props} /> : null}
+      {tab === "validation" ? <ValidationTab {...props} onGoTo={(t) => go({ tab: t })} /> : null}
       {tab === "versions" ? (
         <VersionsTab
           versions={versions}

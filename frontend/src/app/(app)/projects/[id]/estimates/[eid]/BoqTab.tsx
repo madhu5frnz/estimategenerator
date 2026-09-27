@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { EditableCell } from "@/components/EditableCell";
+import { RatePicker } from "@/components/RatePicker";
 import { Button, Input, Select } from "@/components/ui";
 import { del, patch, post, type Item, type Section, type Version } from "@/lib/api";
 import { inr } from "@/lib/format";
@@ -12,6 +13,7 @@ import { sortUnits, type WorkspaceProps } from "./context";
 export function BoqTab({ version, mutate, units, editable, onShowLines }: WorkspaceProps & { onShowLines: () => void }) {
   const vid = version.version.id;
   const [newSection, setNewSection] = useState("");
+  const [picking, setPicking] = useState<Item | null>(null);
   const itemUnits = sortUnits(units);
 
   const saveItem = (item: Item, field: string) => (value: string) =>
@@ -126,6 +128,7 @@ export function BoqTab({ version, mutate, units, editable, onShowLines }: Worksp
                       onSave={saveItem(item, "rate")}
                       className={!item.rate && item.quantity ? "text-warn" : ""}
                     />
+                    <RateSource item={item} editable={editable} onPick={() => setPicking(item)} />
                   </td>
                   <td className="num px-2 py-1.5 text-right">{item.amount ? inr(item.amount).slice(1) : "—"}</td>
                   <td>
@@ -174,8 +177,19 @@ export function BoqTab({ version, mutate, units, editable, onShowLines }: Worksp
         </table>
       </div>
       <p className="text-xs text-muted">
-        {version.totals.amount_in_words}. GST, contingencies and other charges are added in the abstract (M5).
+        {version.totals.amount_in_words}. Contingencies, other charges and GST are added in the Abstract tab
+        {version.totals.grand_total !== version.totals.works_subtotal ? ` (grand total ${inr(version.totals.grand_total)})` : ""}.
       </p>
+      {picking ? (
+        <RatePicker
+          item={picking}
+          onClose={() => setPicking(null)}
+          onPicked={(next) => {
+            setPicking(null);
+            void mutate(() => Promise.resolve(next));
+          }}
+        />
+      ) : null}
 
       {editable ? (
         <form
@@ -198,6 +212,26 @@ export function BoqTab({ version, mutate, units, editable, onShowLines }: Worksp
             Add section
           </Button>
         </form>
+      ) : null}
+    </div>
+  );
+}
+
+function RateSource({ item, editable, onPick }: { item: Item; editable: boolean; onPick: () => void }) {
+  const info = item.rate_info;
+  if (!info && !editable) return null;
+  return (
+    <div className="flex flex-wrap items-center justify-end gap-1 px-2 pb-1 text-[11px] leading-tight">
+      {info ? (
+        <span title={`${info.item_code} · ${info.sor_name} ${info.year}`} className={info.is_demo ? "text-warn" : "text-muted"}>
+          {info.item_code}
+          {info.is_demo ? " · demo" : ""}
+        </span>
+      ) : null}
+      {editable ? (
+        <button onClick={onPick} className="text-accent hover:underline" aria-label={`Pick a rate for item ${item.item_no_display}`}>
+          {info ? "change" : "pick rate"}
+        </button>
       ) : null}
     </div>
   );
