@@ -1,3 +1,4 @@
+from app.models.ai import AiGeneration, UsageCounter
 from app.models.billing import Plan, Subscription
 from app.models.estimate import (
     BoqItem,
@@ -19,6 +20,7 @@ from app.models.platform import AuditLog
 from app.models.project import Project, ProjectMember, WorkCategory
 
 __all__ = [
+    "AiGeneration",
     "AuditLog",
     "BoqItem",
     "Calculation",
@@ -35,6 +37,7 @@ __all__ = [
     "QuantityInput",
     "RefreshToken",
     "Subscription",
+    "UsageCounter",
     "User",
     "WorkCategory",
 ]

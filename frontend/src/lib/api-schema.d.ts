@@ -4,6 +4,57 @@
  */
 
 export interface paths {
+    "/api/v1/ai/extractions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Create Extraction */
+        post: operations["create_extraction_api_v1_ai_extractions_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/ai/extractions/{extraction_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Extraction */
+        get: operations["get_extraction_api_v1_ai_extractions__extraction_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/ai/extractions/{extraction_id}/confirm": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Confirm Extraction */
+        post: operations["confirm_extraction_api_v1_ai_extractions__extraction_id__confirm_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/auth/forgot-password": {
         parameters: {
             query?: never;
@@ -743,6 +794,73 @@ export interface components {
             /** Project Type */
             project_type: string;
         };
+        /** ComponentChoice */
+        ComponentChoice: {
+            /**
+             * Include
+             * @default true
+             */
+            include: boolean;
+            /** Key */
+            key: string;
+            /** Parameters */
+            parameters?: {
+                [key: string]: components["schemas"]["ParamChoice"];
+            };
+        };
+        /** ComponentOut */
+        ComponentOut: {
+            /** Component Name */
+            component_name: string;
+            /** Key */
+            key: string;
+            /** Output Unit */
+            output_unit: string;
+            /** Output Unit Display */
+            output_unit_display: string;
+            /** Parameters */
+            parameters: components["schemas"]["ExtractedParamOut"][];
+            preview: components["schemas"]["PreviewOut"] | null;
+            /** Template Id */
+            template_id: string;
+            /** Template Name */
+            template_name: string;
+        };
+        /** ConfirmIn */
+        ConfirmIn: {
+            /** Components */
+            components?: components["schemas"]["ComponentChoice"][];
+            /** Custom Items */
+            custom_items?: components["schemas"]["CustomChoice"][];
+            /** Estimate Id */
+            estimate_id?: string | null;
+            /** New Estimate Title */
+            new_estimate_title?: string | null;
+            /** Section Title */
+            section_title?: string | null;
+        };
+        /** ConfirmOut */
+        ConfirmOut: {
+            /**
+             * Estimate Id
+             * Format: uuid
+             */
+            estimate_id: string;
+            /** Items Created */
+            items_created: number;
+            /** Parameters Created */
+            parameters_created: number;
+            /**
+             * Project Id
+             * Format: uuid
+             */
+            project_id: string;
+            /**
+             * Version Id
+             * Format: uuid
+             */
+            version_id: string;
+        };
         /** ConvertIn */
         ConvertIn: {
             /** From Unit */
@@ -765,6 +883,25 @@ export interface components {
             to_unit: string;
             /** Value */
             value: string;
+        };
+        /** CustomChoice */
+        CustomChoice: {
+            /**
+             * Include
+             * @default true
+             */
+            include: boolean;
+            /** Key */
+            key: string;
+        };
+        /** CustomItemOut */
+        CustomItemOut: {
+            /** Description */
+            description: string;
+            /** Key */
+            key: string;
+            /** Source Text */
+            source_text: string | null;
         };
         /** DashboardOut */
         DashboardOut: {
@@ -794,6 +931,16 @@ export interface components {
         /** Envelope[CalculationOut] */
         Envelope_CalculationOut_: {
             data: components["schemas"]["CalculationOut"];
+            meta: components["schemas"]["Meta"];
+            /**
+             * Success
+             * @default true
+             */
+            success: boolean;
+        };
+        /** Envelope[ConfirmOut] */
+        Envelope_ConfirmOut_: {
+            data: components["schemas"]["ConfirmOut"];
             meta: components["schemas"]["Meta"];
             /**
              * Success
@@ -834,6 +981,16 @@ export interface components {
         /** Envelope[ExpressionOut] */
         Envelope_ExpressionOut_: {
             data: components["schemas"]["ExpressionOut"];
+            meta: components["schemas"]["Meta"];
+            /**
+             * Success
+             * @default true
+             */
+            success: boolean;
+        };
+        /** Envelope[ExtractionOut] */
+        Envelope_ExtractionOut_: {
+            data: components["schemas"]["ExtractionOut"];
             meta: components["schemas"]["Meta"];
             /**
              * Success
@@ -1097,6 +1254,85 @@ export interface components {
             /** Parameters */
             parameters: string[];
         };
+        /** ExtractedParamOut */
+        ExtractedParamOut: {
+            /** Dimension */
+            dimension: string;
+            /** Label */
+            label: string;
+            /** Name */
+            name: string;
+            /** Note */
+            note: string | null;
+            /** Question */
+            question: string | null;
+            /** Required */
+            required: boolean;
+            /** Source Text */
+            source_text: string | null;
+            /** Status */
+            status: string;
+            suggested_default: components["schemas"]["SuggestedDefaultOut"] | null;
+            /** Unit */
+            unit: string | null;
+            /** Value */
+            value: string | null;
+        };
+        /** ExtractionIn */
+        ExtractionIn: {
+            /**
+             * Project Id
+             * Format: uuid
+             */
+            project_id: string;
+            /** Text */
+            text: string;
+        };
+        /** ExtractionOut */
+        ExtractionOut: {
+            /** Assumptions */
+            assumptions: string[];
+            /** Components */
+            components: components["schemas"]["ComponentOut"][];
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Custom Items */
+            custom_items: components["schemas"]["CustomItemOut"][];
+            /** Disclaimer */
+            disclaimer: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Input Text */
+            input_text: string;
+            /** Missing Information */
+            missing_information: components["schemas"]["MissingOut"][];
+            /** Model */
+            model: string;
+            /**
+             * Project Id
+             * Format: uuid
+             */
+            project_id: string;
+            /** Project Type */
+            project_type: string | null;
+            /** Provider */
+            provider: string;
+            /** Provider Label */
+            provider_label: string;
+            result: components["schemas"]["ResultOut"] | null;
+            /** Served From Cache */
+            served_from_cache: boolean;
+            /** Status */
+            status: string;
+            /** Warnings */
+            warnings: string[];
+        };
         /** ForgotIn */
         ForgotIn: {
             /**
@@ -1350,6 +1586,19 @@ export interface components {
             /** Request Id */
             request_id?: string | null;
         };
+        /** MissingOut */
+        MissingOut: {
+            /** Component Key */
+            component_key: string | null;
+            /** Component Name */
+            component_name: string;
+            /** Label */
+            label: string;
+            /** Parameter */
+            parameter: string;
+            /** Question */
+            question: string | null;
+        };
         /** Option */
         Option: {
             /** Code */
@@ -1392,6 +1641,18 @@ export interface components {
             name?: string | null;
             /** State Code */
             state_code?: string | null;
+        };
+        /** ParamChoice */
+        ParamChoice: {
+            /**
+             * Accept Default
+             * @default false
+             */
+            accept_default: boolean;
+            /** Unit */
+            unit?: string | null;
+            /** Value */
+            value?: string | number | null;
         };
         /** ParamIn */
         ParamIn: {
@@ -1446,6 +1707,17 @@ export interface components {
             unit?: string | null;
             /** Value */
             value?: string | number | null;
+        };
+        /** PreviewOut */
+        PreviewOut: {
+            /** Substituted */
+            substituted: string;
+            /** Unit */
+            unit: string;
+            /** Unit Display */
+            unit_display: string;
+            /** Value */
+            value: string;
         };
         /** ProjectCreate */
         ProjectCreate: {
@@ -1613,6 +1885,23 @@ export interface components {
             /** Value */
             value: string;
         };
+        /** ResultOut */
+        ResultOut: {
+            /**
+             * Estimate Id
+             * Format: uuid
+             */
+            estimate_id: string;
+            /** Items Created */
+            items_created: number;
+            /** Parameters Created */
+            parameters_created: number;
+            /**
+             * Version Id
+             * Format: uuid
+             */
+            version_id: string;
+        };
         /** SectionOut */
         SectionOut: {
             /**
@@ -1668,6 +1957,15 @@ export interface components {
             plan_name: string;
             /** Status */
             status: string;
+        };
+        /** SuggestedDefaultOut */
+        SuggestedDefaultOut: {
+            /** Reason */
+            reason: string;
+            /** Unit */
+            unit: string | null;
+            /** Value */
+            value: string | null;
         };
         /** SystemInfo */
         SystemInfo: {
@@ -1873,6 +2171,105 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    create_extraction_api_v1_ai_extractions_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ExtractionIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_ExtractionOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_extraction_api_v1_ai_extractions__extraction_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                extraction_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_ExtractionOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    confirm_extraction_api_v1_ai_extractions__extraction_id__confirm_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                extraction_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ConfirmIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_ConfirmOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     forgot_password_api_v1_auth_forgot_password_post: {
         parameters: {
             query?: never;

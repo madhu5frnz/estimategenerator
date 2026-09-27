@@ -170,6 +170,14 @@ def _audit(
     )
 
 
+def _finish(db: Session, commit: bool) -> None:
+    """Commit, or only flush when the caller wraps several operations in one transaction."""
+    if commit:
+        db.commit()
+    else:
+        db.flush()
+
+
 def _json(value: Any) -> Any:
     if isinstance(value, Decimal):
         return format(value, "f")
@@ -214,7 +222,12 @@ def _next_estimate_number(db: Session, organization_id: uuid.UUID) -> str:
 
 
 def create_estimate(
-    db: Session, ctx: AuthContext, project_id: uuid.UUID, data: dict[str, Any]
+    db: Session,
+    ctx: AuthContext,
+    project_id: uuid.UUID,
+    data: dict[str, Any],
+    *,
+    commit: bool = True,
 ) -> Estimate:
     project_service.get_access(db, ctx, project_id, EDIT_ROLE)
     number = (data.pop("estimate_number", None) or "").strip()
@@ -275,7 +288,7 @@ def create_estimate(
             action="create",
             new_value={"estimate_number": candidate, "title": estimate.title},
         )
-        db.commit()
+        _finish(db, commit)
         return estimate
     raise AppError("ESTIMATE_NUMBER_TAKEN", "Could not allocate an estimate number.", 409)
 
@@ -760,7 +773,9 @@ def _refs(calc: Calculation | None) -> Iterable[str]:
 # =============================================================================
 # Sections
 # =============================================================================
-def add_section(db: Session, ctx: AuthContext, version_id: uuid.UUID, title: str) -> VersionScope:
+def add_section(
+    db: Session, ctx: AuthContext, version_id: uuid.UUID, title: str, *, commit: bool = True
+) -> VersionScope:
     scope = _scope_for(db, ctx, version_id)
     title = title.strip()
     if not title:
@@ -778,7 +793,7 @@ def add_section(db: Session, ctx: AuthContext, version_id: uuid.UUID, title: str
     )
     db.add(section)
     _audit(db, ctx, scope, entity_type="section", entity_id=section.id, action="create", new=title)
-    db.commit()
+    _finish(db, commit)
     return scope
 
 
@@ -905,7 +920,12 @@ def _reprice(item: BoqItem) -> None:
 
 
 def add_item(
-    db: Session, ctx: AuthContext, version_id: uuid.UUID, data: dict[str, Any]
+    db: Session,
+    ctx: AuthContext,
+    version_id: uuid.UUID,
+    data: dict[str, Any],
+    *,
+    commit: bool = True,
 ) -> tuple[VersionScope, BoqItem]:
     scope = _scope_for(db, ctx, version_id)
     section_id = data.get("section_id")
@@ -960,7 +980,7 @@ def add_item(
             "rate": _json(rate),
         },
     )
-    db.commit()
+    _finish(db, commit)
     return scope, item
 
 
@@ -1424,7 +1444,12 @@ def _recalculate_item(db: Session, item: BoqItem) -> None:
 
 
 def add_line(
-    db: Session, ctx: AuthContext, item_id: uuid.UUID, data: dict[str, Any]
+    db: Session,
+    ctx: AuthContext,
+    item_id: uuid.UUID,
+    data: dict[str, Any],
+    *,
+    commit: bool = True,
 ) -> VersionScope:
     item, scope = _item(db, ctx, item_id)
     spec = _line_spec(data)
@@ -1483,7 +1508,7 @@ def add_line(
             old=before,
             new=item.quantity,
         )
-    db.commit()
+    _finish(db, commit)
     return scope
 
 
@@ -1636,7 +1661,12 @@ def _dependent_lines(
 
 
 def add_parameter(
-    db: Session, ctx: AuthContext, version_id: uuid.UUID, data: dict[str, Any]
+    db: Session,
+    ctx: AuthContext,
+    version_id: uuid.UUID,
+    data: dict[str, Any],
+    *,
+    commit: bool = True,
 ) -> VersionScope:
     scope = _scope_for(db, ctx, version_id)
     name = (data.get("name") or "").strip()
@@ -1685,7 +1715,7 @@ def add_parameter(
         action="create",
         new={"name": name, "value": _json(value), "unit": unit},
     )
-    db.commit()
+    _finish(db, commit)
     return scope
 
 

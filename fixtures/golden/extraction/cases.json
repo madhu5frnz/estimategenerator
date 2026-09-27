@@ -1,0 +1,92 @@
+{
+  "_comment": "Golden set for parameter extraction. 'expected' lists every template input by component name: [value, unit] when it must be extracted, null when it must be missing (never invented). 'suggested' lists suggested defaults that must be offered, not applied. Run against the rules provider in CI and, opt-in, against the LLM provider.",
+  "cases": [
+    {
+      "id": "brief-1",
+      "text": "Construction of 500 m long CC road, 5.5 m wide and 150 mm thick with 100 mm GSB.",
+      "project_type": "road",
+      "expected": {
+        "CC pavement": {"length": ["500", "m"], "width": ["5.5", "m"], "thickness": ["150", "mm"]},
+        "Granular sub-base (GSB)": {"length": ["500", "m"], "width": null, "thickness": ["100", "mm"]}
+      },
+      "suggested": {"Granular sub-base (GSB)": {"width": ["5.5", "m"]}},
+      "preview": {"CC pavement": "412.500"}
+    },
+    {
+      "id": "brief-5",
+      "text": "Construction of 2 km CC road, 5.5 m wide, 150 mm thick, including earthwork, GSB and kerbs.",
+      "project_type": "road",
+      "expected": {
+        "CC pavement": {"length": ["2", "km"], "width": ["5.5", "m"], "thickness": ["150", "mm"]},
+        "Granular sub-base (GSB)": {"length": ["2", "km"], "width": null, "thickness": null},
+        "Kerb": {"length": null, "sides": null}
+      },
+      "suggested": {"Kerb": {"length": ["2", "km"]}},
+      "custom_items": ["Earthwork / excavation"],
+      "preview": {"CC pavement": "1650.000"}
+    },
+    {
+      "id": "telugu-47",
+      "text": "500 మీటర్ల పొడవు, 5.5 మీటర్ల వెడల్పుతో 150 mm మందం CC రోడ్డు నిర్మించాలి.",
+      "project_type": "road",
+      "expected": {"CC pavement": {"length": ["500", "m"], "width": ["5.5", "m"], "thickness": ["150", "mm"]}},
+      "preview": {"CC pavement": "412.500"}
+    },
+    {
+      "id": "telugu-digits",
+      "text": "౫౦౦ మీటర్ల పొడవు, ౫.౫ మీటర్ల వెడల్పుతో ౧౫౦ మి.మీ మందం సీసీ రోడ్డు",
+      "project_type": "road",
+      "expected": {"CC pavement": {"length": ["500", "m"], "width": ["5.5", "m"], "thickness": ["150", "mm"]}}
+    },
+    {
+      "id": "hindi",
+      "text": "500 मीटर लंबी, 5.5 मीटर चौड़ी और 150 मिमी मोटी सीसी सड़क",
+      "project_type": "road",
+      "expected": {"CC pavement": {"length": ["500", "m"], "width": ["5.5", "m"], "thickness": ["150", "mm"]}}
+    },
+    {
+      "id": "demo-39",
+      "text": "CC road 1000 m long, 5.5 m wide, CC 150 mm thick over GSB 150 mm thick",
+      "project_type": "road",
+      "expected": {
+        "CC pavement": {"length": ["1000", "m"], "width": ["5.5", "m"], "thickness": ["150", "mm"]},
+        "Granular sub-base (GSB)": {"length": ["1000", "m"], "width": null, "thickness": ["150", "mm"]}
+      },
+      "suggested": {"Granular sub-base (GSB)": {"width": ["5.5", "m"]}},
+      "preview": {"CC pavement": "825.000"}
+    },
+    {
+      "id": "lbd-chain",
+      "text": "C.C. road 300 m x 3.75 m x 0.15 m",
+      "project_type": "road",
+      "expected": {"CC pavement": {"length": ["300", "m"], "width": ["3.75", "m"], "thickness": ["0.15", "m"]}}
+    },
+    {
+      "id": "wall-plaster",
+      "text": "Compound wall 120 m long, 2.1 m high, 230 mm thick brickwork with plastering on both sides",
+      "project_type": "building",
+      "expected": {
+        "Masonry wall": {"L": ["120", "m"], "H": ["2.1", "m"], "T": ["230", "mm"], "N": ["1", null], "openings_area": ["0", "sqm"]},
+        "Plastering": {"L": ["120", "m"], "H": ["2.1", "m"], "faces": ["2", null], "openings_area": ["0", "sqm"]}
+      }
+    },
+    {
+      "id": "missing-everything",
+      "text": "GSB for village road",
+      "project_type": "road",
+      "expected": {"Granular sub-base (GSB)": {"length": null, "width": null, "thickness": null}}
+    },
+    {
+      "id": "distractor-numbers",
+      "text": "Estimate 2026-27 for CC road in ward 12, 400 m long, 3.5 m wide and 100 mm thick",
+      "project_type": "road",
+      "expected": {"CC pavement": {"length": ["400", "m"], "width": ["3.5", "m"], "thickness": ["100", "mm"]}}
+    },
+    {
+      "id": "nothing-recognised",
+      "text": "Please prepare an estimate for the new works",
+      "project_type": null,
+      "expected": {}
+    }
+  ]
+}

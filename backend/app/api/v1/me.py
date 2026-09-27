@@ -14,6 +14,7 @@ from app.api.envelope import Envelope, ok
 from app.core.errors import AppError
 from app.models import Organization, OrganizationMember, User
 from app.services import audit
+from app.services.ai_extraction import ai_used
 from app.services.plans import current_plan, projects_used
 
 router = APIRouter(tags=["account"])
@@ -94,8 +95,8 @@ def build_me(db: Session, user: User, org_id: uuid.UUID) -> MeOut:
             limits=state.plan.limits,
             features=state.plan.features,
         ),
-        # AI usage metering arrives with M4; nothing consumes the quota before then.
-        usage=UsageOut(projects=projects_used(db, org_id), ai_generations=0),
+        # Only metered (LLM) generations count; the rules-based parser is free.
+        usage=UsageOut(projects=projects_used(db, org_id), ai_generations=ai_used(db, org_id)),
     )
 
 

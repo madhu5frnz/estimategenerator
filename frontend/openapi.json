@@ -180,6 +180,184 @@
         "title": "CategoryOut",
         "type": "object"
       },
+      "ComponentChoice": {
+        "properties": {
+          "include": {
+            "default": true,
+            "title": "Include",
+            "type": "boolean"
+          },
+          "key": {
+            "maxLength": 10,
+            "title": "Key",
+            "type": "string"
+          },
+          "parameters": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ParamChoice"
+            },
+            "maxProperties": 20,
+            "title": "Parameters",
+            "type": "object"
+          }
+        },
+        "required": [
+          "key"
+        ],
+        "title": "ComponentChoice",
+        "type": "object"
+      },
+      "ComponentOut": {
+        "properties": {
+          "component_name": {
+            "title": "Component Name",
+            "type": "string"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "output_unit": {
+            "title": "Output Unit",
+            "type": "string"
+          },
+          "output_unit_display": {
+            "title": "Output Unit Display",
+            "type": "string"
+          },
+          "parameters": {
+            "items": {
+              "$ref": "#/components/schemas/ExtractedParamOut"
+            },
+            "title": "Parameters",
+            "type": "array"
+          },
+          "preview": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PreviewOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "template_id": {
+            "title": "Template Id",
+            "type": "string"
+          },
+          "template_name": {
+            "title": "Template Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "component_name",
+          "template_id",
+          "template_name",
+          "output_unit",
+          "output_unit_display",
+          "parameters",
+          "preview"
+        ],
+        "title": "ComponentOut",
+        "type": "object"
+      },
+      "ConfirmIn": {
+        "properties": {
+          "components": {
+            "items": {
+              "$ref": "#/components/schemas/ComponentChoice"
+            },
+            "maxItems": 30,
+            "title": "Components",
+            "type": "array"
+          },
+          "custom_items": {
+            "items": {
+              "$ref": "#/components/schemas/CustomChoice"
+            },
+            "maxItems": 30,
+            "title": "Custom Items",
+            "type": "array"
+          },
+          "estimate_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Estimate Id"
+          },
+          "new_estimate_title": {
+            "anyOf": [
+              {
+                "maxLength": 200,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "New Estimate Title"
+          },
+          "section_title": {
+            "anyOf": [
+              {
+                "maxLength": 200,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Section Title"
+          }
+        },
+        "title": "ConfirmIn",
+        "type": "object"
+      },
+      "ConfirmOut": {
+        "properties": {
+          "estimate_id": {
+            "format": "uuid",
+            "title": "Estimate Id",
+            "type": "string"
+          },
+          "items_created": {
+            "title": "Items Created",
+            "type": "integer"
+          },
+          "parameters_created": {
+            "title": "Parameters Created",
+            "type": "integer"
+          },
+          "project_id": {
+            "format": "uuid",
+            "title": "Project Id",
+            "type": "string"
+          },
+          "version_id": {
+            "format": "uuid",
+            "title": "Version Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_id",
+          "estimate_id",
+          "version_id",
+          "items_created",
+          "parameters_created"
+        ],
+        "title": "ConfirmOut",
+        "type": "object"
+      },
       "ConvertIn": {
         "properties": {
           "from_unit": {
@@ -247,6 +425,55 @@
           "to_unit"
         ],
         "title": "ConvertOut",
+        "type": "object"
+      },
+      "CustomChoice": {
+        "properties": {
+          "include": {
+            "default": true,
+            "title": "Include",
+            "type": "boolean"
+          },
+          "key": {
+            "maxLength": 10,
+            "title": "Key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key"
+        ],
+        "title": "CustomChoice",
+        "type": "object"
+      },
+      "CustomItemOut": {
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "source_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Text"
+          }
+        },
+        "required": [
+          "key",
+          "description",
+          "source_text"
+        ],
+        "title": "CustomItemOut",
         "type": "object"
       },
       "DashboardOut": {
@@ -341,6 +568,27 @@
         "title": "Envelope[CalculationOut]",
         "type": "object"
       },
+      "Envelope_ConfirmOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ConfirmOut"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "success": {
+            "default": true,
+            "title": "Success",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Envelope[ConfirmOut]",
+        "type": "object"
+      },
       "Envelope_ConvertOut_": {
         "properties": {
           "data": {
@@ -423,6 +671,27 @@
           "meta"
         ],
         "title": "Envelope[ExpressionOut]",
+        "type": "object"
+      },
+      "Envelope_ExtractionOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ExtractionOut"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "success": {
+            "default": true,
+            "title": "Success",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Envelope[ExtractionOut]",
         "type": "object"
       },
       "Envelope_LineCalculationOut_": {
@@ -1060,6 +1329,255 @@
           "parameters"
         ],
         "title": "ExpressionOut",
+        "type": "object"
+      },
+      "ExtractedParamOut": {
+        "properties": {
+          "dimension": {
+            "title": "Dimension",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "question": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Question"
+          },
+          "required": {
+            "title": "Required",
+            "type": "boolean"
+          },
+          "source_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Text"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "suggested_default": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SuggestedDefaultOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "required": [
+          "name",
+          "label",
+          "dimension",
+          "required",
+          "value",
+          "unit",
+          "source_text",
+          "status",
+          "note",
+          "question",
+          "suggested_default"
+        ],
+        "title": "ExtractedParamOut",
+        "type": "object"
+      },
+      "ExtractionIn": {
+        "properties": {
+          "project_id": {
+            "format": "uuid",
+            "title": "Project Id",
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 20000,
+            "minLength": 1,
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_id",
+          "text"
+        ],
+        "title": "ExtractionIn",
+        "type": "object"
+      },
+      "ExtractionOut": {
+        "properties": {
+          "assumptions": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Assumptions",
+            "type": "array"
+          },
+          "components": {
+            "items": {
+              "$ref": "#/components/schemas/ComponentOut"
+            },
+            "title": "Components",
+            "type": "array"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "custom_items": {
+            "items": {
+              "$ref": "#/components/schemas/CustomItemOut"
+            },
+            "title": "Custom Items",
+            "type": "array"
+          },
+          "disclaimer": {
+            "title": "Disclaimer",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "input_text": {
+            "title": "Input Text",
+            "type": "string"
+          },
+          "missing_information": {
+            "items": {
+              "$ref": "#/components/schemas/MissingOut"
+            },
+            "title": "Missing Information",
+            "type": "array"
+          },
+          "model": {
+            "title": "Model",
+            "type": "string"
+          },
+          "project_id": {
+            "format": "uuid",
+            "title": "Project Id",
+            "type": "string"
+          },
+          "project_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Project Type"
+          },
+          "provider": {
+            "title": "Provider",
+            "type": "string"
+          },
+          "provider_label": {
+            "title": "Provider Label",
+            "type": "string"
+          },
+          "result": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ResultOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "served_from_cache": {
+            "title": "Served From Cache",
+            "type": "boolean"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Warnings",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "project_id",
+          "status",
+          "provider",
+          "provider_label",
+          "model",
+          "served_from_cache",
+          "input_text",
+          "project_type",
+          "components",
+          "custom_items",
+          "missing_information",
+          "assumptions",
+          "warnings",
+          "result",
+          "disclaimer",
+          "created_at"
+        ],
+        "title": "ExtractionOut",
         "type": "object"
       },
       "ForgotIn": {
@@ -2027,6 +2545,53 @@
         "title": "Meta",
         "type": "object"
       },
+      "MissingOut": {
+        "properties": {
+          "component_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Component Key"
+          },
+          "component_name": {
+            "title": "Component Name",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "parameter": {
+            "title": "Parameter",
+            "type": "string"
+          },
+          "question": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Question"
+          }
+        },
+        "required": [
+          "component_key",
+          "component_name",
+          "parameter",
+          "label",
+          "question"
+        ],
+        "title": "MissingOut",
+        "type": "object"
+      },
       "Option": {
         "properties": {
           "code": {
@@ -2182,6 +2747,46 @@
           }
         },
         "title": "OrganizationPatch",
+        "type": "object"
+      },
+      "ParamChoice": {
+        "properties": {
+          "accept_default": {
+            "default": false,
+            "title": "Accept Default",
+            "type": "boolean"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "title": "ParamChoice",
         "type": "object"
       },
       "ParamIn": {
@@ -2403,6 +3008,34 @@
           }
         },
         "title": "ParameterPatch",
+        "type": "object"
+      },
+      "PreviewOut": {
+        "properties": {
+          "substituted": {
+            "title": "Substituted",
+            "type": "string"
+          },
+          "unit": {
+            "title": "Unit",
+            "type": "string"
+          },
+          "unit_display": {
+            "title": "Unit Display",
+            "type": "string"
+          },
+          "value": {
+            "title": "Value",
+            "type": "string"
+          }
+        },
+        "required": [
+          "value",
+          "unit",
+          "unit_display",
+          "substituted"
+        ],
+        "title": "PreviewOut",
         "type": "object"
       },
       "ProjectCreate": {
@@ -3080,6 +3713,36 @@
         "title": "ResolvedInputOut",
         "type": "object"
       },
+      "ResultOut": {
+        "properties": {
+          "estimate_id": {
+            "format": "uuid",
+            "title": "Estimate Id",
+            "type": "string"
+          },
+          "items_created": {
+            "title": "Items Created",
+            "type": "integer"
+          },
+          "parameters_created": {
+            "title": "Parameters Created",
+            "type": "integer"
+          },
+          "version_id": {
+            "format": "uuid",
+            "title": "Version Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "estimate_id",
+          "version_id",
+          "items_created",
+          "parameters_created"
+        ],
+        "title": "ResultOut",
+        "type": "object"
+      },
       "SectionOut": {
         "properties": {
           "id": {
@@ -3195,6 +3858,43 @@
           "features"
         ],
         "title": "SubscriptionOut",
+        "type": "object"
+      },
+      "SuggestedDefaultOut": {
+        "properties": {
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "required": [
+          "value",
+          "unit",
+          "reason"
+        ],
+        "title": "SuggestedDefaultOut",
         "type": "object"
       },
       "SystemInfo": {
@@ -3772,6 +4472,143 @@
   },
   "openapi": "3.1.0",
   "paths": {
+    "/api/v1/ai/extractions": {
+      "post": {
+        "operationId": "create_extraction_api_v1_ai_extractions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExtractionIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_ExtractionOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Create Extraction",
+        "tags": [
+          "ai"
+        ]
+      }
+    },
+    "/api/v1/ai/extractions/{extraction_id}": {
+      "get": {
+        "operationId": "get_extraction_api_v1_ai_extractions__extraction_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "extraction_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Extraction Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_ExtractionOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Extraction",
+        "tags": [
+          "ai"
+        ]
+      }
+    },
+    "/api/v1/ai/extractions/{extraction_id}/confirm": {
+      "post": {
+        "operationId": "confirm_extraction_api_v1_ai_extractions__extraction_id__confirm_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "extraction_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Extraction Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfirmIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_ConfirmOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Confirm Extraction",
+        "tags": [
+          "ai"
+        ]
+      }
+    },
     "/api/v1/auth/forgot-password": {
       "post": {
         "operationId": "forgot_password_api_v1_auth_forgot_password_post",

@@ -44,6 +44,16 @@ class Settings(BaseSettings):
     # AI is optional: without a key the rules-based extractor is used (docs/design/06 §6.3).
     anthropic_api_key: SecretStr | None = None
     ai_provider: Literal["rules", "mock", "anthropic"] | None = None
+    ai_model_standard: str = "claude-sonnet-5"
+    ai_request_timeout_seconds: int = 120
+    ai_max_input_chars: int = 4000
+    ai_response_cache_ttl_hours: int = 168
+    # USD per million tokens (input, output); used for the cost ledger only.
+    ai_price_table: dict[str, list[float]] = {
+        "claude-haiku-4-5": [1, 5],
+        "claude-sonnet-5": [2, 10],
+        "claude-opus-5": [5, 25],
+    }
 
     @field_validator("api_cors_origins", mode="before")
     @classmethod

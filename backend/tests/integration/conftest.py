@@ -25,6 +25,7 @@ requires_db = pytest.mark.skipif(not DB_URL, reason="TEST_DATABASE_URL not set")
 CLEANUP = [
     # Frozen estimate versions are protected by triggers; tests bypass them to reset.
     "SET session_replication_role = replica",
+    "DELETE FROM usage_counters",
     "DELETE FROM calculations",
     "DELETE FROM estimate_items",
     "DELETE FROM boq_items",
@@ -32,6 +33,7 @@ CLEANUP = [
     "DELETE FROM quantity_inputs",
     "DELETE FROM estimate_versions",
     "DELETE FROM estimates",
+    "DELETE FROM ai_generations",
     "DELETE FROM project_members",
     "DELETE FROM projects",
     "DELETE FROM refresh_tokens",
