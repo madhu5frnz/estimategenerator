@@ -518,7 +518,7 @@ def get_general_abstract(version_id: uuid.UUID, auth: Auth, db: DB) -> Envelope[
                 GaItemOut(
                     sl_no=sl,
                     item_id=i.id,
-                    code=i.item_no or sl,
+                    code=i.item_no or (i.rate_snapshot or {}).get("item_code") or sl,
                     description=i.description,
                     quantity=_s(i.quantity),
                     rate=_s(i.rate),

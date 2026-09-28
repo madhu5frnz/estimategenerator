@@ -10,7 +10,14 @@ import { inr } from "@/lib/format";
 
 import { sortUnits, type WorkspaceProps } from "./context";
 
-export function BoqTab({ version, mutate, units, editable, onShowLines }: WorkspaceProps & { onShowLines: () => void }) {
+export function BoqTab({
+  version,
+  mutate,
+  units,
+  editable,
+  onShowLines,
+  onShowData,
+}: WorkspaceProps & { onShowLines: () => void; onShowData: (itemId: string) => void }) {
   const vid = version.version.id;
   const [newSection, setNewSection] = useState("");
   const [picking, setPicking] = useState<Item | null>(null);
@@ -128,7 +135,7 @@ export function BoqTab({ version, mutate, units, editable, onShowLines }: Worksp
                       onSave={saveItem(item, "rate")}
                       className={!item.rate && item.quantity ? "text-warn" : ""}
                     />
-                    <RateSource item={item} editable={editable} onPick={() => setPicking(item)} />
+                    <RateSource item={item} editable={editable} onPick={() => setPicking(item)} onData={() => onShowData(item.id)} />
                   </td>
                   <td className="num px-2 py-1.5 text-right">{item.amount ? inr(item.amount).slice(1) : "—"}</td>
                   <td>
@@ -177,8 +184,7 @@ export function BoqTab({ version, mutate, units, editable, onShowLines }: Worksp
         </table>
       </div>
       <p className="text-xs text-muted">
-        {version.totals.amount_in_words}. Contingencies, other charges and GST are added in the Abstract tab
-        {version.totals.grand_total !== version.totals.works_subtotal ? ` (grand total ${inr(version.totals.grand_total)})` : ""}.
+        {version.totals.amount_in_words}. Labour cess, NAC, seigniorage and GST are added in the General Abstract.
       </p>
       {picking ? (
         <RatePicker
@@ -217,7 +223,7 @@ export function BoqTab({ version, mutate, units, editable, onShowLines }: Worksp
   );
 }
 
-function RateSource({ item, editable, onPick }: { item: Item; editable: boolean; onPick: () => void }) {
+function RateSource({ item, editable, onPick, onData }: { item: Item; editable: boolean; onPick: () => void; onData: () => void }) {
   const info = item.rate_info;
   if (!info && !editable) return null;
   return (
@@ -227,6 +233,11 @@ function RateSource({ item, editable, onPick }: { item: Item; editable: boolean;
           {info.item_code}
           {info.is_demo ? " · demo" : ""}
         </span>
+      ) : null}
+      {info ? (
+        <button onClick={onData} className="text-accent hover:underline" aria-label={`Data sheet of item ${item.item_no_display}`}>
+          data
+        </button>
       ) : null}
       {editable ? (
         <button onClick={onPick} className="text-accent hover:underline" aria-label={`Pick a rate for item ${item.item_no_display}`}>

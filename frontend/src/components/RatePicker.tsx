@@ -119,12 +119,18 @@ export function RatePicker({
                 const mismatch = Boolean(item.unit && item.unit !== r.unit);
                 return (
                   <tr key={r.id} className="border-t border-line align-top">
-                    <td className="px-2 py-1.5 font-mono text-xs">{r.item_code}</td>
+                    <td className="px-2 py-1.5 font-mono text-xs">
+                      {r.item_code}
+                      {r.sl_no ? <div className="text-muted">Sl {r.sl_no}</div> : null}
+                    </td>
                     <td className="px-2 py-1.5">
                       {r.description}
                       <div className="mt-0.5 flex flex-wrap gap-1 text-xs text-muted">
                         {r.source_label}
                         {r.is_demo ? <Badge tone="warn">Demo · not official SOR</Badge> : null}
+                        {r.analysis_status === "verified" || r.analysis_status === "rounded" ? <Badge tone="ok">Data sheet</Badge> : null}
+                        {r.analysis_status === "unverified" ? <Badge tone="warn">Printed rate only</Badge> : null}
+                        {r.labour_component ? <span>labour {r.labour_component}</span> : null}
                         {r.is_expired ? <Badge tone="warn">Expired</Badge> : null}
                       </div>
                     </td>

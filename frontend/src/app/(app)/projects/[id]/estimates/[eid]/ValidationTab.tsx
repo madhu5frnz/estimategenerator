@@ -75,7 +75,7 @@ function Group({ title, tone, findings, onGoTo }: { title: string; tone: "bad" |
                 Open
               </button>
             ) : f.rule_id.startsWith("GST") ? (
-              <button className="text-xs text-accent hover:underline" onClick={() => onGoTo("abstract")}>
+              <button className="text-xs text-accent hover:underline" onClick={() => onGoTo("general-abstract")}>
                 Open
               </button>
             ) : null}

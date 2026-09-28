@@ -99,6 +99,7 @@ export function RateDatabase() {
               {s.is_demo ? <Badge tone="warn">Demo · not official SOR</Badge> : null}
               {s.owned ? <Badge tone="accent">Your workspace</Badge> : null}
               {s.verification_status === "user_entered" ? <Badge>Entered by you</Badge> : null}
+              {s.verification_status === "imported_unverified" ? <Badge tone="warn">Imported from the book · verify</Badge> : null}
               {s.is_expired ? <Badge tone="warn">Expired</Badge> : null}
               <Badge>{s.item_count} items</Badge>
             </div>
@@ -170,6 +171,8 @@ export function RateDatabase() {
                 <td className="num px-2 py-1.5 text-right">{r.rate_display}</td>
                 <td className="px-2 py-1.5 text-xs">
                   {r.source_label} {r.is_demo ? <Badge tone="warn">Demo</Badge> : null}
+                  {r.analysis_status === "verified" || r.analysis_status === "rounded" ? <Badge tone="ok">Data sheet</Badge> : null}
+                  {r.analysis_status === "unverified" ? <Badge tone="warn">Printed rate only</Badge> : null}
                 </td>
                 <td className="px-2 py-1.5 text-right">
                   {r.can_edit ? (

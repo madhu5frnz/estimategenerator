@@ -38,6 +38,13 @@ export type GstConfig = Schemas["GstConfigOut"];
 export type Validation = Schemas["ValidationOut"];
 export type Finding = Schemas["FindingOut"];
 export type EstimateDefaults = Schemas["DefaultsOut"];
+export type MethodSettings = Schemas["SettingsOut"];
+export type LeadStatement = Schemas["LeadStatementOut"];
+export type LeadRow = Schemas["LeadOut"];
+export type Analysis = Schemas["AnalysisOut"];
+export type AnalysisRow = Schemas["AnalysisRowOut"];
+export type Seigniorage = Schemas["SeigniorageOut"];
+export type GeneralAbstract = Schemas["GeneralAbstractOut"];
 
 export class ApiError extends Error {
   constructor(

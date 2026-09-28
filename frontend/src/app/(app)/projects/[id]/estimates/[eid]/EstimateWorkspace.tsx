@@ -9,19 +9,25 @@ import { Alert, Badge, Button, Field, Input } from "@/components/ui";
 import { api, ApiError, post, type Estimate, type Template, type Unit, type Version, type VersionSummary } from "@/lib/api";
 import { indianDate } from "@/lib/format";
 
-import { AbstractTab } from "./AbstractTab";
 import { BoqTab } from "./BoqTab";
 import type { Mutate } from "./context";
+import { DataTab } from "./DataTab";
 import { DetailedTab } from "./DetailedTab";
+import { GeneralAbstractTab } from "./GeneralAbstractTab";
+import { LeadTab } from "./LeadTab";
 import { ParametersTab } from "./ParametersTab";
+import { SeigniorageTab } from "./SeigniorageTab";
 import { ValidationTab } from "./ValidationTab";
 import { VersionsTab } from "./VersionsTab";
 
 const TABS = [
   { key: "boq", label: "BOQ" },
   { key: "detailed", label: "Detailed estimate" },
+  { key: "data", label: "Data" },
+  { key: "lead", label: "Lead statement" },
+  { key: "seigniorage", label: "Seigniorage" },
+  { key: "general-abstract", label: "General Abstract" },
   { key: "parameters", label: "Parameters" },
-  { key: "abstract", label: "Abstract" },
   { key: "validation", label: "Validation" },
   { key: "versions", label: "Versions" },
 ] as const;
@@ -35,6 +41,7 @@ export function EstimateWorkspace({ projectId, estimateId }: { projectId: string
   const params = useSearchParams();
   const tab = (params.get("tab") ?? "boq") as (typeof TABS)[number]["key"];
   const requestedVersion = params.get("v");
+  const itemParam = params.get("item");
 
   const [estimate, setEstimate] = useState<Estimate | null>(null);
   const [version, setVersion] = useState<Version | null>(null);
@@ -47,9 +54,10 @@ export function EstimateWorkspace({ projectId, estimateId }: { projectId: string
   const [freezing, setFreezing] = useState(false);
 
   const go = useCallback(
-    (changes: { tab?: string; v?: string | null }) => {
+    (changes: { tab?: string; v?: string | null; item?: string }) => {
       const next = new URLSearchParams(params.toString());
       if (changes.tab) next.set("tab", changes.tab);
+      if (changes.item) next.set("item", changes.item);
       if (changes.v === null) next.delete("v");
       else if (changes.v) next.set("v", changes.v);
       router.replace(`${pathname}?${next.toString()}`, { scroll: false });
@@ -205,10 +213,15 @@ export function EstimateWorkspace({ projectId, estimateId }: { projectId: string
         ))}
       </nav>
 
-      {tab === "boq" ? <BoqTab {...props} onShowLines={() => go({ tab: "detailed" })} /> : null}
+      {tab === "boq" ? (
+        <BoqTab {...props} onShowLines={() => go({ tab: "detailed" })} onShowData={(item) => go({ tab: "data", item })} />
+      ) : null}
+      {tab === "data" ? <DataTab {...props} itemId={itemParam} onPickItem={(item) => go({ item })} /> : null}
+      {tab === "lead" ? <LeadTab {...props} /> : null}
+      {tab === "seigniorage" ? <SeigniorageTab {...props} /> : null}
+      {tab === "general-abstract" ? <GeneralAbstractTab {...props} onOpenData={(item) => go({ tab: "data", item })} /> : null}
       {tab === "detailed" ? <DetailedTab {...props} /> : null}
       {tab === "parameters" ? <ParametersTab {...props} /> : null}
-      {tab === "abstract" ? <AbstractTab {...props} /> : null}
       {tab === "validation" ? <ValidationTab {...props} onGoTo={(t) => go({ tab: t })} /> : null}
       {tab === "versions" ? (
         <VersionsTab

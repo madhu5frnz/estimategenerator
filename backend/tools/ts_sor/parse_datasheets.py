@@ -159,13 +159,27 @@ def parse(text: str) -> list[dict]:
                     continue
                 if up.startswith("ADD CONTRACTOR"):
                     continue
+                heading = re.fullmatch(r"(?:\d{1,2}\s+)?([A-Za-z][A-Za-z .()/-]{2,40})", ln)
+                if heading and not ROW.match(ln):
+                    item["group_label"] = heading.group(
+                        1
+                    ).strip()  # e.g. "7 mazdoor" over "for laying"
+                    continue
                 r = ROW.match(ln)
+                if r and r.group("sl"):
+                    item.pop("group_label", None)
                 if r:
+                    name, unit = r.group("name").strip(), r.group("unit").strip()
+                    if " " in unit:  # "work" + "inspector Day": words before the unit are the name
+                        *head, unit = unit.split()
+                        name = f"{name} {' '.join(head)}".strip()
+                    if item.get("group_label") and name.lower().startswith("for "):
+                        name = f"{item['group_label']} {name}"
                     item["sections"][section].append(
                         {
                             "sl": r.group("sl"),
-                            "name": r.group("name").strip(),
-                            "unit": r.group("unit").strip(),
+                            "name": name,
+                            "unit": unit,
                             "qty": r.group("qty"),
                             "rate": r.group("rate"),
                             "amount": r.group("amt"),

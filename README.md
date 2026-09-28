@@ -5,7 +5,7 @@ AI-assisted estimate, BOQ and quantity generation for Indian civil engineers and
 > **AI interprets. The deterministic engine calculates. The rate database supplies rates. The user verifies.**
 > Every important number traces back to a formula or a source.
 
-**Status:** M0 (foundation), M1 (units and quantity engine), M2 (accounts, projects, dashboard), M3 (estimates, BOQ, measurements, parameters, versions), M4 (AI estimate) and M5 (rates, abstract, GST and charges, validation) are done. Next: M6 (exports: PDF, Excel, Word). See [milestones](docs/design/08-development-milestones.md).
+**Status:** M0 (foundation), M1 (units and quantity engine), M2 (accounts, projects, dashboard), M3 (estimates, BOQ, measurements, parameters, versions), M4 (AI estimate) M5 (rates, abstract, GST and charges, validation) and M5b (Telangana I&CAD method: Standard Data 2026-27, data sheets, lead statement, seigniorage, General Abstract) are done. Next: M6 (exports: PDF, Excel, Word). See [milestones](docs/design/08-development-milestones.md).
 
 No AI API key is needed to develop or run the app. Without one, the rules-based extractor is used (see [doc 06 §6.3](docs/design/06-ai-prompt-architecture.md)).
 
@@ -71,6 +71,13 @@ cd frontend && npm run lint && npm run typecheck && npm run build
   * **Validation:** recalculates every measurement line and checks units, missing or zero quantities, missing rates, unit/rate mismatches, demo and expired rates, amounts that don't equal quantity × rate (including rows changed outside the app), duplicate items, unconfirmed AI or default values, and GST settings. A clean run says "Calculation checks passed", never that the engineering is confirmed.
   * **Estimate defaults:** a workspace can set the GST, charges and rounding new estimates start with (Settings).
   * Saving a version keeps its charges, GST and grand total; the next draft starts from them.
+* **Telangana I&CAD estimates (M5b)**, built from the department's own estimates in `reference/ts-2026-27/`:
+  * **Standard Data 2026-27** (Zone III) is in the rate list: 363 items with rate and labour component, imported from the published book and marked "imported – verify". 283 items carry their data sheet; each was recomputed and matches the printed rate (266 exactly, 17 within the book's rounding). The rest use the printed rate only and say so.
+  * **Data tab:** the rate analysis of each item as in the book (A materials, B machinery, C labour, 13.615 % overheads and profit, per analysis unit). Components the work does not need can be omitted; cement/steel rate corrections and conveyance from the lead statement are added; the BOQ uses the "Or say" rate.
+  * **Lead statement:** material, source and distance; charges from the SoR lead table of the zone (e.g. sand 16 km in Zone III: 128.60 − 48.20 + 11 × 19.30 = Rs 292.70). Changing a distance reprices every item that uses it.
+  * **Seigniorage:** lines follow the item quantities; metal and sand factors come from the concrete mix in the item; DMF, SMET and permit fee per the settings (defaults from the department's estimates, to be confirmed against the current G.O.).
+  * **General Abstract:** E.C.V., labour cess 1 %, NAC 0.1 %, seigniorage, DMF, SMET, permit fee, GST 18 % on Part A + B, lump-sum provisions, rounding and unforeseen, total in lakhs. Rounding conventions are settings, because estimates differ.
+  * Built through the app, the UT at Km 8.388 estimate reproduces the department's figures (IRR-CCDW-2-3 at Rs 6,649.30, total Rs 9,78,221.00; the original prints .03 because it keeps a pipe rate to four decimals).
 * **Web**: the app shell with navigation and the disclaimer footer, plus a working **Quantity Calculator** page (`/calculator`).
 * **Typed API**: the frontend's API types are generated from the backend's OpenAPI schema (`npm run gen:api`), and CI fails if they drift.
 
