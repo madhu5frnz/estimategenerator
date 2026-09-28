@@ -6,7 +6,7 @@ import { post } from "@/lib/api";
 
 import { useSession } from "./Session";
 
-export function TopBar() {
+export function UserMenu() {
   const { me } = useSession();
   const [busy, setBusy] = useState(false);
 
@@ -22,12 +22,12 @@ export function TopBar() {
   }
 
   return (
-    <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-1 border-b border-line px-6 py-2 text-xs">
-      <span className="text-muted">
-        {me.organization.name} · <span className="font-medium text-ink">{me.subscription.plan_name} plan</span>
+    <div className="flex items-center gap-2 text-xs">
+      <span className="hidden text-right leading-tight sm:block">
+        <span className="block font-medium">{me.user.full_name}</span>
+        <span className="block text-muted">{me.organization.name}</span>
       </span>
-      <span className="font-medium">{me.user.full_name}</span>
-      <button onClick={signOut} disabled={busy} className="rounded px-2 py-1 text-accent hover:bg-panel">
+      <button onClick={signOut} disabled={busy} className="rounded-full border border-line bg-surface px-3 py-1 font-medium hover:bg-panel">
         Sign out
       </button>
     </div>
@@ -39,7 +39,7 @@ export function VerifyEmailBanner() {
   const [sent, setSent] = useState(false);
   if (me.user.email_verified) return null;
   return (
-    <div role="status" className="border-b border-warn/30 bg-amber-50 px-6 py-2 text-xs text-warn">
+    <div role="status" className="no-print border-b border-warn/30 bg-accent-soft px-6 py-2 text-xs text-warn">
       Please confirm your email address ({me.user.email}). Check your inbox for the link.{" "}
       {sent ? (
         <span>A new link has been sent.</span>

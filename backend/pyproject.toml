@@ -63,6 +63,7 @@ extend-immutable-calls = ["fastapi.Query", "fastapi.Depends"]
 "app/domain/validation/rules.py" = ["E501"]  # one finding message per line
 "tests/**" = ["S", "E501"]
 "tools/ts_sor/*.py" = ["E501"]  # PDF layout patterns and transcribed tables read best on one line
+"app/services/docket.py" = ["E501"]  # check-slip wording kept one point per line
 
 [tool.mypy]
 python_version = "3.11"

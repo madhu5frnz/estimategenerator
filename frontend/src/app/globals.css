@@ -1,26 +1,62 @@
 @import "tailwindcss";
 
+/* Dark mode follows the `dark` class on <html> (set by the theme toggle). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Telangana I&CAD docket look: warm paper, ink, and a gold accent. Components use these
+   tokens only, so the dark theme below re-colours the whole app. */
 @theme {
-  --color-ink: #1f2933;
-  --color-muted: #616e7c;
-  --color-line: #d9e2ec;
-  --color-panel: #f5f7fa;
-  --color-accent: #0f609b;
-  --color-accent-soft: #e6f0f8;
-  --color-ok: #1f7a4d;
+  --color-ink: #231d14;
+  --color-muted: #7a6d59;
+  --color-line: #e8dfcc;
+  --color-panel: #f6f1e5;
+  --color-surface: #fffdf8;
+  --color-page: #fbf8f1;
+  --color-accent: #9a6b12;
+  --color-accent-strong: #e9b949;
+  --color-accent-soft: #fbf0d6;
+  --color-ok: #2f7a4a;
   --color-warn: #a86300;
   --color-bad: #b42318;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Libre Baskerville", Georgia, Cambria, "Times New Roman", serif;
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+.dark {
+  --color-ink: #f1eadb;
+  --color-muted: #a99d87;
+  --color-line: #3b3428;
+  --color-panel: #221e17;
+  --color-surface: #1b1812;
+  --color-page: #14120d;
+  --color-accent: #e3b24f;
+  --color-accent-strong: #e9b949;
+  --color-accent-soft: #3a2f18;
+  --color-ok: #6cc08b;
+  --color-warn: #e5a54b;
+  --color-bad: #f08070;
+  color-scheme: dark;
 }
 
 html,
 body {
-  background: #ffffff;
+  background: var(--color-page);
   color: var(--color-ink);
 }
 
 /* Engineering numbers line up in columns. */
 .num {
   font-variant-numeric: tabular-nums;
+}
+
+/* Printed sheets (Ctrl+P) show the sheet only. */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  html,
+  body {
+    background: #fff;
+  }
 }

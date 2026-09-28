@@ -908,6 +908,24 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/versions/{version_id}/docket": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Docket */
+        get: operations["get_docket_api_v1_versions__version_id__docket_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Patch Docket */
+        patch: operations["patch_docket_api_v1_versions__version_id__docket_patch"];
+        trace?: never;
+    };
     "/api/v1/versions/{version_id}/freeze": {
         parameters: {
             query?: never;
@@ -1523,6 +1541,17 @@ export interface components {
             /** Section Keys */
             section_keys?: string[] | null;
         };
+        /** CheckSlipOut */
+        CheckSlipOut: {
+            /** Answer */
+            answer: string;
+            /** Auto */
+            auto: boolean;
+            /** No */
+            no: string;
+            /** Question */
+            question: string;
+        };
         /** ComponentChoice */
         ComponentChoice: {
             /**
@@ -1720,6 +1749,65 @@ export interface components {
             /** Rounding */
             rounding: string;
         };
+        /** DocketIn */
+        DocketIn: {
+            /** Certificates */
+            certificates?: string[] | null;
+            /** Check Slip */
+            check_slip?: {
+                [key: string]: string | null;
+            } | null;
+            /** Cover */
+            cover?: {
+                [key: string]: string | null;
+            } | null;
+            /** Quotations */
+            quotations?: {
+                [key: string]: {
+                    [key: string]: string | null;
+                };
+            } | null;
+            /** Signatories */
+            signatories?: string[] | null;
+        };
+        /** DocketOut */
+        DocketOut: {
+            /** Amount */
+            amount: string;
+            /** Amount Display */
+            amount_display: string;
+            /** Amount In Lakhs */
+            amount_in_lakhs: string;
+            /** Amount In Words */
+            amount_in_words: string;
+            /** Can Edit */
+            can_edit: boolean;
+            /** Certificates */
+            certificates: string[];
+            /** Check Slip */
+            check_slip: components["schemas"]["CheckSlipOut"][];
+            /** Cover */
+            cover: {
+                [key: string]: string;
+            };
+            /** Estimate Number */
+            estimate_number: string;
+            /** Quotations */
+            quotations: components["schemas"]["QuotationOut"][];
+            /** Signatories */
+            signatories: string[];
+            /** Ssr Year */
+            ssr_year: string;
+            /** Status */
+            status: string;
+            /**
+             * Version Id
+             * Format: uuid
+             */
+            version_id: string;
+            /** Version No */
+            version_no: number;
+        };
         /** Envelope[AbstractOut] */
         Envelope_AbstractOut_: {
             data: components["schemas"]["AbstractOut"];
@@ -1783,6 +1871,16 @@ export interface components {
         /** Envelope[DefaultsOut] */
         Envelope_DefaultsOut_: {
             data: components["schemas"]["DefaultsOut"];
+            meta: components["schemas"]["Meta"];
+            /**
+             * Success
+             * @default true
+             */
+            success: boolean;
+        };
+        /** Envelope[DocketOut] */
+        Envelope_DocketOut_: {
+            data: components["schemas"]["DocketOut"];
             meta: components["schemas"]["Meta"];
             /**
              * Success
@@ -2952,6 +3050,35 @@ export interface components {
             status?: ("draft" | "in_progress" | "completed" | "archived") | null;
             /** Work Category Id */
             work_category_id?: string | null;
+        };
+        /** QuotationOut */
+        QuotationOut: {
+            /** Description */
+            description: string;
+            /**
+             * Item Id
+             * Format: uuid
+             */
+            item_id: string;
+            /**
+             * Line Key
+             * Format: uuid
+             */
+            line_key: string;
+            /** Note */
+            note: string;
+            /** Quantity */
+            quantity: string | null;
+            /** Rate */
+            rate: string | null;
+            /** Reference */
+            reference: string;
+            /** Sl No */
+            sl_no: string;
+            /** Supplier */
+            supplier: string;
+            /** Unit */
+            unit: string | null;
         };
         /** RateInfoOut */
         RateInfoOut: {
@@ -5928,6 +6055,72 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Envelope_AbstractOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_docket_api_v1_versions__version_id__docket_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_DocketOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    patch_docket_api_v1_versions__version_id__docket_patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DocketIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_DocketOut_"];
                 };
             };
             /** @description Validation Error */

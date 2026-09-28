@@ -3,8 +3,8 @@ import type { ComponentProps, ReactNode } from "react";
 
 type ButtonVariant = "primary" | "secondary" | "danger" | "ghost";
 const VARIANTS: Record<ButtonVariant, string> = {
-  primary: "bg-accent text-white hover:bg-accent/90",
-  secondary: "border border-line bg-white text-ink hover:bg-panel",
+  primary: "bg-accent-strong text-[#2b1d05] shadow-sm hover:brightness-95",
+  secondary: "border border-line bg-surface text-ink hover:bg-panel",
   danger: "bg-bad text-white hover:bg-bad/90",
   ghost: "text-ink hover:bg-panel",
 };
@@ -77,7 +77,7 @@ export function Field({
 }
 
 const INPUT =
-  "rounded border border-line bg-white px-3 py-2 disabled:bg-panel disabled:text-muted aria-[invalid=true]:border-bad";
+  "rounded border border-line bg-surface px-3 py-2 disabled:bg-panel disabled:text-muted aria-[invalid=true]:border-bad";
 
 /** Full width unless the caller sets its own width (w-auto, w-36, max-w-sm stays full). */
 function inputClass(className?: string): string {
@@ -105,10 +105,10 @@ export function Card({ title, actions, children, className = "" }: {
   className?: string;
 }) {
   return (
-    <section className={`rounded border border-line bg-white ${className}`}>
+    <section className={`rounded-lg border border-line bg-surface shadow-sm ${className}`}>
       {title || actions ? (
         <header className="flex flex-wrap items-center justify-between gap-2 border-b border-line px-4 py-3">
-          <h2 className="font-semibold">{title}</h2>
+          <h2 className="font-serif text-base font-bold">{title}</h2>
           {actions}
         </header>
       ) : null}
@@ -119,9 +119,9 @@ export function Card({ title, actions, children, className = "" }: {
 
 export function Alert({ tone = "bad", children }: { tone?: "bad" | "ok" | "warn" | "info"; children: ReactNode }) {
   const tones = {
-    bad: "border-bad/40 bg-red-50 text-bad",
-    ok: "border-ok/40 bg-green-50 text-ok",
-    warn: "border-warn/40 bg-amber-50 text-warn",
+    bad: "border-bad/40 bg-bad/10 text-bad",
+    ok: "border-ok/40 bg-ok/10 text-ok",
+    warn: "border-warn/40 bg-accent-soft text-warn",
     info: "border-accent/30 bg-accent-soft text-accent",
   };
   return (
@@ -135,8 +135,8 @@ export function Badge({ children, tone = "neutral" }: { children: ReactNode; ton
   const tones = {
     neutral: "bg-panel text-muted",
     accent: "bg-accent-soft text-accent",
-    ok: "bg-green-50 text-ok",
-    warn: "bg-amber-50 text-warn",
+    ok: "bg-ok/10 text-ok",
+    warn: "bg-accent-soft text-warn",
   };
   return <span className={`inline-block rounded px-2 py-0.5 text-xs font-medium ${tones[tone]}`}>{children}</span>;
 }

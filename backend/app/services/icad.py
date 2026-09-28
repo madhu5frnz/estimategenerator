@@ -76,6 +76,7 @@ def default_config() -> dict[str, Any]:
             "levy_rounding": "rupee",
             "sand_split": "natural",  # or "50_50" (GO Ms 37: M-sand and river sand 50:50)
         },
+        "docket": {},  # Cover, Check slip, Certificates, Quotations (see services/docket.py)
     }
 
 
@@ -129,7 +130,10 @@ def update_config(
     for key, value in changes.items():
         if key not in new:
             raise AppError("VALIDATION_ERROR", f"Unknown setting '{key}'.")
-        new[key] = {**new[key], **value} if isinstance(new[key], dict) else value
+        if key == "docket":
+            new[key] = value  # docket.update() sends the whole docket
+        else:
+            new[key] = {**new[key], **value} if isinstance(new[key], dict) else value
     _check_config(new)
     if new != old:
         scope.version.method_config = new

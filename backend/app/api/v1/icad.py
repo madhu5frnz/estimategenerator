@@ -16,6 +16,7 @@ from app.core.errors import AppError
 from app.domain.icad.rate_analysis import DataResult
 from app.domain.money import amount_in_words, format_inr
 from app.models import RateItem
+from app.services import docket
 from app.services import estimates as es
 from app.services import icad as service
 from app.services.context import AuthContext
@@ -546,3 +547,88 @@ def get_general_abstract(version_id: uuid.UUID, auth: Auth, db: DB) -> Envelope[
             settings=g.config["abstract"],
         )
     )
+
+
+# ==================================================================== docket
+class CheckSlipOut(BaseModel):
+    no: str
+    question: str
+    answer: str
+    auto: bool
+
+
+class QuotationOut(BaseModel):
+    item_id: uuid.UUID
+    line_key: uuid.UUID
+    sl_no: str
+    description: str
+    unit: str | None
+    quantity: str | None
+    rate: str | None
+    supplier: str
+    reference: str
+    note: str
+
+
+class DocketOut(BaseModel):
+    version_id: uuid.UUID
+    version_no: int
+    status: str
+    can_edit: bool
+    estimate_number: str
+    cover: dict[str, str]
+    signatories: list[str]
+    amount: str
+    amount_display: str
+    amount_in_lakhs: str
+    amount_in_words: str
+    ssr_year: str
+    check_slip: list[CheckSlipOut]
+    certificates: list[str]
+    quotations: list[QuotationOut]
+
+
+class DocketIn(BaseModel):
+    cover: dict[str, str | None] | None = None
+    signatories: list[str] | None = Field(default=None, max_length=6)
+    check_slip: dict[str, str | None] | None = None
+    certificates: list[str] | None = Field(default=None, max_length=30)
+    quotations: dict[str, dict[str, str | None]] | None = None
+
+
+def docket_out(db: DB, auth: AuthContext, version_id: uuid.UUID) -> DocketOut:
+
+    d = docket.build(db, es.get_version(db, auth, version_id))
+    v = d.scope.version
+    return DocketOut(
+        version_id=v.id,
+        version_no=v.version_no,
+        status=v.status,
+        can_edit=_can_edit(d.scope),
+        estimate_number=d.scope.estimate.estimate_number,
+        cover=d.config["cover"],
+        signatories=d.config["signatories"],
+        amount=format(d.amount, "f"),
+        amount_display=format_inr(d.amount),
+        amount_in_lakhs=format((d.amount / docket.LAKH).quantize(Decimal("0.01")), "f"),
+        amount_in_words=docket.words(d.amount),
+        ssr_year=docket.SSR_YEAR,
+        check_slip=[CheckSlipOut(**row) for row in d.check_slip],
+        certificates=d.config["certificates"],
+        quotations=[
+            QuotationOut(**{**q, "quantity": _s(q["quantity"]), "rate": _s(q["rate"])})
+            for q in d.quotations
+        ],
+    )
+
+
+@router.get("/versions/{version_id}/docket", response_model=Envelope[DocketOut])
+def get_docket(version_id: uuid.UUID, auth: Auth, db: DB) -> Envelope[DocketOut]:
+    return ok(docket_out(db, auth, version_id))
+
+
+@router.patch("/versions/{version_id}/docket", response_model=Envelope[DocketOut])
+def patch_docket(version_id: uuid.UUID, body: DocketIn, auth: Auth, db: DB) -> Envelope[DocketOut]:
+
+    docket.update(db, auth, version_id, {k: v for k, v in _fields(body).items() if v is not None})
+    return ok(docket_out(db, auth, version_id))

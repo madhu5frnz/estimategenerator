@@ -82,7 +82,7 @@ export function DataTab({ version, mutate, itemId, onPickItem }: WorkspaceProps 
         </Alert>
       ) : null}
       {data?.has_analysis ? (
-        <div className="space-y-4 rounded border border-line bg-white p-4">
+        <div className="space-y-4 rounded border border-line bg-surface p-4">
           <div className="flex flex-wrap items-start justify-between gap-2">
             <div>
               <div className="font-semibold">{data.code}</div>

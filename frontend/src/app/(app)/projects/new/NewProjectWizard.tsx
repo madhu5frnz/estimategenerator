@@ -63,7 +63,7 @@ export function NewProjectWizard() {
           <li
             key={label}
             aria-current={i === step ? "step" : undefined}
-            className={`rounded px-3 py-1 ${i === step ? "bg-accent text-white" : i < step ? "bg-accent-soft text-accent" : "bg-panel text-muted"}`}
+            className={`rounded px-3 py-1 ${i === step ? "bg-accent-strong text-[#2b1d05]" : i < step ? "bg-accent-soft text-accent" : "bg-panel text-muted"}`}
           >
             {i + 1}. {label}
           </li>

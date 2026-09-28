@@ -18,7 +18,7 @@ const NAV = [
 export function Sidebar() {
   const pathname = usePathname();
   return (
-    <nav aria-label="Main" className="flex gap-0.5 overflow-x-auto px-3 pb-2 md:flex-col md:p-3">
+    <nav aria-label="Main" className="flex gap-0.5 overflow-x-auto px-3 py-2 md:flex-col md:p-3">
       {NAV.map((item) => {
         const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
         return (
@@ -27,10 +27,10 @@ export function Sidebar() {
             href={item.href}
             aria-current={active ? "page" : undefined}
             className={
-              "shrink-0 rounded px-3 py-2 whitespace-nowrap " +
+              "shrink-0 rounded-lg px-3 py-2 whitespace-nowrap " +
               (active
-                ? "bg-accent-soft font-medium text-accent"
-                : "text-ink hover:bg-panel")
+                ? "border border-accent-strong/60 bg-surface font-semibold text-ink shadow-sm"
+                : "border border-transparent text-ink hover:bg-surface")
             }
           >
             {item.label}

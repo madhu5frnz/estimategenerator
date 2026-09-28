@@ -15,7 +15,7 @@ export function Modal({ title, onClose, children, wide }: { title: string; onClo
       aria-label={title}
       onClose={onClose}
       onClick={(e) => e.target === ref.current && onClose()}
-      className={`m-auto w-[calc(100%-2rem)] rounded border border-line p-0 shadow-xl backdrop:bg-black/30 ${wide ? "max-w-3xl" : "max-w-lg"}`}
+      className={`m-auto w-[calc(100%-2rem)] rounded-lg border border-line bg-surface p-0 text-ink shadow-xl backdrop:bg-black/30 ${wide ? "max-w-3xl" : "max-w-lg"}`}
     >
       <div className="flex items-center justify-between border-b border-line px-4 py-3">
         <h2 className="font-semibold">{title}</h2>

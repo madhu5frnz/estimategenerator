@@ -111,7 +111,7 @@ function ItemLines({
             </thead>
             <tbody>
               {item.lines.map((line, index) => (
-                <tr key={line.id} className={`border-t border-line align-top ${line.is_deduction ? "bg-amber-50/50" : ""}`}>
+                <tr key={line.id} className={`border-t border-line align-top ${line.is_deduction ? "bg-accent-soft/50" : ""}`}>
                   <td className="px-2 py-1.5 text-muted">{LETTERS[index] ?? index + 1}</td>
                   <td>
                     <EditableCell label="Line description" value={line.description} editable={editable} onSave={save(line, "description")} />

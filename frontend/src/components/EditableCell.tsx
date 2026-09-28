@@ -67,7 +67,7 @@ export function EditableCell({ value, display, onSave, editable, label, numeric,
           void commit();
         }
       },
-      className: `w-full rounded border border-accent bg-white px-2 py-1 ${numeric ? "num text-right" : ""}`,
+      className: `w-full rounded border border-accent bg-surface px-2 py-1 ${numeric ? "num text-right" : ""}`,
     };
     return multiline ? <textarea rows={2} {...common} /> : <input inputMode={numeric ? "decimal" : undefined} {...common} />;
   }

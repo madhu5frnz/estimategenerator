@@ -121,7 +121,7 @@ export function Calculator() {
               setMode(m);
               reset();
             }}
-            className={`rounded px-3 py-1.5 ${mode === m ? "bg-accent text-white" : "text-ink hover:bg-panel"}`}
+            className={`rounded px-3 py-1.5 ${mode === m ? "bg-accent-strong text-[#2b1d05]" : "text-ink hover:bg-panel"}`}
           >
             {m === "template" ? "Standard formula" : "Custom formula"}
           </button>
@@ -138,7 +138,7 @@ export function Calculator() {
                 setTemplateId(e.target.value);
                 reset();
               }}
-              className="w-full max-w-md rounded border border-line bg-white px-3 py-2"
+              className="w-full max-w-md rounded border border-line bg-surface px-3 py-2"
             >
               {templates.map((t) => (
                 <option key={t.id} value={t.id}>
@@ -167,7 +167,7 @@ export function Calculator() {
               <select
                 value={outputUnit}
                 onChange={(e) => setOutputUnit(e.target.value)}
-                className="rounded border border-line bg-white px-3 py-2"
+                className="rounded border border-line bg-surface px-3 py-2"
               >
                 {formulaUnits(units).map((u) => (
                   <option key={u.code} value={u.code}>
@@ -234,7 +234,7 @@ export function Calculator() {
                         aria-label={`${p.label} unit`}
                         value={current?.unit ?? p.canonical_unit ?? ""}
                         onChange={(e) => setParam(p.name, { unit: e.target.value || null })}
-                        className="rounded border border-line bg-white px-2 py-1.5"
+                        className="rounded border border-line bg-surface px-2 py-1.5"
                       >
                         {mode === "custom" ? <option value="">(plain number)</option> : null}
                         {choices.map((u) => (
@@ -256,14 +256,14 @@ export function Calculator() {
         <button
           type="submit"
           disabled={busy}
-          className="rounded bg-accent px-4 py-2 font-medium text-white disabled:opacity-60"
+          className="rounded bg-accent-strong px-4 py-2 font-medium text-[#2b1d05] disabled:opacity-60"
         >
           {busy ? "Calculating…" : "Calculate"}
         </button>
       </form>
 
       {error ? (
-        <div role="alert" className="mt-5 rounded border border-bad/40 bg-red-50 p-3 text-bad">
+        <div role="alert" className="mt-5 rounded border border-bad/40 bg-bad/10 p-3 text-bad">
           {error.message}
           {error.requestId ? (
             <span className="mt-1 block text-xs opacity-70">Request id: {error.requestId}</span>

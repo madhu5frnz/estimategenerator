@@ -13,6 +13,7 @@ import { BoqTab } from "./BoqTab";
 import type { Mutate } from "./context";
 import { DataTab } from "./DataTab";
 import { DetailedTab } from "./DetailedTab";
+import { CertificatesSheet, CheckSlipSheet, CoverSheet, QuotationsSheet } from "./DocketSheets";
 import { GeneralAbstractTab } from "./GeneralAbstractTab";
 import { LeadTab } from "./LeadTab";
 import { ParametersTab } from "./ParametersTab";
@@ -20,18 +21,24 @@ import { SeigniorageTab } from "./SeigniorageTab";
 import { ValidationTab } from "./ValidationTab";
 import { VersionsTab } from "./VersionsTab";
 
-const TABS = [
-  { key: "boq", label: "BOQ" },
-  { key: "detailed", label: "Detailed estimate" },
-  { key: "data", label: "Data" },
-  { key: "lead", label: "Lead statement" },
-  { key: "seigniorage", label: "Seigniorage" },
-  { key: "general-abstract", label: "General Abstract" },
+/** The estimate as a departmental docket: the printed sheets in order, then working tools. */
+const SHEETS = [
+  { key: "cover", no: 1, label: "Cover Page", hint: "Name of work and amount of estimate" },
+  { key: "check-slip", no: 2, label: "Check Slip", hint: "Check slip accompanying the estimate" },
+  { key: "detailed", no: 3, label: "Detailed Estimate", hint: "Measurements: Nos x L x B x D" },
+  { key: "data", no: 4, label: "Data Rate Analysis", hint: "Rate analysis of each item (Standard Data 2026-27)" },
+  { key: "general-abstract", no: 5, label: "Abstract & Recap", hint: "Abstract estimate and General Abstract" },
+  { key: "lead", no: 6, label: "Lead & Quarry Chart", hint: "Lead statement from the SoR lead table" },
+  { key: "seigniorage", no: 7, label: "SMET & Seigniorage", hint: "Seigniorage, DMF, SMET and permit fee" },
+  { key: "certificates", no: 8, label: "Certificates", hint: "Statutory certificates accompanying the estimate" },
+  { key: "quotations", no: 9, label: "Quotations / Non-SOR", hint: "Items not priced from the SoR" },
+] as const;
+const TOOLS = [
+  { key: "boq", label: "Items (BOQ entry)" },
   { key: "parameters", label: "Parameters" },
   { key: "validation", label: "Validation" },
   { key: "versions", label: "Versions" },
 ] as const;
-const LATER = [{ label: "Export", milestone: "M6" }];
 
 type Problem = { message: string; requestId: string | null };
 
@@ -39,7 +46,7 @@ export function EstimateWorkspace({ projectId, estimateId }: { projectId: string
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
-  const tab = (params.get("tab") ?? "boq") as (typeof TABS)[number]["key"];
+  const tab = params.get("tab") ?? "boq";
   const requestedVersion = params.get("v");
   const itemParam = params.get("item");
 
@@ -124,95 +131,106 @@ export function EstimateWorkspace({ projectId, estimateId }: { projectId: string
   const draft = versions.find((v) => v.status === "draft");
   const props = { version, mutate, units, templates, editable: version.can_edit };
 
-  return (
-    <div className="space-y-4">
-      <div className="text-xs">
-        <Link href="/projects" className="text-accent hover:underline">
-          Projects
-        </Link>{" "}
-        /{" "}
-        <Link href={`/projects/${projectId}`} className="text-accent hover:underline">
-          {version.estimate.project_name}
-        </Link>{" "}
-        / {version.estimate.estimate_number}
-      </div>
+  const sheet = SHEETS.find((x) => x.key === tab);
+  const tool = TOOLS.find((x) => x.key === tab);
 
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <h1 className="text-xl font-semibold">
-            {version.estimate.title} <span className="text-base font-normal text-muted">{version.estimate.estimate_number}</span>
-          </h1>
-          <div className="mt-1 flex flex-wrap items-center gap-2 text-xs">
-            <Badge tone={frozen ? "neutral" : "accent"}>
-              V{version.version.version_no} · {frozen ? "Frozen (read-only)" : "Draft"}
-            </Badge>
-            {frozen && version.version.change_note ? <span className="text-muted">“{version.version.change_note}”</span> : null}
-            {frozen && version.version.frozen_at ? (
-              <span className="text-muted">
-                saved {indianDate(version.version.frozen_at)} by {version.version.frozen_by_name ?? "—"}
+  return (
+    <div className="-m-4 flex min-h-full flex-col md:-m-6 md:flex-row">
+      <aside className="no-print border-b border-line bg-panel md:w-64 md:shrink-0 md:border-r md:border-b-0">
+        <div className="p-4">
+          <Link href={`/projects/${projectId}`} className="text-xs text-muted hover:text-ink">
+            ← {version.estimate.project_name}
+          </Link>
+          <div className="mt-4 text-[10px] font-semibold tracking-[0.18em] text-muted uppercase">Departmental docket (9 sheets)</div>
+        </div>
+        <nav aria-label="Docket sheets" className="flex gap-1 overflow-x-auto px-2 pb-2 md:flex-col md:overflow-visible">
+          {SHEETS.map((x) => (
+            <DocketLink key={x.key} active={tab === x.key} onClick={() => go({ tab: x.key })} no={x.no} label={x.label} sub={x.key.replace("-", " ")} />
+          ))}
+          <div className="mt-3 hidden px-3 text-[10px] font-semibold tracking-[0.18em] text-muted uppercase md:block">Working</div>
+          {TOOLS.map((x) => (
+            <DocketLink key={x.key} active={tab === x.key} onClick={() => go({ tab: x.key })} label={x.label} />
+          ))}
+        </nav>
+      </aside>
+
+      <div className="min-w-0 flex-1 space-y-4 p-4 md:p-6">
+        <div className="no-print flex flex-wrap items-start justify-between gap-3 rounded-lg border border-line bg-surface px-4 py-3 shadow-sm">
+          <div className="min-w-0">
+            <div className="truncate text-sm font-bold tracking-wide uppercase">{version.estimate.project_name}</div>
+            <div className="mt-1 flex flex-wrap items-center gap-2 text-xs">
+              <span className="font-medium text-accent">
+                {version.estimate.title} · {version.estimate.estimate_number}
               </span>
+              <Badge tone={frozen ? "neutral" : "accent"}>
+                V{version.version.version_no} · {frozen ? "Saved (read-only)" : "Draft"}
+              </Badge>
+              {frozen && version.version.change_note ? <span className="text-muted">“{version.version.change_note}”</span> : null}
+              {frozen && version.version.frozen_at ? (
+                <span className="text-muted">
+                  saved {indianDate(version.version.frozen_at)} by {version.version.frozen_by_name ?? "—"}
+                </span>
+              ) : null}
+              {!version.can_edit && !frozen ? <Badge>Your role ({version.my_role}) is read-only</Badge> : null}
+            </div>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <select
+              id="version-select"
+              aria-label="Version"
+              value={version.version.id}
+              onChange={(e) => go({ v: e.target.value === draft?.id ? null : e.target.value })}
+              className="rounded-full border border-line bg-surface px-3 py-1.5 text-xs"
+            >
+              {versions.map((v) => (
+                <option key={v.id} value={v.id}>
+                  V{v.version_no} {v.status === "draft" ? "(draft)" : `— ${v.change_note ?? "saved"}`}
+                </option>
+              ))}
+            </select>
+            {version.can_edit ? (
+              <Button variant="secondary" className="rounded-full px-3 py-1.5 text-xs" onClick={() => setFreezing(true)}>
+                Save as version…
+              </Button>
             ) : null}
-            {!version.can_edit && !frozen ? <Badge>Your role ({version.my_role}) is read-only</Badge> : null}
+            <Button className="rounded-full px-3 py-1.5 text-xs" onClick={() => window.print()}>
+              Print sheet
+            </Button>
           </div>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <label className="text-xs text-muted" htmlFor="version-select">
-            Version
-          </label>
-          <select
-            id="version-select"
-            value={version.version.id}
-            onChange={(e) => go({ v: e.target.value === draft?.id ? null : e.target.value })}
-            className="rounded border border-line bg-white px-2 py-1.5"
-          >
-            {versions.map((v) => (
-              <option key={v.id} value={v.id}>
-                V{v.version_no} {v.status === "draft" ? "(draft)" : `— ${v.change_note ?? "frozen"}`}
-              </option>
-            ))}
-          </select>
-          {version.can_edit ? (
-            <Button variant="secondary" onClick={() => setFreezing(true)}>
-              Save as version…
-            </Button>
-          ) : null}
-        </div>
-      </div>
 
-      {frozen && draft ? (
-        <Alert tone="info">
-          You are viewing a saved version. Changes are made in the current draft.{" "}
-          <button className="underline" onClick={() => go({ v: null })}>
-            Open V{draft.version_no} (draft)
-          </button>
-        </Alert>
-      ) : null}
-      {notice ? <Alert tone="ok">{notice}</Alert> : null}
-      {problem ? (
-        <Alert>
-          {problem.message}
-          {problem.requestId ? <span className="block text-xs opacity-70">Request id: {problem.requestId}</span> : null}
-        </Alert>
-      ) : null}
+        {frozen && draft ? (
+          <Alert tone="info">
+            You are viewing a saved version. Changes are made in the current draft.{" "}
+            <button className="underline" onClick={() => go({ v: null })}>
+              Open V{draft.version_no} (draft)
+            </button>
+          </Alert>
+        ) : null}
+        {notice ? <Alert tone="ok">{notice}</Alert> : null}
+        {problem ? (
+          <Alert>
+            {problem.message}
+            {problem.requestId ? <span className="block text-xs opacity-70">Request id: {problem.requestId}</span> : null}
+          </Alert>
+        ) : null}
 
-      <nav aria-label="Estimate sections" className="flex flex-wrap gap-1 border-b border-line">
-        {TABS.map((t) => (
-          <button
-            key={t.key}
-            onClick={() => go({ tab: t.key })}
-            aria-current={tab === t.key ? "page" : undefined}
-            className={`-mb-px border-b-2 px-3 py-2 ${tab === t.key ? "border-accent font-medium text-accent" : "border-transparent text-ink hover:text-accent"}`}
-          >
-            {t.label}
-          </button>
-        ))}
-        {LATER.map((t) => (
-          <span key={t.label} title={`Arrives in ${t.milestone}`} className="px-3 py-2 text-muted/70">
-            {t.label} <span className="text-[10px]">({t.milestone})</span>
-          </span>
-        ))}
-      </nav>
+        {sheet ? (
+          <div className="flex items-start gap-3">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-ink font-semibold text-page">{sheet.no}</span>
+            <div>
+              <h1 className="font-serif text-2xl font-bold">{sheet.label}</h1>
+              <p className="text-xs text-muted">{sheet.hint}</p>
+            </div>
+          </div>
+        ) : (
+          <h1 className="font-serif text-2xl font-bold">{tool?.label ?? "Items (BOQ entry)"}</h1>
+        )}
 
+        {tab === "cover" ? <CoverSheet {...props} /> : null}
+        {tab === "check-slip" ? <CheckSlipSheet {...props} /> : null}
+        {tab === "certificates" ? <CertificatesSheet {...props} /> : null}
+        {tab === "quotations" ? <QuotationsSheet {...props} /> : null}
       {tab === "boq" ? (
         <BoqTab {...props} onShowLines={() => go({ tab: "detailed" })} onShowData={(item) => go({ tab: "data", item })} />
       ) : null}
@@ -230,6 +248,7 @@ export function EstimateWorkspace({ projectId, estimateId }: { projectId: string
           onOpen={(id) => go({ v: id === draft?.id ? null : id, tab: "boq" })}
         />
       ) : null}
+      </div>
 
       {freezing ? (
         <FreezeDialog
@@ -284,5 +303,31 @@ function FreezeDialog({ versionNo, onClose, onFreeze }: { versionNo: number; onC
         </div>
       </form>
     </Modal>
+  );
+}
+
+function DocketLink({ active, onClick, no, label, sub }: { active: boolean; onClick: () => void; no?: number; label: string; sub?: string }) {
+  return (
+    <button
+      onClick={onClick}
+      aria-current={active ? "page" : undefined}
+      className={`flex shrink-0 items-center gap-3 rounded-lg border px-3 py-2 text-left ${
+        active ? "border-accent-strong/70 bg-surface shadow-sm" : "border-transparent hover:bg-surface"
+      }`}
+    >
+      <span className="min-w-0 flex-1">
+        <span className="block text-sm font-semibold whitespace-nowrap">{label}</span>
+        {sub ? <span className="block text-[10px] text-muted uppercase">{sub}</span> : null}
+      </span>
+      {no ? (
+        <span
+          className={`flex h-5 w-5 shrink-0 items-center justify-center rounded text-[10px] font-semibold ${
+            active ? "bg-accent-strong text-[#2b1d05]" : "border border-line text-muted"
+          }`}
+        >
+          {no}
+        </span>
+      ) : null}
+    </button>
   );
 }

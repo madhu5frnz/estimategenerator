@@ -87,7 +87,7 @@ export function RateDatabase() {
               setOffset(0);
             }}
             aria-pressed={s.id === sourceId}
-            className={`rounded border p-3 text-left hover:border-accent ${s.id === sourceId ? "border-accent bg-accent-soft" : "border-line bg-white"}`}
+            className={`rounded border p-3 text-left hover:border-accent ${s.id === sourceId ? "border-accent bg-accent-soft" : "border-line bg-surface"}`}
           >
             <div className="font-medium">
               {s.sor_name} {s.year}

@@ -270,3 +270,55 @@ def test_settings_validation_and_book_in_rate_list(api: Api) -> None:
     status, _ = api.error("PATCH", f"/rate-items/{found['id']}", {"rate": 1})
     assert status == 409  # the imported book is read-only
     assert csrf(api.c)
+
+
+def test_docket_sheets(api: Api, db_session: Session) -> None:
+    vid, _ = ut_estimate(api, db_session)
+    d = api.get(f"/versions/{vid}/docket")
+    slip = {row["no"]: row for row in d["check_slip"]}
+    assert len(d["check_slip"]) == 42 and d["ssr_year"] == "2026-27"
+    assert slip["19"]["answer"] == "2026-27" and slip["19"]["auto"]
+    assert slip["22"]["answer"] == "YES"  # lead statement exists
+    assert slip["21"]["answer"] == "YES"  # dismantling, pipes... have typed rates
+    assert slip["33 (i)"]["answer"] == "YES" and slip["33 (ii)"]["answer"] == "--"  # < Rs 10 lakh
+    assert slip["2"]["answer"] == d["amount_display"]
+    assert len(d["certificates"]) == 7
+    assert {q["description"] for q in d["quotations"]} >= {"RCC S&S pipes 300 mm (SoR p.647)"}
+
+    pipes = next(q for q in d["quotations"] if q["description"].startswith("RCC"))
+    d = api.patch(
+        f"/versions/{vid}/docket",
+        {
+            "cover": {
+                "name_of_work": "Repairs to the U.T. at Km 8.388 of Mulkalakalva Major",
+                "sub_division": "Irrigation Sub-Division No.3, Miryalaguda",
+                "village": "Alagadapa",
+                "mandal": "Miryalaguda",
+                "district": "Nalgonda",
+            },
+            "check_slip": {"3": "Major Irrigation (NSP)", "38": "3 months"},
+            "certificates": ["Certified that the site was inspected."],
+            "quotations": {
+                pipes["line_key"]: {
+                    "supplier": "Cherlapalli, Nalgonda",
+                    "reference": "SoR 2026-27 p.647",
+                }
+            },
+        },
+    )
+    slip = {row["no"]: row for row in d["check_slip"]}
+    assert (
+        slip["1"]["answer"].startswith("Repairs to the U.T.")
+        and slip["3"]["answer"] == "Major Irrigation (NSP)"
+    )
+    assert slip["4"]["answer"] == "Alagadapa, Miryalaguda, Nalgonda"
+    assert d["certificates"] == ["Certified that the site was inspected."]
+    assert (
+        next(q for q in d["quotations"] if q["line_key"] == pipes["line_key"])["supplier"]
+        == "Cherlapalli, Nalgonda"
+    )
+    status, _ = api.error("PATCH", f"/versions/{vid}/docket", {"check_slip": {"99": "x"}})
+    assert status == 400
+    # Kept when a version is saved.
+    new = api.post(f"/versions/{vid}/freeze", {"change_note": "V1"})
+    assert api.get(f"/versions/{new['version']['id']}/docket")["cover"]["village"] == "Alagadapa"

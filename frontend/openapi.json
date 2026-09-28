@@ -1191,6 +1191,34 @@
         "title": "ChargePatch",
         "type": "object"
       },
+      "CheckSlipOut": {
+        "properties": {
+          "answer": {
+            "title": "Answer",
+            "type": "string"
+          },
+          "auto": {
+            "title": "Auto",
+            "type": "boolean"
+          },
+          "no": {
+            "title": "No",
+            "type": "string"
+          },
+          "question": {
+            "title": "Question",
+            "type": "string"
+          }
+        },
+        "required": [
+          "no",
+          "question",
+          "answer",
+          "auto"
+        ],
+        "title": "CheckSlipOut",
+        "type": "object"
+      },
       "ComponentChoice": {
         "properties": {
           "include": {
@@ -1748,6 +1776,207 @@
         "title": "DefaultsOut",
         "type": "object"
       },
+      "DocketIn": {
+        "properties": {
+          "certificates": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "maxItems": 30,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Certificates"
+          },
+          "check_slip": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Check Slip"
+          },
+          "cover": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cover"
+          },
+          "quotations": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "additionalProperties": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "type": "object"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quotations"
+          },
+          "signatories": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "maxItems": 6,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Signatories"
+          }
+        },
+        "title": "DocketIn",
+        "type": "object"
+      },
+      "DocketOut": {
+        "properties": {
+          "amount": {
+            "title": "Amount",
+            "type": "string"
+          },
+          "amount_display": {
+            "title": "Amount Display",
+            "type": "string"
+          },
+          "amount_in_lakhs": {
+            "title": "Amount In Lakhs",
+            "type": "string"
+          },
+          "amount_in_words": {
+            "title": "Amount In Words",
+            "type": "string"
+          },
+          "can_edit": {
+            "title": "Can Edit",
+            "type": "boolean"
+          },
+          "certificates": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Certificates",
+            "type": "array"
+          },
+          "check_slip": {
+            "items": {
+              "$ref": "#/components/schemas/CheckSlipOut"
+            },
+            "title": "Check Slip",
+            "type": "array"
+          },
+          "cover": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Cover",
+            "type": "object"
+          },
+          "estimate_number": {
+            "title": "Estimate Number",
+            "type": "string"
+          },
+          "quotations": {
+            "items": {
+              "$ref": "#/components/schemas/QuotationOut"
+            },
+            "title": "Quotations",
+            "type": "array"
+          },
+          "signatories": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Signatories",
+            "type": "array"
+          },
+          "ssr_year": {
+            "title": "Ssr Year",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "version_id": {
+            "format": "uuid",
+            "title": "Version Id",
+            "type": "string"
+          },
+          "version_no": {
+            "title": "Version No",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "version_id",
+          "version_no",
+          "status",
+          "can_edit",
+          "estimate_number",
+          "cover",
+          "signatories",
+          "amount",
+          "amount_display",
+          "amount_in_lakhs",
+          "amount_in_words",
+          "ssr_year",
+          "check_slip",
+          "certificates",
+          "quotations"
+        ],
+        "title": "DocketOut",
+        "type": "object"
+      },
       "Envelope_AbstractOut_": {
         "properties": {
           "data": {
@@ -1893,6 +2122,27 @@
           "meta"
         ],
         "title": "Envelope[DefaultsOut]",
+        "type": "object"
+      },
+      "Envelope_DocketOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/DocketOut"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "success": {
+            "default": true,
+            "title": "Success",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Envelope[DocketOut]",
         "type": "object"
       },
       "Envelope_EstimateOut_": {
@@ -5542,6 +5792,87 @@
           }
         },
         "title": "ProjectPatch",
+        "type": "object"
+      },
+      "QuotationOut": {
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "item_id": {
+            "format": "uuid",
+            "title": "Item Id",
+            "type": "string"
+          },
+          "line_key": {
+            "format": "uuid",
+            "title": "Line Key",
+            "type": "string"
+          },
+          "note": {
+            "title": "Note",
+            "type": "string"
+          },
+          "quantity": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quantity"
+          },
+          "rate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate"
+          },
+          "reference": {
+            "title": "Reference",
+            "type": "string"
+          },
+          "sl_no": {
+            "title": "Sl No",
+            "type": "string"
+          },
+          "supplier": {
+            "title": "Supplier",
+            "type": "string"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          }
+        },
+        "required": [
+          "item_id",
+          "line_key",
+          "sl_no",
+          "description",
+          "unit",
+          "quantity",
+          "rate",
+          "supplier",
+          "reference",
+          "note"
+        ],
+        "title": "QuotationOut",
         "type": "object"
       },
       "RateInfoOut": {
@@ -10985,6 +11316,100 @@
         "summary": "Reorder Charges",
         "tags": [
           "abstract"
+        ]
+      }
+    },
+    "/api/v1/versions/{version_id}/docket": {
+      "get": {
+        "operationId": "get_docket_api_v1_versions__version_id__docket_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_DocketOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Docket",
+        "tags": [
+          "icad"
+        ]
+      },
+      "patch": {
+        "operationId": "patch_docket_api_v1_versions__version_id__docket_patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocketIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_DocketOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Patch Docket",
+        "tags": [
+          "icad"
         ]
       }
     },

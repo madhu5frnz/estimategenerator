@@ -1,11 +1,12 @@
 import { cookies } from "next/headers";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 
+import { AppSidebar } from "@/components/AppSidebar";
+import { Brand, SsrPill } from "@/components/Brand";
 import { Disclaimer } from "@/components/Disclaimer";
 import { SessionProvider } from "@/components/Session";
-import { Sidebar } from "@/components/Sidebar";
-import { TopBar, VerifyEmailBanner } from "@/components/TopBar";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { UserMenu, VerifyEmailBanner } from "@/components/TopBar";
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   // Cheap server-side redirect for signed-out visitors. This is not the security
@@ -14,18 +15,22 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   return (
     <SessionProvider>
-      <div className="flex min-h-screen flex-col md:flex-row">
-        <aside className="border-b border-line md:w-56 md:shrink-0 md:border-r md:border-b-0">
-          <Link href="/dashboard" className="block px-6 pt-4 pb-2 text-base font-semibold md:pt-5">
-            EstimateAI
-          </Link>
-          <Sidebar />
-        </aside>
-        <div className="flex min-w-0 flex-1 flex-col">
-          <TopBar />
-          <VerifyEmailBanner />
-          <main className="flex-1 p-6">{children}</main>
-          <Disclaimer />
+      <div className="flex min-h-screen flex-col">
+        <header className="no-print flex flex-wrap items-center justify-between gap-3 border-b border-line bg-surface px-5 py-3">
+          <Brand />
+          <div className="flex flex-wrap items-center gap-2">
+            <SsrPill />
+            <ThemeToggle />
+            <UserMenu />
+          </div>
+        </header>
+        <VerifyEmailBanner />
+        <div className="flex min-w-0 flex-1 flex-col md:flex-row">
+          <AppSidebar />
+          <div className="flex min-w-0 flex-1 flex-col">
+            <main className="flex-1 p-4 md:p-6">{children}</main>
+            <Disclaimer />
+          </div>
         </div>
       </div>
     </SessionProvider>
