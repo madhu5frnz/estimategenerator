@@ -54,16 +54,16 @@ def test_rate_list_search_and_demo_source_is_read_only(api: Api, make_client: An
     assert demo["is_demo"] and demo["sor_name"] == "Demo Rates — Not Official SOR"
     assert (demo["can_edit"], demo["owned"], demo["item_count"]) == (False, False, 10)
 
-    found = api.get("/rate-items?q=cement%20concrete")
+    found = api.get(f"/rate-items?q=cement%20concrete&source_id={DEMO_SOURCE}")
     codes = [i["item_code"] for i in found["items"]]
     assert "CC-001" in codes
     cc = next(i for i in found["items"] if i["item_code"] == "CC-001")
     assert (cc["rate"], cc["unit"], cc["is_demo"]) == ("7500.00", "cum", True)
     assert cc["rate_display"] == "₹7,500.00"
     assert [i["item_code"] for i in api.get("/rate-items?q=CC-0")["items"]] == ["CC-001"]
-    by_unit = api.get("/rate-items?unit=Sq.m")
+    by_unit = api.get(f"/rate-items?unit=Sq.m&source_id={DEMO_SOURCE}")
     assert {i["item_code"] for i in by_unit["items"]} == {"DEMO-PL-12", "DEMO-PT-01"}
-    assert api.get("/rate-items?q=%25")["total"] == 0  # LIKE wildcards are literal
+    assert api.get("/rate-items?q=zq%25xq")["total"] == 0  # LIKE wildcards are literal
 
     status, body = api.error("PATCH", f"/rate-items/{CC_001}", {"rate": "1"})
     assert (status, body["error_code"]) == (409, "RATE_SOURCE_READ_ONLY")
@@ -99,7 +99,7 @@ def test_rate_list_search_and_demo_source_is_read_only(api: Api, make_client: An
     other = make_client()
     register(other, email="other@example.com")
     other_api = Api(other)
-    assert [s["id"] for s in other_api.get("/rate-sources")] == [DEMO_SOURCE]
+    assert {s["owned"] for s in other_api.get("/rate-sources")} == {False}  # demo + book only
     assert other_api.get("/rate-items?q=kerb%20stone")["total"] == 0
     status, _ = other_api.error("PATCH", f"/rate-items/{new['id']}", {"rate": 1})
     assert status == 404

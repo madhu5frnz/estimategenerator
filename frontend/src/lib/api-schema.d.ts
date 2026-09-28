@@ -209,6 +209,41 @@ export interface paths {
         patch: operations["patch_item_api_v1_boq_items__item_id__patch"];
         trace?: never;
     };
+    "/api/v1/boq-items/{item_id}/analysis": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Analysis */
+        get: operations["get_analysis_api_v1_boq_items__item_id__analysis_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Patch Analysis */
+        patch: operations["patch_analysis_api_v1_boq_items__item_id__analysis_patch"];
+        trace?: never;
+    };
+    "/api/v1/boq-items/{item_id}/analysis/auto-conveyance": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Auto Conveyance */
+        post: operations["auto_conveyance_api_v1_boq_items__item_id__analysis_auto_conveyance_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/boq-items/{item_id}/duplicate": {
         parameters: {
             query?: never;
@@ -397,6 +432,24 @@ export interface paths {
         options?: never;
         head?: never;
         patch?: never;
+        trace?: never;
+    };
+    "/api/v1/lead-entries/{entry_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Delete Lead */
+        delete: operations["delete_lead_api_v1_lead_entries__entry_id__delete"];
+        options?: never;
+        head?: never;
+        /** Patch Lead */
+        patch: operations["patch_lead_api_v1_lead_entries__entry_id__patch"];
         trace?: never;
     };
     "/api/v1/me": {
@@ -684,6 +737,24 @@ export interface paths {
         patch: operations["rename_section_api_v1_sections__section_id__patch"];
         trace?: never;
     };
+    "/api/v1/seigniorage-lines/{line_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Delete Seig */
+        delete: operations["delete_seig_api_v1_seigniorage_lines__line_id__delete"];
+        options?: never;
+        head?: never;
+        /** Patch Seig */
+        patch: operations["patch_seig_api_v1_seigniorage_lines__line_id__patch"];
+        trace?: never;
+    };
     "/api/v1/system/info": {
         parameters: {
             query?: never;
@@ -854,6 +925,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/versions/{version_id}/general-abstract": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get General Abstract */
+        get: operations["get_general_abstract_api_v1_versions__version_id__general_abstract_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/versions/{version_id}/gst": {
         parameters: {
             query?: never;
@@ -869,6 +957,58 @@ export interface paths {
         options?: never;
         head?: never;
         patch?: never;
+        trace?: never;
+    };
+    "/api/v1/versions/{version_id}/lead-entries": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Add Lead */
+        post: operations["add_lead_api_v1_versions__version_id__lead_entries_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/versions/{version_id}/lead-statement": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Lead */
+        get: operations["get_lead_api_v1_versions__version_id__lead_statement_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/versions/{version_id}/method-settings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Settings */
+        get: operations["get_settings_api_v1_versions__version_id__method_settings_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Patch Settings */
+        patch: operations["patch_settings_api_v1_versions__version_id__method_settings_patch"];
         trace?: never;
     };
     "/api/v1/versions/{version_id}/parameters": {
@@ -933,6 +1073,57 @@ export interface paths {
         put?: never;
         /** Reorder Sections */
         post: operations["reorder_sections_api_v1_versions__version_id__sections_reorder_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/versions/{version_id}/seigniorage": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Seigniorage */
+        get: operations["get_seigniorage_api_v1_versions__version_id__seigniorage_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/versions/{version_id}/seigniorage-lines": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Add Seig */
+        post: operations["add_seig_api_v1_versions__version_id__seigniorage_lines_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/versions/{version_id}/seigniorage/suggest": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Suggest Seig */
+        post: operations["suggest_seig_api_v1_versions__version_id__seigniorage_suggest_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -1049,6 +1240,148 @@ export interface components {
             sl_no: number;
             /** Title */
             title: string;
+        };
+        /** AmountLineOut */
+        AmountLineOut: {
+            /** Amount */
+            amount: string;
+            /** Description */
+            description: string;
+            /** Kind */
+            kind?: string | null;
+            /** Lead Key */
+            lead_key?: string | null;
+            /** Pct */
+            pct?: string | null;
+            /** Quantity */
+            quantity?: string | null;
+            /** Rate */
+            rate?: string | null;
+        };
+        /** AnalysisIn */
+        AnalysisIn: {
+            /** Additions */
+            additions?: {
+                [key: string]: unknown;
+            }[] | null;
+            /** Adjustments */
+            adjustments?: {
+                [key: string]: unknown;
+            }[] | null;
+            /** Deleted Rows */
+            deleted_rows?: number[] | null;
+            /** Or Say Step */
+            or_say_step?: string | null;
+            /** Rows */
+            rows?: {
+                [key: string]: unknown;
+            }[] | null;
+        };
+        /** AnalysisOut */
+        AnalysisOut: {
+            /**
+             * Additions
+             * @default []
+             */
+            additions: components["schemas"]["AmountLineOut"][];
+            /**
+             * Adjustments
+             * @default []
+             */
+            adjustments: components["schemas"]["AmountLineOut"][];
+            /** Analysis Qty */
+            analysis_qty?: string | null;
+            /** Analysis Unit */
+            analysis_unit?: string | null;
+            /** Book Note */
+            book_note?: string | null;
+            /** Book Rate */
+            book_rate?: string | null;
+            /** Book Status */
+            book_status?: string | null;
+            /** Can Edit */
+            can_edit: boolean;
+            /** Code */
+            code?: string | null;
+            /**
+             * Extras
+             * @default []
+             */
+            extras: components["schemas"]["AmountLineOut"][];
+            /** Has Analysis */
+            has_analysis: boolean;
+            /** Item Description */
+            item_description: string;
+            /**
+             * Item Id
+             * Format: uuid
+             */
+            item_id: string;
+            /** Item Rate */
+            item_rate: string | null;
+            /** Item Unit */
+            item_unit: string | null;
+            /** Labour */
+            labour?: string | null;
+            /** Labour Per Unit */
+            labour_per_unit?: string | null;
+            /** Labour Per Unit With Ohp */
+            labour_per_unit_with_ohp?: string | null;
+            /**
+             * Lead Options
+             * @default []
+             */
+            lead_options: {
+                [key: string]: string;
+            }[];
+            /** Machinery */
+            machinery?: string | null;
+            /** Materials */
+            materials?: string | null;
+            /** Ohp */
+            ohp?: string | null;
+            /** Ohp Pct */
+            ohp_pct?: string | null;
+            /** Rate */
+            rate?: string | null;
+            /** Rate Before Adjustments */
+            rate_before_adjustments?: string | null;
+            /** Rate Exact */
+            rate_exact?: string | null;
+            /** Raw */
+            raw?: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Rows
+             * @default []
+             */
+            rows: components["schemas"]["AnalysisRowOut"][];
+            /** Status */
+            status?: string | null;
+            /** Total */
+            total?: string | null;
+        };
+        /** AnalysisRowOut */
+        AnalysisRowOut: {
+            /** Amount */
+            amount: string;
+            /** Deleted */
+            deleted: boolean;
+            /** Description */
+            description: string;
+            /** Index */
+            index: number;
+            /** Pct */
+            pct: string | null;
+            /** Quantity */
+            quantity: string | null;
+            /** Rate */
+            rate: string | null;
+            /** Section */
+            section: string;
+            /** Unit */
+            unit: string;
         };
         /** CalculateIn */
         CalculateIn: {
@@ -1397,6 +1730,16 @@ export interface components {
              */
             success: boolean;
         };
+        /** Envelope[AnalysisOut] */
+        Envelope_AnalysisOut_: {
+            data: components["schemas"]["AnalysisOut"];
+            meta: components["schemas"]["Meta"];
+            /**
+             * Success
+             * @default true
+             */
+            success: boolean;
+        };
         /** Envelope[CalculationOut] */
         Envelope_CalculationOut_: {
             data: components["schemas"]["CalculationOut"];
@@ -1477,6 +1820,26 @@ export interface components {
              */
             success: boolean;
         };
+        /** Envelope[GeneralAbstractOut] */
+        Envelope_GeneralAbstractOut_: {
+            data: components["schemas"]["GeneralAbstractOut"];
+            meta: components["schemas"]["Meta"];
+            /**
+             * Success
+             * @default true
+             */
+            success: boolean;
+        };
+        /** Envelope[LeadStatementOut] */
+        Envelope_LeadStatementOut_: {
+            data: components["schemas"]["LeadStatementOut"];
+            meta: components["schemas"]["Meta"];
+            /**
+             * Success
+             * @default true
+             */
+            success: boolean;
+        };
         /** Envelope[LineCalculationOut] */
         Envelope_LineCalculationOut_: {
             data: components["schemas"]["LineCalculationOut"];
@@ -1550,6 +1913,26 @@ export interface components {
         /** Envelope[RateSourceOut] */
         Envelope_RateSourceOut_: {
             data: components["schemas"]["RateSourceOut"];
+            meta: components["schemas"]["Meta"];
+            /**
+             * Success
+             * @default true
+             */
+            success: boolean;
+        };
+        /** Envelope[SeigniorageOut] */
+        Envelope_SeigniorageOut_: {
+            data: components["schemas"]["SeigniorageOut"];
+            meta: components["schemas"]["Meta"];
+            /**
+             * Success
+             * @default true
+             */
+            success: boolean;
+        };
+        /** Envelope[SettingsOut] */
+        Envelope_SettingsOut_: {
+            data: components["schemas"]["SettingsOut"];
             meta: components["schemas"]["Meta"];
             /**
              * Success
@@ -1903,6 +2286,85 @@ export interface components {
             /** Change Note */
             change_note: string;
         };
+        /** GaItemOut */
+        GaItemOut: {
+            /** Amount */
+            amount: string;
+            /** Code */
+            code: string;
+            /** Description */
+            description: string;
+            /** Has Analysis */
+            has_analysis: boolean;
+            /**
+             * Item Id
+             * Format: uuid
+             */
+            item_id: string;
+            /** Quantity */
+            quantity: string | null;
+            /** Rate */
+            rate: string | null;
+            /** Sl No */
+            sl_no: string;
+            /** Unit */
+            unit: string | null;
+        };
+        /** GaLineOut */
+        GaLineOut: {
+            /** Amount */
+            amount: string;
+            /** Amount Display */
+            amount_display: string;
+            /** Label */
+            label: string;
+        };
+        /** GeneralAbstractOut */
+        GeneralAbstractOut: {
+            /** After Gst */
+            after_gst: components["schemas"]["GaLineOut"][];
+            /** Amount In Words */
+            amount_in_words: string;
+            /** Can Edit */
+            can_edit: boolean;
+            /** Ecv */
+            ecv: string;
+            /** Ecv Display */
+            ecv_display: string;
+            /** Gst */
+            gst: string;
+            /** Gst Display */
+            gst_display: string;
+            /** Gst Pct */
+            gst_pct: string;
+            /** Items */
+            items: components["schemas"]["GaItemOut"][];
+            /** Part B */
+            part_b: components["schemas"]["GaLineOut"][];
+            /** Part B Total */
+            part_b_total: string;
+            /** Rounding Off */
+            rounding_off: string;
+            /** Settings */
+            settings: {
+                [key: string]: unknown;
+            };
+            /** Subtotal */
+            subtotal: string;
+            /** Subtotal Display */
+            subtotal_display: string;
+            /** Total */
+            total: string;
+            /** Total Display */
+            total_display: string;
+            /** Total In Lakhs */
+            total_in_lakhs: string;
+            /**
+             * Version Id
+             * Format: uuid
+             */
+            version_id: string;
+        };
         /** GstConfigOut */
         GstConfigOut: {
             /** Applicable */
@@ -2028,6 +2490,76 @@ export interface components {
             unit: string | null;
             /** Unit Display */
             unit_display: string | null;
+        };
+        /** LeadIn */
+        LeadIn: {
+            /** Distance Km */
+            distance_km?: string | number | null;
+            /** Initial Km */
+            initial_km?: number | null;
+            /** Manual Amount */
+            manual_amount?: string | number | null;
+            /** Material */
+            material?: string | null;
+            /** Material Class */
+            material_class?: ("earth_sand" | "aggregate_stone" | "cement_steel") | null;
+            /** Note */
+            note?: string | null;
+            /** Source */
+            source?: string | null;
+            /** Unit */
+            unit?: string | null;
+        };
+        /** LeadOut */
+        LeadOut: {
+            /** Amount */
+            amount: string;
+            /** Distance Km */
+            distance_km: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Initial Km */
+            initial_km: number;
+            /**
+             * Line Key
+             * Format: uuid
+             */
+            line_key: string;
+            /** Manual Amount */
+            manual_amount: string | null;
+            /** Material */
+            material: string;
+            /** Material Class */
+            material_class: string;
+            /** Note */
+            note: string | null;
+            /** Problem */
+            problem: string | null;
+            /** Sequence */
+            sequence: number;
+            /** Source */
+            source: string | null;
+            /** Unit */
+            unit: string;
+            /** Working */
+            working: string;
+        };
+        /** LeadStatementOut */
+        LeadStatementOut: {
+            /** Can Edit */
+            can_edit: boolean;
+            /** Entries */
+            entries: components["schemas"]["LeadOut"][];
+            /**
+             * Version Id
+             * Format: uuid
+             */
+            version_id: string;
+            /** Zone */
+            zone: string;
         };
         /** LineCalculationOut */
         LineCalculationOut: {
@@ -2444,10 +2976,19 @@ export interface components {
         };
         /** RateItemOut */
         RateItemOut: {
+            /** Analysis Note */
+            analysis_note?: string | null;
+            /**
+             * Analysis Status
+             * @default none
+             */
+            analysis_status: string;
             /** Can Edit */
             can_edit: boolean;
             /** Description */
             description: string;
+            /** Group Title */
+            group_title?: string | null;
             /**
              * Id
              * Format: uuid
@@ -2459,10 +3000,14 @@ export interface components {
             is_expired: boolean;
             /** Item Code */
             item_code: string;
+            /** Labour Component */
+            labour_component?: string | null;
             /** Rate */
             rate: string;
             /** Rate Display */
             rate_display: string;
+            /** Sl No */
+            sl_no?: number | null;
             /**
              * Source Id
              * Format: uuid
@@ -2622,6 +3167,77 @@ export interface components {
             /** Unpriced Count */
             unpriced_count: number;
         };
+        /** SeigIn */
+        SeigIn: {
+            /** Boq Item Line Key */
+            boq_item_line_key?: string | null;
+            /** Factor */
+            factor?: string | number | null;
+            /** Item Quantity */
+            item_quantity?: string | number | null;
+            /** Label */
+            label?: string | null;
+            /** Material */
+            material?: string | null;
+            /** Rate */
+            rate?: string | number | null;
+        };
+        /** SeigLineOut */
+        SeigLineOut: {
+            /** Amount */
+            amount: string;
+            /** Boq Item Line Key */
+            boq_item_line_key: string | null;
+            /** Factor */
+            factor: string;
+            /** Follows Item */
+            follows_item: boolean;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Item Quantity */
+            item_quantity: string;
+            /** Label */
+            label: string;
+            /** Material */
+            material: string;
+            /** Material Quantity */
+            material_quantity: string;
+            /** Rate */
+            rate: string;
+        };
+        /** SeigniorageOut */
+        SeigniorageOut: {
+            /** By Material */
+            by_material: {
+                [key: string]: string;
+            };
+            /** Can Edit */
+            can_edit: boolean;
+            /** Dmf */
+            dmf: string;
+            /** Lines */
+            lines: components["schemas"]["SeigLineOut"][];
+            /** Note */
+            note: string;
+            /** Permit Fee */
+            permit_fee: string;
+            /** Settings */
+            settings: {
+                [key: string]: unknown;
+            };
+            /** Smet */
+            smet: string;
+            /** Total */
+            total: string;
+            /**
+             * Version Id
+             * Format: uuid
+             */
+            version_id: string;
+        };
         /** SetRateIn */
         SetRateIn: {
             /**
@@ -2634,6 +3250,51 @@ export interface components {
              * Format: uuid
              */
             rate_item_id: string;
+        };
+        /** SettingsIn */
+        SettingsIn: {
+            /** Abstract */
+            abstract?: {
+                [key: string]: unknown;
+            } | null;
+            /** Area Allowance */
+            area_allowance?: string | null;
+            /** Seigniorage */
+            seigniorage?: {
+                [key: string]: unknown;
+            } | null;
+            /** Zone */
+            zone?: ("I" | "II" | "III") | null;
+        };
+        /** SettingsOut */
+        SettingsOut: {
+            /** Area Allowances */
+            area_allowances: {
+                [key: string]: string;
+            }[];
+            /** Can Edit */
+            can_edit: boolean;
+            /** Config */
+            config: {
+                [key: string]: unknown;
+            };
+            /** Material Classes */
+            material_classes: {
+                [key: string]: string;
+            };
+            /** Seigniorage Materials */
+            seigniorage_materials: {
+                [key: string]: string;
+            };
+            /** Seigniorage Note */
+            seigniorage_note: string;
+            /**
+             * Version Id
+             * Format: uuid
+             */
+            version_id: string;
+            /** Zones */
+            zones: string[];
         };
         /** SourceCreate */
         SourceCreate: {
@@ -3412,6 +4073,103 @@ export interface operations {
             };
         };
     };
+    get_analysis_api_v1_boq_items__item_id__analysis_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                item_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_AnalysisOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    patch_analysis_api_v1_boq_items__item_id__analysis_patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                item_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AnalysisIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_AnalysisOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    auto_conveyance_api_v1_boq_items__item_id__analysis_auto_conveyance_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                item_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_AnalysisOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     duplicate_item_api_v1_boq_items__item_id__duplicate_post: {
         parameters: {
             query?: never;
@@ -3842,6 +4600,72 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Envelope_list_VersionSummaryOut__"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_lead_api_v1_lead_entries__entry_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                entry_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_LeadStatementOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    patch_lead_api_v1_lead_entries__entry_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                entry_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LeadIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_LeadStatementOut_"];
                 };
             };
             /** @description Validation Error */
@@ -4776,6 +5600,72 @@ export interface operations {
             };
         };
     };
+    delete_seig_api_v1_seigniorage_lines__line_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                line_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_SeigniorageOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    patch_seig_api_v1_seigniorage_lines__line_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                line_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SeigIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_SeigniorageOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     system_info_api_v1_system_info_get: {
         parameters: {
             query?: never;
@@ -5086,6 +5976,37 @@ export interface operations {
             };
         };
     };
+    get_general_abstract_api_v1_versions__version_id__general_abstract_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_GeneralAbstractOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     put_gst_api_v1_versions__version_id__gst_put: {
         parameters: {
             query?: never;
@@ -5108,6 +6029,138 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Envelope_AbstractOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    add_lead_api_v1_versions__version_id__lead_entries_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LeadIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_LeadStatementOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_lead_api_v1_versions__version_id__lead_statement_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_LeadStatementOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_settings_api_v1_versions__version_id__method_settings_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_SettingsOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    patch_settings_api_v1_versions__version_id__method_settings_patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SettingsIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_SettingsOut_"];
                 };
             };
             /** @description Validation Error */
@@ -5248,6 +6301,103 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Envelope_VersionOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_seigniorage_api_v1_versions__version_id__seigniorage_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_SeigniorageOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    add_seig_api_v1_versions__version_id__seigniorage_lines_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SeigIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_SeigniorageOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    suggest_seig_api_v1_versions__version_id__seigniorage_suggest_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_SeigniorageOut_"];
                 };
             };
             /** @description Validation Error */

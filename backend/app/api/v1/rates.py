@@ -53,6 +53,11 @@ class RateItemOut(BaseModel):
     rate: str
     rate_display: str
     can_edit: bool
+    sl_no: int | None = None
+    group_title: str | None = None
+    labour_component: str | None = None
+    analysis_status: str = "none"
+    analysis_note: str | None = None
 
 
 class RateSearchOut(BaseModel):
@@ -143,6 +148,13 @@ def item_out(ctx: AuthContext, item: RateItem, source: RateSource) -> RateItemOu
         rate=format(item.basic_rate, "f"),
         rate_display=format_inr(item.basic_rate),
         can_edit=_can_edit(ctx, source),
+        sl_no=item.sl_no,
+        group_title=item.group_title,
+        labour_component=format(item.labour_component, "f")
+        if item.labour_component is not None
+        else None,
+        analysis_status=item.analysis_status,
+        analysis_note=item.analysis_note,
     )
 
 

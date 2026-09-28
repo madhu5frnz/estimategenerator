@@ -644,6 +644,10 @@ def _clone(db: Session, ctx: AuthContext, source: EstimateVersion) -> EstimateVe
 
     abstract_service.copy_charges(db, source.id, draft)
     db.flush()
+    from app.services import icad  # circular at import time
+
+    icad.copy_to_draft(db, source, draft)
+    db.flush()
     return draft
 
 
@@ -1048,6 +1052,9 @@ def update_item(
                 item.rate_source_type = "manual" if value is not None else None
                 item.rate_item_id = None
                 item.rate_snapshot = None
+                from app.services import icad  # circular at import time
+
+                icad.detach_analysis(db, item)
         elif name == "section_id":
             target = db.get(EstimateSection, raw) if raw else None
             if target is None or target.version_id != item.version_id:
@@ -1108,6 +1115,9 @@ def set_rate(
     item.rate_item_id = rate_item.id
     item.rate_snapshot = rate_service.snapshot(rate_item, source)
     _reprice(item)
+    from app.services import icad  # circular at import time
+
+    icad.attach_book_analysis(db, item, rate_item)
     _audit(
         db,
         ctx,

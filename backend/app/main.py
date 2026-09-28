@@ -10,6 +10,7 @@ from app.api.v1 import (
     calculations,
     dashboard,
     estimates,
+    icad,
     me,
     projects,
     rates,
@@ -44,7 +45,18 @@ def create_app() -> FastAPI:
     install_error_handlers(app)
 
     app.include_router(system.router)
-    for module in (calculations, auth, me, projects, estimates, abstract, rates, ai, dashboard):
+    for module in (
+        calculations,
+        auth,
+        me,
+        projects,
+        estimates,
+        abstract,
+        icad,
+        rates,
+        ai,
+        dashboard,
+    ):
         app.include_router(module.router, prefix="/api/v1")
     return app
 

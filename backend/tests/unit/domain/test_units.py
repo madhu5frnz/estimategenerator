@@ -164,7 +164,9 @@ def _sql_rows(sql: str, table: str) -> list[list[str]]:
 def test_python_seed_matches_sql_seed(sql_path: Path) -> None:
     sql = sql_path.read_text(encoding="utf-8")
     unit_rows = _sql_rows(sql, "units")
-    assert {r[0] for r in unit_rows} == {u.code for u in UNITS}
+    # Units added by later migrations (0006: units used by the TS Standard Data book).
+    added_later = {"joint", "kwh"}
+    assert {r[0] for r in unit_rows} | added_later == {u.code for u in UNITS}
     by_code = {u.code: u for u in UNITS}
     for code, display, dim, canonical, places, *_ in unit_rows:
         unit = by_code[code]

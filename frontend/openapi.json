@@ -187,6 +187,539 @@
         "title": "AbstractSectionOut",
         "type": "object"
       },
+      "AmountLineOut": {
+        "properties": {
+          "amount": {
+            "title": "Amount",
+            "type": "string"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kind"
+          },
+          "lead_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lead Key"
+          },
+          "pct": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pct"
+          },
+          "quantity": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quantity"
+          },
+          "rate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate"
+          }
+        },
+        "required": [
+          "description",
+          "amount"
+        ],
+        "title": "AmountLineOut",
+        "type": "object"
+      },
+      "AnalysisIn": {
+        "properties": {
+          "additions": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "maxItems": 20,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Additions"
+          },
+          "adjustments": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "maxItems": 50,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Adjustments"
+          },
+          "deleted_rows": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "maxItems": 400,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Deleted Rows"
+          },
+          "or_say_step": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Or Say Step"
+          },
+          "rows": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "maxItems": 400,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rows"
+          }
+        },
+        "title": "AnalysisIn",
+        "type": "object"
+      },
+      "AnalysisOut": {
+        "properties": {
+          "additions": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/AmountLineOut"
+            },
+            "title": "Additions",
+            "type": "array"
+          },
+          "adjustments": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/AmountLineOut"
+            },
+            "title": "Adjustments",
+            "type": "array"
+          },
+          "analysis_qty": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Analysis Qty"
+          },
+          "analysis_unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Analysis Unit"
+          },
+          "book_note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Book Note"
+          },
+          "book_rate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Book Rate"
+          },
+          "book_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Book Status"
+          },
+          "can_edit": {
+            "title": "Can Edit",
+            "type": "boolean"
+          },
+          "code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code"
+          },
+          "extras": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/AmountLineOut"
+            },
+            "title": "Extras",
+            "type": "array"
+          },
+          "has_analysis": {
+            "title": "Has Analysis",
+            "type": "boolean"
+          },
+          "item_description": {
+            "title": "Item Description",
+            "type": "string"
+          },
+          "item_id": {
+            "format": "uuid",
+            "title": "Item Id",
+            "type": "string"
+          },
+          "item_rate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Item Rate"
+          },
+          "item_unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Item Unit"
+          },
+          "labour": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Labour"
+          },
+          "labour_per_unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Labour Per Unit"
+          },
+          "labour_per_unit_with_ohp": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Labour Per Unit With Ohp"
+          },
+          "lead_options": {
+            "default": [],
+            "items": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "title": "Lead Options",
+            "type": "array"
+          },
+          "machinery": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Machinery"
+          },
+          "materials": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Materials"
+          },
+          "ohp": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ohp"
+          },
+          "ohp_pct": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ohp Pct"
+          },
+          "rate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate"
+          },
+          "rate_before_adjustments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate Before Adjustments"
+          },
+          "rate_exact": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate Exact"
+          },
+          "raw": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Raw"
+          },
+          "rows": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/AnalysisRowOut"
+            },
+            "title": "Rows",
+            "type": "array"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          },
+          "total": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total"
+          }
+        },
+        "required": [
+          "item_id",
+          "item_description",
+          "item_unit",
+          "item_rate",
+          "has_analysis",
+          "can_edit"
+        ],
+        "title": "AnalysisOut",
+        "type": "object"
+      },
+      "AnalysisRowOut": {
+        "properties": {
+          "amount": {
+            "title": "Amount",
+            "type": "string"
+          },
+          "deleted": {
+            "title": "Deleted",
+            "type": "boolean"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "index": {
+            "title": "Index",
+            "type": "integer"
+          },
+          "pct": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pct"
+          },
+          "quantity": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quantity"
+          },
+          "rate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate"
+          },
+          "section": {
+            "title": "Section",
+            "type": "string"
+          },
+          "unit": {
+            "title": "Unit",
+            "type": "string"
+          }
+        },
+        "required": [
+          "index",
+          "section",
+          "description",
+          "unit",
+          "quantity",
+          "rate",
+          "pct",
+          "amount",
+          "deleted"
+        ],
+        "title": "AnalysisRowOut",
+        "type": "object"
+      },
       "CalculateIn": {
         "properties": {
           "expression": {
@@ -1236,6 +1769,27 @@
         "title": "Envelope[AbstractOut]",
         "type": "object"
       },
+      "Envelope_AnalysisOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AnalysisOut"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "success": {
+            "default": true,
+            "title": "Success",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Envelope[AnalysisOut]",
+        "type": "object"
+      },
       "Envelope_CalculationOut_": {
         "properties": {
           "data": {
@@ -1404,6 +1958,48 @@
         "title": "Envelope[ExtractionOut]",
         "type": "object"
       },
+      "Envelope_GeneralAbstractOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/GeneralAbstractOut"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "success": {
+            "default": true,
+            "title": "Success",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Envelope[GeneralAbstractOut]",
+        "type": "object"
+      },
+      "Envelope_LeadStatementOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/LeadStatementOut"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "success": {
+            "default": true,
+            "title": "Success",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Envelope[LeadStatementOut]",
+        "type": "object"
+      },
       "Envelope_LineCalculationOut_": {
         "properties": {
           "data": {
@@ -1570,6 +2166,48 @@
           "meta"
         ],
         "title": "Envelope[RateSourceOut]",
+        "type": "object"
+      },
+      "Envelope_SeigniorageOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/SeigniorageOut"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "success": {
+            "default": true,
+            "title": "Success",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Envelope[SeigniorageOut]",
+        "type": "object"
+      },
+      "Envelope_SettingsOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/SettingsOut"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "success": {
+            "default": true,
+            "title": "Success",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Envelope[SettingsOut]",
         "type": "object"
       },
       "Envelope_SystemInfo_": {
@@ -2538,6 +3176,218 @@
         "title": "FreezeIn",
         "type": "object"
       },
+      "GaItemOut": {
+        "properties": {
+          "amount": {
+            "title": "Amount",
+            "type": "string"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "has_analysis": {
+            "title": "Has Analysis",
+            "type": "boolean"
+          },
+          "item_id": {
+            "format": "uuid",
+            "title": "Item Id",
+            "type": "string"
+          },
+          "quantity": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quantity"
+          },
+          "rate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate"
+          },
+          "sl_no": {
+            "title": "Sl No",
+            "type": "string"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          }
+        },
+        "required": [
+          "sl_no",
+          "item_id",
+          "code",
+          "description",
+          "quantity",
+          "rate",
+          "unit",
+          "amount",
+          "has_analysis"
+        ],
+        "title": "GaItemOut",
+        "type": "object"
+      },
+      "GaLineOut": {
+        "properties": {
+          "amount": {
+            "title": "Amount",
+            "type": "string"
+          },
+          "amount_display": {
+            "title": "Amount Display",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          }
+        },
+        "required": [
+          "label",
+          "amount",
+          "amount_display"
+        ],
+        "title": "GaLineOut",
+        "type": "object"
+      },
+      "GeneralAbstractOut": {
+        "properties": {
+          "after_gst": {
+            "items": {
+              "$ref": "#/components/schemas/GaLineOut"
+            },
+            "title": "After Gst",
+            "type": "array"
+          },
+          "amount_in_words": {
+            "title": "Amount In Words",
+            "type": "string"
+          },
+          "can_edit": {
+            "title": "Can Edit",
+            "type": "boolean"
+          },
+          "ecv": {
+            "title": "Ecv",
+            "type": "string"
+          },
+          "ecv_display": {
+            "title": "Ecv Display",
+            "type": "string"
+          },
+          "gst": {
+            "title": "Gst",
+            "type": "string"
+          },
+          "gst_display": {
+            "title": "Gst Display",
+            "type": "string"
+          },
+          "gst_pct": {
+            "title": "Gst Pct",
+            "type": "string"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/GaItemOut"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "part_b": {
+            "items": {
+              "$ref": "#/components/schemas/GaLineOut"
+            },
+            "title": "Part B",
+            "type": "array"
+          },
+          "part_b_total": {
+            "title": "Part B Total",
+            "type": "string"
+          },
+          "rounding_off": {
+            "title": "Rounding Off",
+            "type": "string"
+          },
+          "settings": {
+            "additionalProperties": true,
+            "title": "Settings",
+            "type": "object"
+          },
+          "subtotal": {
+            "title": "Subtotal",
+            "type": "string"
+          },
+          "subtotal_display": {
+            "title": "Subtotal Display",
+            "type": "string"
+          },
+          "total": {
+            "title": "Total",
+            "type": "string"
+          },
+          "total_display": {
+            "title": "Total Display",
+            "type": "string"
+          },
+          "total_in_lakhs": {
+            "title": "Total In Lakhs",
+            "type": "string"
+          },
+          "version_id": {
+            "format": "uuid",
+            "title": "Version Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "version_id",
+          "can_edit",
+          "items",
+          "ecv",
+          "ecv_display",
+          "part_b",
+          "part_b_total",
+          "subtotal",
+          "subtotal_display",
+          "gst_pct",
+          "gst",
+          "gst_display",
+          "after_gst",
+          "rounding_off",
+          "total",
+          "total_display",
+          "total_in_lakhs",
+          "amount_in_words",
+          "settings"
+        ],
+        "title": "GeneralAbstractOut",
+        "type": "object"
+      },
       "GstConfigOut": {
         "properties": {
           "applicable": {
@@ -2899,6 +3749,268 @@
           "lines"
         ],
         "title": "ItemOut",
+        "type": "object"
+      },
+      "LeadIn": {
+        "properties": {
+          "distance_km": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Distance Km"
+          },
+          "initial_km": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Initial Km"
+          },
+          "manual_amount": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Manual Amount"
+          },
+          "material": {
+            "anyOf": [
+              {
+                "maxLength": 120,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Material"
+          },
+          "material_class": {
+            "anyOf": [
+              {
+                "enum": [
+                  "earth_sand",
+                  "aggregate_stone",
+                  "cement_steel"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Material Class"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "maxLength": 500,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "maxLength": 200,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "maxLength": 20,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          }
+        },
+        "title": "LeadIn",
+        "type": "object"
+      },
+      "LeadOut": {
+        "properties": {
+          "amount": {
+            "title": "Amount",
+            "type": "string"
+          },
+          "distance_km": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Distance Km"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "initial_km": {
+            "title": "Initial Km",
+            "type": "integer"
+          },
+          "line_key": {
+            "format": "uuid",
+            "title": "Line Key",
+            "type": "string"
+          },
+          "manual_amount": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Manual Amount"
+          },
+          "material": {
+            "title": "Material",
+            "type": "string"
+          },
+          "material_class": {
+            "title": "Material Class",
+            "type": "string"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "problem": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Problem"
+          },
+          "sequence": {
+            "title": "Sequence",
+            "type": "integer"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source"
+          },
+          "unit": {
+            "title": "Unit",
+            "type": "string"
+          },
+          "working": {
+            "title": "Working",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "line_key",
+          "sequence",
+          "material",
+          "source",
+          "unit",
+          "material_class",
+          "distance_km",
+          "initial_km",
+          "manual_amount",
+          "note",
+          "amount",
+          "working",
+          "problem"
+        ],
+        "title": "LeadOut",
+        "type": "object"
+      },
+      "LeadStatementOut": {
+        "properties": {
+          "can_edit": {
+            "title": "Can Edit",
+            "type": "boolean"
+          },
+          "entries": {
+            "items": {
+              "$ref": "#/components/schemas/LeadOut"
+            },
+            "title": "Entries",
+            "type": "array"
+          },
+          "version_id": {
+            "format": "uuid",
+            "title": "Version Id",
+            "type": "string"
+          },
+          "zone": {
+            "title": "Zone",
+            "type": "string"
+          }
+        },
+        "required": [
+          "version_id",
+          "zone",
+          "can_edit",
+          "entries"
+        ],
+        "title": "LeadStatementOut",
         "type": "object"
       },
       "LineCalculationOut": {
@@ -4495,6 +5607,22 @@
       },
       "RateItemOut": {
         "properties": {
+          "analysis_note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Analysis Note"
+          },
+          "analysis_status": {
+            "default": "none",
+            "title": "Analysis Status",
+            "type": "string"
+          },
           "can_edit": {
             "title": "Can Edit",
             "type": "boolean"
@@ -4502,6 +5630,17 @@
           "description": {
             "title": "Description",
             "type": "string"
+          },
+          "group_title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Group Title"
           },
           "id": {
             "format": "uuid",
@@ -4520,6 +5659,17 @@
             "title": "Item Code",
             "type": "string"
           },
+          "labour_component": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Labour Component"
+          },
           "rate": {
             "title": "Rate",
             "type": "string"
@@ -4527,6 +5677,17 @@
           "rate_display": {
             "title": "Rate Display",
             "type": "string"
+          },
+          "sl_no": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sl No"
           },
           "source_id": {
             "format": "uuid",
@@ -4937,6 +6098,232 @@
         "title": "SectionOut",
         "type": "object"
       },
+      "SeigIn": {
+        "properties": {
+          "boq_item_line_key": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Boq Item Line Key"
+          },
+          "factor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Factor"
+          },
+          "item_quantity": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Item Quantity"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "maxLength": 200,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          },
+          "material": {
+            "anyOf": [
+              {
+                "maxLength": 20,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Material"
+          },
+          "rate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate"
+          }
+        },
+        "title": "SeigIn",
+        "type": "object"
+      },
+      "SeigLineOut": {
+        "properties": {
+          "amount": {
+            "title": "Amount",
+            "type": "string"
+          },
+          "boq_item_line_key": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Boq Item Line Key"
+          },
+          "factor": {
+            "title": "Factor",
+            "type": "string"
+          },
+          "follows_item": {
+            "title": "Follows Item",
+            "type": "boolean"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "item_quantity": {
+            "title": "Item Quantity",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "material": {
+            "title": "Material",
+            "type": "string"
+          },
+          "material_quantity": {
+            "title": "Material Quantity",
+            "type": "string"
+          },
+          "rate": {
+            "title": "Rate",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "material",
+          "boq_item_line_key",
+          "item_quantity",
+          "follows_item",
+          "factor",
+          "material_quantity",
+          "rate",
+          "amount"
+        ],
+        "title": "SeigLineOut",
+        "type": "object"
+      },
+      "SeigniorageOut": {
+        "properties": {
+          "by_material": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "By Material",
+            "type": "object"
+          },
+          "can_edit": {
+            "title": "Can Edit",
+            "type": "boolean"
+          },
+          "dmf": {
+            "title": "Dmf",
+            "type": "string"
+          },
+          "lines": {
+            "items": {
+              "$ref": "#/components/schemas/SeigLineOut"
+            },
+            "title": "Lines",
+            "type": "array"
+          },
+          "note": {
+            "title": "Note",
+            "type": "string"
+          },
+          "permit_fee": {
+            "title": "Permit Fee",
+            "type": "string"
+          },
+          "settings": {
+            "additionalProperties": true,
+            "title": "Settings",
+            "type": "object"
+          },
+          "smet": {
+            "title": "Smet",
+            "type": "string"
+          },
+          "total": {
+            "title": "Total",
+            "type": "string"
+          },
+          "version_id": {
+            "format": "uuid",
+            "title": "Version Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "version_id",
+          "can_edit",
+          "lines",
+          "by_material",
+          "total",
+          "dmf",
+          "smet",
+          "permit_fee",
+          "settings",
+          "note"
+        ],
+        "title": "SeigniorageOut",
+        "type": "object"
+      },
       "SetRateIn": {
         "properties": {
           "confirm_overwrite": {
@@ -4954,6 +6341,128 @@
           "rate_item_id"
         ],
         "title": "SetRateIn",
+        "type": "object"
+      },
+      "SettingsIn": {
+        "properties": {
+          "abstract": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Abstract"
+          },
+          "area_allowance": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Area Allowance"
+          },
+          "seigniorage": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seigniorage"
+          },
+          "zone": {
+            "anyOf": [
+              {
+                "enum": [
+                  "I",
+                  "II",
+                  "III"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Zone"
+          }
+        },
+        "title": "SettingsIn",
+        "type": "object"
+      },
+      "SettingsOut": {
+        "properties": {
+          "area_allowances": {
+            "items": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "title": "Area Allowances",
+            "type": "array"
+          },
+          "can_edit": {
+            "title": "Can Edit",
+            "type": "boolean"
+          },
+          "config": {
+            "additionalProperties": true,
+            "title": "Config",
+            "type": "object"
+          },
+          "material_classes": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Material Classes",
+            "type": "object"
+          },
+          "seigniorage_materials": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Seigniorage Materials",
+            "type": "object"
+          },
+          "seigniorage_note": {
+            "title": "Seigniorage Note",
+            "type": "string"
+          },
+          "version_id": {
+            "format": "uuid",
+            "title": "Version Id",
+            "type": "string"
+          },
+          "zones": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Zones",
+            "type": "array"
+          }
+        },
+        "required": [
+          "version_id",
+          "can_edit",
+          "config",
+          "zones",
+          "material_classes",
+          "seigniorage_materials",
+          "seigniorage_note",
+          "area_allowances"
+        ],
+        "title": "SettingsOut",
         "type": "object"
       },
       "SourceCreate": {
@@ -6748,6 +8257,143 @@
         ]
       }
     },
+    "/api/v1/boq-items/{item_id}/analysis": {
+      "get": {
+        "operationId": "get_analysis_api_v1_boq_items__item_id__analysis_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_AnalysisOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Analysis",
+        "tags": [
+          "icad"
+        ]
+      },
+      "patch": {
+        "operationId": "patch_analysis_api_v1_boq_items__item_id__analysis_patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalysisIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_AnalysisOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Patch Analysis",
+        "tags": [
+          "icad"
+        ]
+      }
+    },
+    "/api/v1/boq-items/{item_id}/analysis/auto-conveyance": {
+      "post": {
+        "operationId": "auto_conveyance_api_v1_boq_items__item_id__analysis_auto_conveyance_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_AnalysisOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Auto Conveyance",
+        "tags": [
+          "icad"
+        ]
+      }
+    },
     "/api/v1/boq-items/{item_id}/duplicate": {
       "post": {
         "operationId": "duplicate_item_api_v1_boq_items__item_id__duplicate_post",
@@ -7363,6 +9009,100 @@
         "summary": "List Versions",
         "tags": [
           "estimates"
+        ]
+      }
+    },
+    "/api/v1/lead-entries/{entry_id}": {
+      "delete": {
+        "operationId": "delete_lead_api_v1_lead_entries__entry_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "entry_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Entry Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_LeadStatementOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Delete Lead",
+        "tags": [
+          "icad"
+        ]
+      },
+      "patch": {
+        "operationId": "patch_lead_api_v1_lead_entries__entry_id__patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "entry_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Entry Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LeadIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_LeadStatementOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Patch Lead",
+        "tags": [
+          "icad"
         ]
       }
     },
@@ -8773,6 +10513,100 @@
         ]
       }
     },
+    "/api/v1/seigniorage-lines/{line_id}": {
+      "delete": {
+        "operationId": "delete_seig_api_v1_seigniorage_lines__line_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "line_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Line Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_SeigniorageOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Delete Seig",
+        "tags": [
+          "icad"
+        ]
+      },
+      "patch": {
+        "operationId": "patch_seig_api_v1_seigniorage_lines__line_id__patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "line_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Line Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SeigIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_SeigniorageOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Patch Seig",
+        "tags": [
+          "icad"
+        ]
+      }
+    },
     "/api/v1/system/info": {
       "get": {
         "operationId": "system_info_api_v1_system_info_get",
@@ -9207,6 +11041,49 @@
         ]
       }
     },
+    "/api/v1/versions/{version_id}/general-abstract": {
+      "get": {
+        "operationId": "get_general_abstract_api_v1_versions__version_id__general_abstract_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_GeneralAbstractOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get General Abstract",
+        "tags": [
+          "icad"
+        ]
+      }
+    },
     "/api/v1/versions/{version_id}/gst": {
       "put": {
         "operationId": "put_gst_api_v1_versions__version_id__gst_put",
@@ -9257,6 +11134,196 @@
         "summary": "Put Gst",
         "tags": [
           "abstract"
+        ]
+      }
+    },
+    "/api/v1/versions/{version_id}/lead-entries": {
+      "post": {
+        "operationId": "add_lead_api_v1_versions__version_id__lead_entries_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LeadIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_LeadStatementOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Add Lead",
+        "tags": [
+          "icad"
+        ]
+      }
+    },
+    "/api/v1/versions/{version_id}/lead-statement": {
+      "get": {
+        "operationId": "get_lead_api_v1_versions__version_id__lead_statement_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_LeadStatementOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Lead",
+        "tags": [
+          "icad"
+        ]
+      }
+    },
+    "/api/v1/versions/{version_id}/method-settings": {
+      "get": {
+        "operationId": "get_settings_api_v1_versions__version_id__method_settings_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_SettingsOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Settings",
+        "tags": [
+          "icad"
+        ]
+      },
+      "patch": {
+        "operationId": "patch_settings_api_v1_versions__version_id__method_settings_patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SettingsIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_SettingsOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Patch Settings",
+        "tags": [
+          "icad"
         ]
       }
     },
@@ -9469,6 +11536,145 @@
         "summary": "Reorder Sections",
         "tags": [
           "estimates"
+        ]
+      }
+    },
+    "/api/v1/versions/{version_id}/seigniorage": {
+      "get": {
+        "operationId": "get_seigniorage_api_v1_versions__version_id__seigniorage_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_SeigniorageOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Seigniorage",
+        "tags": [
+          "icad"
+        ]
+      }
+    },
+    "/api/v1/versions/{version_id}/seigniorage-lines": {
+      "post": {
+        "operationId": "add_seig_api_v1_versions__version_id__seigniorage_lines_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SeigIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_SeigniorageOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Add Seig",
+        "tags": [
+          "icad"
+        ]
+      }
+    },
+    "/api/v1/versions/{version_id}/seigniorage/suggest": {
+      "post": {
+        "operationId": "suggest_seig_api_v1_versions__version_id__seigniorage_suggest_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_SeigniorageOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Suggest Seig",
+        "tags": [
+          "icad"
         ]
       }
     },
