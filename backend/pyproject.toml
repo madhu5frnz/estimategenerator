@@ -62,7 +62,7 @@ extend-immutable-calls = ["fastapi.Query", "fastapi.Depends"]
 "app/ai/rules.py" = ["E501"]  # multilingual lexicon tables read best one entry per line
 "app/domain/validation/rules.py" = ["E501"]  # one finding message per line
 "tests/**" = ["S", "E501"]
-"tools/ts_sor/parse_*.py" = ["E501"]  # PDF layout patterns read best on one line
+"tools/ts_sor/*.py" = ["E501"]  # PDF layout patterns and transcribed tables read best on one line
 
 [tool.mypy]
 python_version = "3.11"

@@ -1,0 +1,3982 @@
+{
+ "source": {
+  "title": "Telangana Standard Schedule of Rates 2026-27 (Part-I I&CAD, Part-II labour)",
+  "reference": "Proc.No.ENC/Admn/Dy.EnC/EE(Tech)/DEE-1/AEE-3/SoR 2026-27/Vol.I Dt:29.06.2026",
+  "effective_from": "2026-06-01"
+ },
+ "materials": [
+  {
+   "sl": "1",
+   "name": "Acetylene gas",
+   "unit": "cum",
+   "rate": "498.00"
+  },
+  {
+   "sl": "2",
+   "name": "Asphalt 80/100 Grade",
+   "unit": "Kg",
+   "rate": "67.00"
+  },
+  {
+   "sl": "3",
+   "name": "Binding wire",
+   "unit": "Kg",
+   "rate": "92.00"
+  },
+  {
+   "sl": "4",
+   "name": "Burnt stone slab 10 cm thick",
+   "unit": "sqm",
+   "rate": "386.00"
+  },
+  {
+   "sl": "5(a)",
+   "name": "Ordinary Portland Cement (43/53 GRADE) *(Note: As per rate fixed by Sub-Committee every month)",
+   "unit": "tonne",
+   "rate": "5100.00"
+  },
+  {
+   "sl": "5(b)",
+   "name": "Portland Pozzolona cement *(Note: As per rate fixed by Sub-Committee every month)",
+   "unit": "tonne",
+   "rate": "4800.00"
+  },
+  {
+   "sl": "5(c)",
+   "name": "Portland Slag Cement *(Note: As per rate fixed by Sub-Committee every month)",
+   "unit": "tonne",
+   "rate": "4800.00"
+  },
+  {
+   "sl": "6",
+   "name": "Chequered plate",
+   "unit": "Kg",
+   "rate": "83.00"
+  },
+  {
+   "sl": "7",
+   "name": "Coarse aggregate 10-4.75 mm (excluding Seigniorage charges)",
+   "unit": "cum",
+   "rate": "945.00"
+  },
+  {
+   "sl": "8",
+   "name": "Coarse aggregate 20-10 mm (excluding Seigniorage charges)",
+   "unit": "cum",
+   "rate": "1230.00"
+  },
+  {
+   "sl": "9",
+   "name": "Coarse aggregate 40-20 mm (excluding Seigniorage charges)",
+   "unit": "cum",
+   "rate": "1107.00"
+  },
+  {
+   "sl": "10",
+   "name": "Coarse aggregate 80-40 mm (excluding Seigniorage charges)",
+   "unit": "cum",
+   "rate": "672.00"
+  },
+  {
+   "sl": "11",
+   "name": "Dolamite, Dolerite and Trap. (Quartzite and Basalt with aggregate impact of less than 20) Coir brush",
+   "unit": "Each",
+   "rate": "62.00"
+  },
+  {
+   "sl": "12",
+   "name": "Copper sheet 16 SWG",
+   "unit": "kg",
+   "rate": "849.00"
+  },
+  {
+   "sl": "13",
+   "name": "Coursed rubble stone 30 x 30 x 45 cm(excluding Seigniorage charges)",
+   "unit": "Each",
+   "rate": "37.00"
+  },
+  {
+   "sl": "14",
+   "name": "Coursed rubble stone 30 x 30 x 60 cm(excluding Seigniorage charges)",
+   "unit": "Each",
+   "rate": "44.00"
+  },
+  {
+   "sl": "15",
+   "name": "Curing Compound",
+   "unit": "Ltr",
+   "rate": "175.00"
+  },
+  {
+   "sl": "16",
+   "name": "D – cord",
+   "unit": "Rm",
+   "rate": "12.00"
+  },
+  {
+   "sl": "17",
+   "name": "Delay - noiseless trunk",
+   "unit": "Each",
+   "rate": "23.00"
+  },
+  {
+   "sl": "18",
+   "name": "Detonating fuse coil",
+   "unit": "Rm",
+   "rate": "10.00"
+  },
+  {
+   "sl": "19",
+   "name": "Detonating shock tube / Cord relays",
+   "unit": "Rm",
+   "rate": "46.00"
+  },
+  {
+   "sl": "20",
+   "name": "Detonator delay type",
+   "unit": "Each",
+   "rate": "24.00"
+  },
+  {
+   "sl": "21",
+   "name": "Detonator electric",
+   "unit": "Each",
+   "rate": "15.00"
+  },
+  {
+   "sl": "22",
+   "name": "Detonator ordinary",
+   "unit": "Each",
+   "rate": "12.00"
+  },
+  {
+   "sl": "23",
+   "name": "Empty cement bag",
+   "unit": "Each",
+   "rate": "8.00"
+  },
+  {
+   "sl": "24",
+   "name": "Explosive ANFO",
+   "unit": "kg",
+   "rate": "82.00"
+  },
+  {
+   "sl": "25",
+   "name": "Explosive ANFO high strength booster",
+   "unit": "kg",
+   "rate": "96.00"
+  },
+  {
+   "sl": "26",
+   "name": "Explosive small dia (Kelvex-220 or equivalent)",
+   "unit": "kg",
+   "rate": "102.00"
+  },
+  {
+   "sl": "27",
+   "name": "Fine aggregate/ sand(un-screened) for Concrete & Filtering (a)",
+   "unit": "cum",
+   "rate": "777.00"
+  },
+  {
+   "sl": "27",
+   "name": "items) (excluding Seigniorage charges) Fineaggregate/Sand(unscreened)for filling and blindage (b)",
+   "unit": "cum",
+   "rate": "777.00"
+  },
+  {
+   "sl": "28",
+   "name": "(excluding Seigniorage charges) Fine aggregate /Sand (Screened) for Mortar, Plastering items cum",
+   "unit": null,
+   "rate": "1023.00"
+  },
+  {
+   "sl": "29",
+   "name": "and Sand blasting items (excluding Seigniorage charges) Geo-textile ( filter fabric ) 160 gsm",
+   "unit": "sqm",
+   "rate": "52.00"
+  },
+  {
+   "sl": "30",
+   "name": "Geo-textile ( filter fabric ) 200 gsm",
+   "unit": "sqm",
+   "rate": "61.00"
+  },
+  {
+   "sl": "31",
+   "name": "Geo-textile ( filter fabric ) 250 gsm",
+   "unit": "sqm",
+   "rate": "73.00"
+  },
+  {
+   "sl": "32",
+   "name": "G I Pipe 100 mm dia B Class",
+   "unit": "Rm",
+   "rate": "1045.00"
+  },
+  {
+   "sl": "33",
+   "name": "G I Pipe 15 mm dia A class",
+   "unit": "Rm",
+   "rate": "130.00"
+  },
+  {
+   "sl": "34",
+   "name": "G I pipe 25 mm dia A class",
+   "unit": "Rm",
+   "rate": "199.00"
+  },
+  {
+   "sl": "35",
+   "name": "G I pipe 40 mm dia B class",
+   "unit": "Rm",
+   "rate": "338.00"
+  },
+  {
+   "sl": "36",
+   "name": "G I pipe 50 mm dia A class",
+   "unit": "Rm",
+   "rate": "381.00"
+  },
+  {
+   "sl": "37",
+   "name": "G I Pipe 80 mm dia B Class",
+   "unit": "Rm",
+   "rate": "682.00"
+  },
+  {
+   "sl": "38",
+   "name": "G.I Bolts / Nuts and Washers",
+   "unit": "kg",
+   "rate": "120.00"
+  },
+  {
+   "sl": "39(a)",
+   "name": "G.I sheet ( plain )",
+   "unit": "tonne",
+   "rate": "79837.00"
+  },
+  {
+   "sl": "39(b)",
+   "name": "G.I sheet ( Corrugated )",
+   "unit": "tonne",
+   "rate": "79502.00"
+  },
+  {
+   "sl": "40",
+   "name": "Hariyala turfing sods",
+   "unit": "sqm",
+   "rate": "53.00"
+  },
+  {
+   "sl": "41",
+   "name": "Hectometer stone one line dressed",
+   "unit": "Each",
+   "rate": "430.00"
+  },
+  {
+   "sl": "42",
+   "name": "Hemp yarn",
+   "unit": "kg",
+   "rate": "104.00"
+  },
+  {
+   "sl": "43",
+   "name": "Honne wood planks",
+   "unit": "cum",
+   "rate": "81839.00"
+  },
+  {
+   "sl": "44",
+   "name": "Hume pipe with collar 150 mm dia",
+   "unit": "Rm",
+   "rate": "430.00"
+  },
+  {
+   "sl": "45",
+   "name": "Hume pipe with collar 300 mm dia",
+   "unit": "Rm",
+   "rate": "737.00"
+  },
+  {
+   "sl": "46",
+   "name": "J- Bolts 30 cm long",
+   "unit": "Each",
+   "rate": "58.00"
+  },
+  {
+   "sl": "47",
+   "name": "Jungle wood planks",
+   "unit": "cum",
+   "rate": "36336.00"
+  },
+  {
+   "sl": "48",
+   "name": "Khandki stone 15 to 20 cm height",
+   "unit": "Each",
+   "rate": "23.00"
+  },
+  {
+   "sl": "49",
+   "name": "Khandki stone 20 to 25 cm height",
+   "unit": "Each",
+   "rate": "26.00"
+  },
+  {
+   "sl": "50",
+   "name": "Khandki stone 25 to 30 cm height",
+   "unit": "Each",
+   "rate": "29.00"
+  },
+  {
+   "sl": "51",
+   "name": "Kilometer stone one line dressed",
+   "unit": "Each",
+   "rate": "643.00"
+  },
+  {
+   "sl": "52",
+   "name": "LDPE sheet ( Geo membrane ) 500 micron thick",
+   "unit": "sqm",
+   "rate": "132.00"
+  },
+  {
+   "sl": "53",
+   "name": "LDPE sheet ( Geo membrane ) 750 micron thick",
+   "unit": "sqm",
+   "rate": "183.00"
+  },
+  {
+   "sl": "54",
+   "name": "LDPE sheet ( Geo membrane ) 1000 micron thick",
+   "unit": "sqm",
+   "rate": "241.00"
+  },
+  {
+   "sl": "55",
+   "name": "M S Bolts / Nuts / Washers",
+   "unit": "kg",
+   "rate": "104.00"
+  },
+  {
+   "sl": "56",
+   "name": "Murum(including loading charges but excluding Seigniorage charges )",
+   "unit": "cum",
+   "rate": "313.00"
+  },
+  {
+   "sl": "57",
+   "name": "Oxalic acid",
+   "unit": "Ltr",
+   "rate": "111.00"
+  },
+  {
+   "sl": "58",
+   "name": "Oxygen gas",
+   "unit": "cum",
+   "rate": "68.00"
+  },
+  {
+   "sl": "59",
+   "name": "PVC sealing strip",
+   "unit": "Rm",
+   "rate": "62.00"
+  },
+  {
+   "sl": "60",
+   "name": "PVC water stopper 310 mm wide",
+   "unit": "Rm",
+   "rate": "536.00"
+  },
+  {
+   "sl": "61",
+   "name": "PVC pipe of 100 mm dia",
+   "unit": "Rm",
+   "rate": "213.00"
+  },
+  {
+   "sl": "63",
+   "name": "Resin bond Cement capsule",
+   "unit": "Each",
+   "rate": "68.00"
+  },
+  {
+   "sl": "64",
+   "name": "Rough stone 20 x 20 x 75 cm ( Including Loading charges but excluding Seigniorage Charges)",
+   "unit": "Each",
+   "rate": "49.00"
+  },
+  {
+   "sl": "65(a)",
+   "name": "Shahabad stone slab polished (including loading charges but excluding Seigniorage charges)",
+   "unit": "sqm",
+   "rate": "346.00"
+  },
+  {
+   "sl": "65(b)",
+   "name": "Shahabad stone slab non polished (including loading charges but excluding Seigniorage charges)",
+   "unit": "sqm",
+   "rate": "285.00"
+  },
+  {
+   "sl": "66",
+   "name": "Stone chips (at dump yard/Spoil)(including loading charges but excluding Seigniorage charges)",
+   "unit": "cum",
+   "rate": "280.00"
+  },
+  {
+   "sl": "67",
+   "name": "Stone chips ( at quarry )(including loading charges but excluding Seigniorage charges)",
+   "unit": "cum",
+   "rate": "665.00"
+  },
+  {
+   "sl": "68",
+   "name": "Structural steel angle / channel / beam / bars tonne",
+   "unit": null,
+   "rate": "53000.00"
+  },
+  {
+   "sl": "69",
+   "name": "Structural steel plate / flats tonne",
+   "unit": null,
+   "rate": "63000.00"
+  },
+  {
+   "sl": "70",
+   "name": "Super Plasticizer (Conplast RP-264 or equivalent )",
+   "unit": "kg",
+   "rate": "78.00"
+  },
+  {
+   "sl": "71",
+   "name": "Synthetic Enamel paint 1st quality",
+   "unit": "Ltr",
+   "rate": "280.00"
+  },
+  {
+   "sl": "72",
+   "name": "Synthetic adhesive ( Resin + Hardener )",
+   "unit": "Kg",
+   "rate": "402.00"
+  },
+  {
+   "sl": "73",
+   "name": "Tar felt joint filler board 12 mm thick",
+   "unit": "sqm",
+   "rate": "481.00"
+  },
+  {
+   "sl": "74",
+   "name": "Tar felt joint filler board 20 mm thick",
+   "unit": "sqm",
+   "rate": "727.00"
+  },
+  {
+   "sl": "75",
+   "name": "Through stones 20 x 20 x 30 to 45 cm (including loading charges but excluding Seigniorage charges)",
+   "unit": "Each",
+   "rate": "34.00"
+  },
+  {
+   "sl": "76",
+   "name": "Through stones 25 x 25 x 45 to 60 cm long (including loading Each",
+   "unit": null,
+   "rate": "63.00"
+  },
+  {
+   "sl": "77",
+   "name": "charges but excluding Seigniorage charges) Through stones 30 x 30 x 65 to 75 cm long (including loading charges but excluding Seigniorage charges)",
+   "unit": "Each",
+   "rate": "99.00"
+  },
+  {
+   "sl": "78",
+   "name": "Un-coursed rubble stones ( at dump yard /Spoil) (including loading charges but excluding Seigniorage charges)",
+   "unit": "cum",
+   "rate": "269.00"
+  },
+  {
+   "sl": "79",
+   "name": "Un-coursed rubble stones ( at quarry )( including loading charges but excluding Seigniorage charges)",
+   "unit": "cum",
+   "rate": "508.00"
+  },
+  {
+   "sl": "80",
+   "name": "Water proofing compound",
+   "unit": "kg",
+   "rate": "132.00"
+  },
+  {
+   "sl": "81",
+   "name": "Welding electrodes 4 mm dia",
+   "unit": "Each",
+   "rate": "16.00"
+  },
+  {
+   "sl": "82",
+   "name": "Wire brush",
+   "unit": "Each",
+   "rate": "54.00"
+  },
+  {
+   "sl": "83",
+   "name": "Wire mesh 20 gauge",
+   "unit": "sqm",
+   "rate": "290.00"
+  },
+  {
+   "sl": "84",
+   "name": "Zinc chromate red oxide primer paint",
+   "unit": "Ltr",
+   "rate": "213.00"
+  },
+  {
+   "sl": "85",
+   "name": "inorganic zinc silicate",
+   "unit": "Ltr",
+   "rate": "620.00"
+  },
+  {
+   "sl": "86",
+   "name": "solvent less coal tar epoxy paint",
+   "unit": "Ltr",
+   "rate": "280.00"
+  },
+  {
+   "sl": "87",
+   "name": "Zinc phosphate primer",
+   "unit": "Ltr",
+   "rate": "224.00"
+  },
+  {
+   "sl": "88",
+   "name": "Allkyd based iron oxide paint",
+   "unit": "Ltr",
+   "rate": "196.00"
+  },
+  {
+   "sl": "89(a)",
+   "name": "a) Cost of hdpe (75mm dia) (6 kg/cm2",
+   "unit": "Rm",
+   "rate": "234.00"
+  },
+  {
+   "sl": "89(b)",
+   "name": "b) light black MS casing pipe 80mm dia (4mm thick)",
+   "unit": "Rm",
+   "rate": "783.00"
+  },
+  {
+   "sl": "90",
+   "name": "welded steel wire fabric 100X100X5 mm size",
+   "unit": "Kg",
+   "rate": "224.00"
+  },
+  {
+   "sl": "91",
+   "name": "Protective Mastic",
+   "unit": "Ltr",
+   "rate": "554.00"
+  },
+  {
+   "sl": "92",
+   "name": "Solventless coal tar epoxy (brown)",
+   "unit": "Ltr",
+   "rate": "280.00"
+  },
+  {
+   "sl": "93",
+   "name": "Excavation of drain with Excavator",
+   "unit": "cum",
+   "rate": "58.00"
+  },
+  {
+   "sl": "94",
+   "name": "Crushed stone sand/Rock sand 4.75mm to 2.36 mm as per IS 383 (1970) (excluding Seigniorage charges)",
+   "unit": "Cum",
+   "rate": "727.00"
+  },
+  {
+   "sl": "95",
+   "name": "Fly ash conforming to IS: 3812 ( Part II & I)",
+   "unit": "Cum",
+   "rate": "91.00"
+  },
+  {
+   "sl": "96",
+   "name": "Benching old embankment slopes 0.45 X 0.45 M",
+   "unit": "RM",
+   "rate": "10.00"
+  },
+  {
+   "sl": "97",
+   "name": "Laying of Sand Bags in the stipulated places including cost of empty cement bag, sand, thread, stitching charges and per labour charges etc., with 13.615% overhead charges and",
+   "unit": "bag",
+   "rate": "45.00"
+  },
+  {
+   "sl": "98",
+   "name": "Rough stone for revetment 225mm thick ( including Loading charges but excluding Seigniorage charges)",
+   "unit": "cum",
+   "rate": "280.00"
+  },
+  {
+   "sl": "99",
+   "name": "Eradication of Weed growth from Drains, Canals by spraying Chemicals",
+   "unit": "sqm",
+   "rate": "4.00"
+  },
+  {
+   "sl": "100",
+   "name": "Thinner",
+   "unit": "Ltr",
+   "rate": "106.00"
+  },
+  {
+   "sl": "101",
+   "name": "Credit for excavated rock found suitable for use",
+   "unit": "Cum",
+   "rate": "274.00"
+  },
+  {
+   "sl": "102",
+   "name": "Earth Cost or compensation for earth taken from private land (Excluding Seigniorage Charges)",
+   "unit": "Cum",
+   "rate": "88.00"
+  }
+ ],
+ "labour": [
+  {
+   "sl": "1",
+   "category": "Skilled Category",
+   "name": "Bar bender",
+   "unit": "Day",
+   "zone_1": "925",
+   "zone_2": "885",
+   "zone_3": "845"
+  },
+  {
+   "sl": "2",
+   "category": "Skilled Category",
+   "name": "Black smith / Tin smith / Rivetor",
+   "unit": "Day",
+   "zone_1": "790",
+   "zone_2": "750",
+   "zone_3": "710"
+  },
+  {
+   "sl": "3",
+   "category": "Skilled Category",
+   "name": "Blaster ( Licensed )",
+   "unit": "Day",
+   "zone_1": "925",
+   "zone_2": "885",
+   "zone_3": "845"
+  },
+  {
+   "sl": "4",
+   "category": "Skilled Category",
+   "name": "Carpenter Cl- I",
+   "unit": "Day",
+   "zone_1": "925",
+   "zone_2": "885",
+   "zone_3": "845"
+  },
+  {
+   "sl": "5",
+   "category": "Skilled Category",
+   "name": "Electrician (Licensed)",
+   "unit": "Day",
+   "zone_1": "895",
+   "zone_2": "855",
+   "zone_3": "815"
+  },
+  {
+   "sl": "6",
+   "category": "Skilled Category",
+   "name": "Fitter Cl- I",
+   "unit": "Day",
+   "zone_1": "895",
+   "zone_2": "855",
+   "zone_3": "815"
+  },
+  {
+   "sl": "7",
+   "category": "Skilled Category",
+   "name": "Floor Polisher / Tile",
+   "unit": "Day",
+   "zone_1": "790",
+   "zone_2": "750",
+   "zone_3": "710"
+  },
+  {
+   "sl": "8",
+   "category": "Skilled Category",
+   "name": "Layer Foreman",
+   "unit": "Day",
+   "zone_1": "910",
+   "zone_2": "870",
+   "zone_3": "830"
+  },
+  {
+   "sl": "9",
+   "category": "Skilled Category",
+   "name": "Gauge reader",
+   "unit": "Day",
+   "zone_1": "785",
+   "zone_2": "745",
+   "zone_3": "705"
+  },
+  {
+   "sl": "10",
+   "category": "Skilled Category",
+   "name": "Maistry / Work Inspector with Non- technical Qualification",
+   "unit": "Day",
+   "zone_1": "925",
+   "zone_2": "885",
+   "zone_3": "845"
+  },
+  {
+   "sl": "11",
+   "category": "Skilled Category",
+   "name": "SSLC/SSC/HSC Mason Cl- I / Brick layer",
+   "unit": "Day",
+   "zone_1": "795",
+   "zone_2": "755",
+   "zone_3": "715"
+  },
+  {
+   "sl": "12",
+   "category": "Skilled Category",
+   "name": "Cl- I Mechanic Cl- I",
+   "unit": "Day",
+   "zone_1": "830",
+   "zone_2": "790",
+   "zone_3": "750"
+  },
+  {
+   "sl": "13",
+   "category": "Skilled Category",
+   "name": "Operator Air compressor / DG set",
+   "unit": "Day",
+   "zone_1": "830",
+   "zone_2": "790",
+   "zone_3": "750"
+  },
+  {
+   "sl": "14",
+   "category": "Skilled Category",
+   "name": "Operator Batching plant",
+   "unit": "Day",
+   "zone_1": "900",
+   "zone_2": "860",
+   "zone_3": "820"
+  },
+  {
+   "sl": "15",
+   "category": "Skilled Category",
+   "name": "Operator Bus/Ambulance/ Lorry/",
+   "unit": "Day",
+   "zone_1": "900",
+   "zone_2": "860",
+   "zone_3": "820"
+  },
+  {
+   "sl": "16",
+   "category": "Skilled Category",
+   "name": "Tanker Operator Concrete /",
+   "unit": "Day",
+   "zone_1": "840",
+   "zone_2": "800",
+   "zone_3": "760"
+  },
+  {
+   "sl": "17",
+   "category": "Skilled Category",
+   "name": "Asphalt mixer Operator Concrete /",
+   "unit": "Day",
+   "zone_1": "840",
+   "zone_2": "800",
+   "zone_3": "760"
+  },
+  {
+   "sl": "18",
+   "category": "Skilled Category",
+   "name": "Asphalt paver Operator Concrete pump / Placer/ ice plant",
+   "unit": "Day",
+   "zone_1": "840",
+   "zone_2": "800",
+   "zone_3": "760"
+  },
+  {
+   "sl": "19",
+   "category": "Skilled Category",
+   "name": "Operator Core drilling machine",
+   "unit": "Day",
+   "zone_1": "900",
+   "zone_2": "860",
+   "zone_3": "820"
+  },
+  {
+   "sl": "20",
+   "category": "Skilled Category",
+   "name": "Operator Crane/ Tower crane/ Cable way",
+   "unit": "Day",
+   "zone_1": "900",
+   "zone_2": "860",
+   "zone_3": "820"
+  },
+  {
+   "sl": "21",
+   "category": "Skilled Category",
+   "name": "Operator Drilling jumbo / Loco / Winch",
+   "unit": "Day",
+   "zone_1": "830",
+   "zone_2": "790",
+   "zone_3": "750"
+  },
+  {
+   "sl": "22",
+   "category": "Skilled Category",
+   "name": "Operator Grouting/",
+   "unit": "Day",
+   "zone_1": "830",
+   "zone_2": "790",
+   "zone_3": "750"
+  },
+  {
+   "sl": "23",
+   "category": "Skilled Category",
+   "name": "Guniting/ Shotcreting Operator Jackhammer/",
+   "unit": "Day",
+   "zone_1": "830",
+   "zone_2": "790",
+   "zone_3": "750"
+  },
+  {
+   "sl": "24",
+   "category": "Skilled Category",
+   "name": "Pneumatic tamper Operator Pump /",
+   "unit": "Day",
+   "zone_1": "830",
+   "zone_2": "790",
+   "zone_3": "750"
+  },
+  {
+   "sl": "25",
+   "category": "Skilled Category",
+   "name": "Ventilation fan Operator Lathe/Drilling/Shearing machine",
+   "unit": "Day",
+   "zone_1": "900",
+   "zone_2": "860",
+   "zone_3": "820"
+  },
+  {
+   "sl": "26",
+   "category": "Skilled Category",
+   "name": "Operator Bending /",
+   "unit": "Day",
+   "zone_1": "830",
+   "zone_2": "790",
+   "zone_3": "750"
+  },
+  {
+   "sl": "27",
+   "category": "Skilled Category",
+   "name": "Planing machine Operator Road roller",
+   "unit": "Day",
+   "zone_1": "905",
+   "zone_2": "865",
+   "zone_3": "825"
+  },
+  {
+   "sl": "28",
+   "category": "Skilled Category",
+   "name": "Operator Shovel /",
+   "unit": "Day",
+   "zone_1": "905",
+   "zone_2": "865",
+   "zone_3": "825"
+  },
+  {
+   "sl": "29",
+   "category": "Skilled Category",
+   "name": "Scraper / Dozer Operator Spillway /",
+   "unit": "Day",
+   "zone_1": "840",
+   "zone_2": "800",
+   "zone_3": "760"
+  },
+  {
+   "sl": "30",
+   "category": "Skilled Category",
+   "name": "Sluice gate Operator Crusher /",
+   "unit": "Day",
+   "zone_1": "840",
+   "zone_2": "800",
+   "zone_3": "760"
+  },
+  {
+   "sl": "31",
+   "category": "Skilled Category",
+   "name": "Conveyor / Mucker Operator Tipper /",
+   "unit": "Day",
+   "zone_1": "900",
+   "zone_2": "860",
+   "zone_3": "820"
+  },
+  {
+   "sl": "32",
+   "category": "Skilled Category",
+   "name": "Dumper / Transit mixer Operator Concrete vibrator",
+   "unit": "Day",
+   "zone_1": "840",
+   "zone_2": "800",
+   "zone_3": "760"
+  },
+  {
+   "sl": "33",
+   "category": "Skilled Category",
+   "name": "Operator Vibratory plain / pad foot roller",
+   "unit": "Day",
+   "zone_1": "835",
+   "zone_2": "795",
+   "zone_3": "755"
+  },
+  {
+   "sl": "34",
+   "category": "Skilled Category",
+   "name": "Operator Wagon drill /",
+   "unit": "Day",
+   "zone_1": "900",
+   "zone_2": "860",
+   "zone_3": "820"
+  },
+  {
+   "sl": "35",
+   "category": "Skilled Category",
+   "name": "Drifter Painter Cl- I",
+   "unit": "Day",
+   "zone_1": "900",
+   "zone_2": "860",
+   "zone_3": "820"
+  },
+  {
+   "sl": "36",
+   "category": "Skilled Category",
+   "name": "Plumber / Pipe fitter",
+   "unit": "Day",
+   "zone_1": "910",
+   "zone_2": "870",
+   "zone_3": "830"
+  },
+  {
+   "sl": "37",
+   "category": "Skilled Category",
+   "name": "Sarang / Khalasi",
+   "unit": "Day",
+   "zone_1": "830",
+   "zone_2": "790",
+   "zone_3": "750"
+  },
+  {
+   "sl": "38",
+   "category": "Skilled Category",
+   "name": "Spun pipe moulder",
+   "unit": "Day",
+   "zone_1": "835",
+   "zone_2": "795",
+   "zone_3": "755"
+  },
+  {
+   "sl": "39",
+   "category": "Skilled Category",
+   "name": "Stone chiseller CI- I /",
+   "unit": "Day",
+   "zone_1": "835",
+   "zone_2": "795",
+   "zone_3": "755"
+  },
+  {
+   "sl": "40",
+   "category": "Skilled Category",
+   "name": "Stone cutter Cl- l Struct. steel Fabricator / Marker / Erector",
+   "unit": "Day",
+   "zone_1": "940",
+   "zone_2": "900",
+   "zone_3": "860"
+  },
+  {
+   "sl": "41",
+   "category": "Skilled Category",
+   "name": "Welder / Gas Cutter",
+   "unit": "Day",
+   "zone_1": "840",
+   "zone_2": "800",
+   "zone_3": "760"
+  },
+  {
+   "sl": "42",
+   "category": "Skilled Category",
+   "name": "Welder (X-ray quality)",
+   "unit": "Day",
+   "zone_1": "900",
+   "zone_2": "860",
+   "zone_3": "820"
+  },
+  {
+   "sl": "43",
+   "category": "Skilled Category",
+   "name": "Caulker",
+   "unit": "Day",
+   "zone_1": "900",
+   "zone_2": "860",
+   "zone_3": "820"
+  },
+  {
+   "sl": "44",
+   "category": "Skilled Category",
+   "name": "Bore Mechanic",
+   "unit": "Day",
+   "zone_1": "900",
+   "zone_2": "860",
+   "zone_3": "820"
+  },
+  {
+   "sl": "45",
+   "category": "Skilled Category",
+   "name": "Plumber Class-I",
+   "unit": "Day",
+   "zone_1": "910",
+   "zone_2": "870",
+   "zone_3": "830"
+  },
+  {
+   "sl": "1",
+   "category": "Skilled Category",
+   "name": "SEMI SKILLED Asphalt Sprayer / Boiler attendant",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "2",
+   "category": "Skilled Category",
+   "name": "Bhisti",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "3",
+   "category": "Skilled Category",
+   "name": "Boatman with boat",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "4",
+   "category": "Skilled Category",
+   "name": "Carpenter Cl- II /",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "5",
+   "category": "Skilled Category",
+   "name": "Erector shuttering Cartman with double bullock cart",
+   "unit": "Day",
+   "zone_1": "830",
+   "zone_2": "790",
+   "zone_3": "750"
+  },
+  {
+   "sl": "6",
+   "category": "Skilled Category",
+   "name": "Cartman with single bullock cart",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "7",
+   "category": "Skilled Category",
+   "name": "Chavali / Navagani",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "8",
+   "category": "Skilled Category",
+   "name": "Crowbarman / Jumper man",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "9",
+   "category": "Skilled Category",
+   "name": "Fitter Cl- II",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "10",
+   "category": "Skilled Category",
+   "name": "Gang man / Head /",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "11",
+   "category": "Skilled Category",
+   "name": "Survey mazdoor Gardener / Trained mali",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "12",
+   "category": "Skilled Category",
+   "name": "Helper Air compressor /",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "13",
+   "category": "Skilled Category",
+   "name": "DG set Helper Batching plant",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "14",
+   "category": "Skilled Category",
+   "name": "Helper Blasting",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "15",
+   "category": "Skilled Category",
+   "name": "Helper Bus/ Ambulance/ Lorry/",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "16",
+   "category": "Skilled Category",
+   "name": "Tanker Helper Bending/Shearing/Plani ng machine",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "17",
+   "category": "Skilled Category",
+   "name": "Helper Carpenter",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "18",
+   "category": "Skilled Category",
+   "name": "Helper Concrete /",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "19",
+   "category": "Skilled Category",
+   "name": "Asphalt mixer Helper Concrete /",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "20",
+   "category": "Skilled Category",
+   "name": "Asphalt paver Helper Core drilling machine",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "21",
+   "category": "Skilled Category",
+   "name": "Helper Crane/ Tower crane/ Cable way",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "22",
+   "category": "Skilled Category",
+   "name": "Helper Drilling jumbo /",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "23",
+   "category": "Skilled Category",
+   "name": "Loco / Winch Helper Fitter /",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "24",
+   "category": "Skilled Category",
+   "name": "Fabrication/Electrician Helper Grouting/",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "25",
+   "category": "Skilled Category",
+   "name": "Guniting/ Shotcreting Helper Jack hammer /",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "26",
+   "category": "Skilled Category",
+   "name": "Pneumatic tamper Helper Laboratory /",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "27",
+   "category": "Skilled Category",
+   "name": "Instrumentation Helper Road roller",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "28",
+   "category": "Skilled Category",
+   "name": "Helper Shovel / Scraper / Dozer",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "29",
+   "category": "Skilled Category",
+   "name": "Helper Crusher /",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "30",
+   "category": "Skilled Category",
+   "name": "Conveyor / Mucker Helper Tipper /",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "31",
+   "category": "Skilled Category",
+   "name": "Dumper/ Transit mixer Helper Vibrator",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "32",
+   "category": "Skilled Category",
+   "name": "Helper Vibratory plain/ pad foot roller",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "33",
+   "category": "Skilled Category",
+   "name": "Helper Wagon drill/",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "34",
+   "category": "Skilled Category",
+   "name": "Drifter Lineman Electric /",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "35",
+   "category": "Skilled Category",
+   "name": "Telephone Mason Cl- ll / Brick layer Cl-II",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "36",
+   "category": "Skilled Category",
+   "name": "Mechanic Cl- II",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "37",
+   "category": "Skilled Category",
+   "name": "Painter Cl- II",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "38",
+   "category": "Skilled Category",
+   "name": "Patkari / Neeraganti /",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "39",
+   "category": "Skilled Category",
+   "name": "Sowdy Stone Chiseller Cl- II",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "40",
+   "category": "Skilled Category",
+   "name": "Stone breaker /",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "41",
+   "category": "Skilled Category",
+   "name": "Hammer man Valve man / Canal sluice operator",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "42",
+   "category": "Skilled Category",
+   "name": "Plumber Class-II",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "43",
+   "category": "Skilled Category",
+   "name": "Sewer Cleaner",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "1",
+   "category": "Skilled Category",
+   "name": "UN-SKILLED Cement / Asphalt handling mazdoor",
+   "unit": "Day",
+   "zone_1": "715",
+   "zone_2": "675",
+   "zone_3": "635"
+  },
+  {
+   "sl": "2",
+   "category": "Skilled Category",
+   "name": "Civic worker",
+   "unit": "Day",
+   "zone_1": "715",
+   "zone_2": "675",
+   "zone_3": "635"
+  },
+  {
+   "sl": "3",
+   "category": "Skilled Category",
+   "name": "Heavy mazdoor",
+   "unit": "Day",
+   "zone_1": "715",
+   "zone_2": "675",
+   "zone_3": "635"
+  },
+  {
+   "sl": "4",
+   "category": "Skilled Category",
+   "name": "Light mazdoor",
+   "unit": "Day",
+   "zone_1": "715",
+   "zone_2": "675",
+   "zone_3": "635"
+  },
+  {
+   "sl": "5",
+   "category": "Skilled Category",
+   "name": "Watchman",
+   "unit": "Day",
+   "zone_1": "715",
+   "zone_2": "675",
+   "zone_3": "635"
+  },
+  {
+   "sl": "1",
+   "category": "Other Category",
+   "name": "Care-taker / conductor / Lift Attender",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "2",
+   "category": "Other Category",
+   "name": "Cook / Mess man",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "3",
+   "category": "Other Category",
+   "name": "Dhobi",
+   "unit": "Day",
+   "zone_1": "765",
+   "zone_2": "725",
+   "zone_3": "685"
+  },
+  {
+   "sl": "4",
+   "category": "Other Category",
+   "name": "Diploma Engineer /",
+   "unit": "Day",
+   "zone_1": "1290",
+   "zone_2": "1250",
+   "zone_3": "1210"
+  },
+  {
+   "sl": "5",
+   "category": "Other Category",
+   "name": "Surveyor Diver with headgear",
+   "unit": "Day",
+   "zone_1": "900",
+   "zone_2": "860",
+   "zone_3": "820"
+  },
+  {
+   "sl": "6",
+   "category": "Other Category",
+   "name": "Graduate / Laboratory",
+   "unit": "Day",
+   "zone_1": "925",
+   "zone_2": "885",
+   "zone_3": "845"
+  },
+  {
+   "sl": "7",
+   "category": "Other Category",
+   "name": "Assistant Graduate Engineer/",
+   "unit": "Day",
+   "zone_1": "1615",
+   "zone_2": "1575",
+   "zone_3": "1535"
+  },
+  {
+   "sl": "8",
+   "category": "Other Category",
+   "name": "Geologist Horticulture Assistant /",
+   "unit": "Day",
+   "zone_1": "830",
+   "zone_2": "790",
+   "zone_3": "750"
+  },
+  {
+   "sl": "9",
+   "category": "Other Category",
+   "name": "Photographer ITI certificate holder /",
+   "unit": "Day",
+   "zone_1": "940",
+   "zone_2": "900",
+   "zone_3": "860"
+  },
+  {
+   "sl": "10",
+   "category": "Other Category",
+   "name": "Tracer / Printer Literate mazdoor",
+   "unit": "Day",
+   "zone_1": "715",
+   "zone_2": "675",
+   "zone_3": "635"
+  },
+  {
+   "sl": "11",
+   "category": "Other Category",
+   "name": "Stenographer /",
+   "unit": "Day",
+   "zone_1": "975",
+   "zone_2": "935",
+   "zone_3": "895"
+  },
+  {
+   "sl": "12",
+   "category": "Other Category",
+   "name": "Computer Operator Telephone / Wireless",
+   "unit": "Day",
+   "zone_1": "910",
+   "zone_2": "870",
+   "zone_3": "830"
+  },
+  {
+   "sl": "13",
+   "category": "Other Category",
+   "name": "Operator Typist / Job Typist",
+   "unit": "Day",
+   "zone_1": "910",
+   "zone_2": "870",
+   "zone_3": "830"
+  },
+  {
+   "sl": "14",
+   "category": "Other Category",
+   "name": "CAD operator with Diploma in Engineering/General degree with CAD certificate",
+   "unit": "Day",
+   "zone_1": "1290",
+   "zone_2": "1250",
+   "zone_3": "1210"
+  },
+  {
+   "sl": "15",
+   "category": "Other Category",
+   "name": "Jeep Driver",
+   "unit": "Day",
+   "zone_1": "880",
+   "zone_2": "840",
+   "zone_3": "800"
+  },
+  {
+   "sl": "16",
+   "category": "Other Category",
+   "name": "Data Processing",
+   "unit": "Day",
+   "zone_1": "1155",
+   "zone_2": "1115",
+   "zone_3": "1075"
+  },
+  {
+   "sl": "17",
+   "category": "Other Category",
+   "name": "Chemistry having Computer Knowledge./ Laboratory",
+   "unit": "Day",
+   "zone_1": "1290",
+   "zone_2": "1250",
+   "zone_3": "1210"
+  }
+ ],
+ "hire_charges": {
+  "I": [
+   {
+    "sl": "1",
+    "name": "Agitator car / Transit mixer 2 cum",
+    "unit": "Hour",
+    "hire": "952.20",
+    "fuel": "1570.30",
+    "crew": "519.50",
+    "total": "3042.00"
+   },
+   {
+    "sl": "2",
+    "name": "Air compressor 5 cmm ( electric )",
+    "unit": "Hour",
+    "hire": "127.90",
+    "fuel": "362.60",
+    "crew": "311.00",
+    "total": "801.50"
+   },
+   {
+    "sl": "3",
+    "name": "Air compressor 7 cmm ( diesel )",
+    "unit": "Hour",
+    "hire": "285.10",
+    "fuel": "1284.80",
+    "crew": "398.10",
+    "total": "1968.00"
+   },
+   {
+    "sl": "4",
+    "name": "Air compressor 7 cmm ( electric )",
+    "unit": "Hour",
+    "hire": "166.40",
+    "fuel": "483.40",
+    "crew": "311.00",
+    "total": "960.80"
+   },
+   {
+    "sl": "5",
+    "name": "Air compressor 8.5 cmm ( diesel",
+    "unit": "Hour",
+    "hire": "323.10",
+    "fuel": "1606.00",
+    "crew": "398.10",
+    "total": "2327.20"
+   },
+   {
+    "sl": "6",
+    "name": "Air compressor 8.5 cmm ( electric)",
+    "unit": "Hour",
+    "hire": "197.40",
+    "fuel": "604.30",
+    "crew": "311.00",
+    "total": "1112.70"
+   },
+   {
+    "sl": "7",
+    "name": "Air compressor 15 cmm ( electric)",
+    "unit": "Hour",
+    "hire": "158.70",
+    "fuel": "1342.80",
+    "crew": "331.80",
+    "total": "1833.30"
+   },
+   {
+    "sl": "8",
+    "name": "Angle Dozer 90 hp",
+    "unit": "Hour",
+    "hire": "2011.60",
+    "fuel": "1098.50",
+    "crew": "434.20",
+    "total": "3544.30"
+   },
+   {
+    "sl": "9",
+    "name": "Batching plant 0.5 cum( 6 cum/hr)",
+    "unit": "Hour",
+    "hire": "136.00",
+    "fuel": "161.10",
+    "crew": "623.30",
+    "total": "920.40"
+   },
+   {
+    "sl": "10",
+    "name": " cum/hr) cum/hr)",
+    "unit": "Hour",
+    "hire": "455.00",
+    "fuel": "483.40",
+    "crew": "623.30",
+    "total": "1561.70"
+   },
+   {
+    "sl": "11",
+    "name": "",
+    "unit": "Hour",
+    "hire": "587.90",
+    "fuel": "590.80",
+    "crew": "623.30",
+    "total": "1802.00"
+   },
+   {
+    "sl": "12",
+    "name": "* Newly added Batching plants are shown as Sl.No.71,72 &73 Bending machine 3000 x 12 mm",
+    "unit": "Hour",
+    "hire": "48.60",
+    "fuel": "161.10",
+    "crew": "248.80",
+    "total": "458.50"
+   },
+   {
+    "sl": "13",
+    "name": "Clamp shell and hoisting ropes",
+    "unit": "Hour",
+    "hire": "7.10",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "7.10"
+   },
+   {
+    "sl": "14",
+    "name": "Concrete bucket 1.5 cum",
+    "unit": "Hour",
+    "hire": "18.70",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "18.70"
+   },
+   {
+    "sl": "15",
+    "name": "Concrete hand mixer 45 / 30 ltr",
+    "unit": "Hour",
+    "hire": "7.40",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "7.40"
+   },
+   {
+    "sl": "16",
+    "name": "Concrete mixer 300 / 200 ( diesel)",
+    "unit": "Hour",
+    "hire": "67.20",
+    "fuel": "142.80",
+    "crew": "417.30",
+    "total": "627.30"
+   },
+   {
+    "sl": "17",
+    "name": "Concrete mixer 300 / 200 ltr ( electric)",
+    "unit": "Hour",
+    "hire": "66.60",
+    "fuel": "53.70",
+    "crew": "417.30",
+    "total": "537.60"
+   },
+   {
+    "sl": "18",
+    "name": "Concrete mixer 600 / 400 ( diesel)",
+    "unit": "Hour",
+    "hire": "109.80",
+    "fuel": "285.50",
+    "crew": "417.30",
+    "total": "812.60"
+   },
+   {
+    "sl": "19",
+    "name": "Concrete mixer 600 / 400 ltr ( electric",
+    "unit": "Hour",
+    "hire": "107.50",
+    "fuel": "107.40",
+    "crew": "417.30",
+    "total": "632.20"
+   },
+   {
+    "sl": "20",
+    "name": "Concrete paver 100 sqm / hr",
+    "unit": "Hour",
+    "hire": "401.40",
+    "fuel": "0.00",
+    "crew": "801.20",
+    "total": "1202.60"
+   },
+   {
+    "sl": "21",
+    "name": "Convey mucker",
+    "unit": "Hour",
+    "hire": "982.70",
+    "fuel": "373.80",
+    "crew": "333.80",
+    "total": "1690.30"
+   },
+   {
+    "sl": "22",
+    "name": "Core drilling machine",
+    "unit": "Hour",
+    "hire": "380.70",
+    "fuel": "428.30",
+    "crew": "519.50",
+    "total": "1328.50"
+   },
+   {
+    "sl": "23",
+    "name": "Diesel generating set 30 KVA",
+    "unit": "Hour",
+    "hire": "79.20",
+    "fuel": "1142.00",
+    "crew": "248.80",
+    "total": "1470.00"
+   },
+   {
+    "sl": "24",
+    "name": "Diesel generating set 50 KVA",
+    "unit": "Hour",
+    "hire": "116.50",
+    "fuel": "1713.00",
+    "crew": "248.80",
+    "total": "2078.30"
+   },
+   {
+    "sl": "25",
+    "name": "Diesel Loco 45 hp",
+    "unit": "Hour",
+    "hire": "438.30",
+    "fuel": "963.60",
+    "crew": "311.00",
+    "total": "1712.90"
+   },
+   {
+    "sl": "26",
+    "name": "Dewatering pump 5 hp ( diesel )",
+    "unit": "Hour",
+    "hire": "10.70",
+    "fuel": "142.80",
+    "crew": "207.20",
+    "total": "360.70"
+   },
+   {
+    "sl": "27",
+    "name": "Dewatering pump 5 hp ( electric )",
+    "unit": "Hour",
+    "hire": "3.70",
+    "fuel": "53.70",
+    "crew": "155.30",
+    "total": "212.70"
+   },
+   {
+    "sl": "28",
+    "name": "Dewatering pump 10 hp ( diesel )",
+    "unit": "Hour",
+    "hire": "18.30",
+    "fuel": "285.50",
+    "crew": "207.20",
+    "total": "511.00"
+   },
+   {
+    "sl": "29",
+    "name": "Dewatering pump 10 hp ( electric",
+    "unit": "Hour",
+    "hire": "7.90",
+    "fuel": "107.40",
+    "crew": "155.30",
+    "total": "270.60"
+   },
+   {
+    "sl": "30",
+    "name": "Dewatering pump 20 hp ( diesel )",
+    "unit": "Hour",
+    "hire": "58.50",
+    "fuel": "571.00",
+    "crew": "207.20",
+    "total": "836.70"
+   },
+   {
+    "sl": "31",
+    "name": "Dewatering pump 20 hp ( electric",
+    "unit": "Hour",
+    "hire": "15.50",
+    "fuel": "214.80",
+    "crew": "155.30",
+    "total": "385.60"
+   },
+   {
+    "sl": "32",
+    "name": "Drifter",
+    "unit": "Hour",
+    "hire": "380.20",
+    "fuel": "0.00",
+    "crew": "649.40",
+    "total": "1029.60"
+   },
+   {
+    "sl": "33",
+    "name": "Drilling jumbo",
+    "unit": "Hour",
+    "hire": "444.10",
+    "fuel": "77.10",
+    "crew": "331.80",
+    "total": "853.00"
+   },
+   {
+    "sl": "34",
+    "name": "Dumper 4.5 cum",
+    "unit": "Hour",
+    "hire": "740.00",
+    "fuel": "719.50",
+    "crew": "415.60",
+    "total": "1875.10"
+   },
+   {
+    "sl": "35",
+    "name": "Geophysical Electric resistivity meter",
+    "unit": "Hour",
+    "hire": "124.30",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "124.30"
+   },
+   {
+    "sl": "36",
+    "name": "No Rs in Rs in Rs in Rs. Grouting pump",
+    "unit": "Hour",
+    "hire": "41.80",
+    "fuel": "53.70",
+    "crew": "497.60",
+    "total": "593.10"
+   },
+   {
+    "sl": "37",
+    "name": "Guniting / sand blast equipment",
+    "unit": "Hour",
+    "hire": "135.40",
+    "fuel": "0.00",
+    "crew": "414.70",
+    "total": "550.10"
+   },
+   {
+    "sl": "38",
+    "name": "Ice plant & accessories 30 t/day",
+    "unit": "Hour",
+    "hire": "213.60",
+    "fuel": "1530.80",
+    "crew": "250.40",
+    "total": "1994.80"
+   },
+   {
+    "sl": "39",
+    "name": "Jack hammer",
+    "unit": "Hour",
+    "hire": "24.60",
+    "fuel": "0.00",
+    "crew": "622.10",
+    "total": "646.70"
+   },
+   {
+    "sl": "40",
+    "name": "Needle vibrator 40 mm (petrol)",
+    "unit": "Hour",
+    "hire": "7.30",
+    "fuel": "31.80",
+    "crew": "300.40",
+    "total": "339.50"
+   },
+   {
+    "sl": "41",
+    "name": "Needle vibrator 40 mm (electric)",
+    "unit": "Hour",
+    "hire": "6.80",
+    "fuel": "10.70",
+    "crew": "300.40",
+    "total": "317.90"
+   },
+   {
+    "sl": "42",
+    "name": "Needle vibrator 60 mm (petrol)",
+    "unit": "Hour",
+    "hire": "7.70",
+    "fuel": "47.70",
+    "crew": "300.40",
+    "total": "355.80"
+   },
+   {
+    "sl": "43",
+    "name": "Needle vibrator 60 mm (electric)",
+    "unit": "Hour",
+    "hire": "7.50",
+    "fuel": "16.10",
+    "crew": "300.40",
+    "total": "324.00"
+   },
+   {
+    "sl": "44",
+    "name": "Planing machine 4 m stroke",
+    "unit": "Hour",
+    "hire": "131.30",
+    "fuel": "161.10",
+    "crew": "398.10",
+    "total": "690.50"
+   },
+   {
+    "sl": "45",
+    "name": "Plate shearing machine upto 12 mm",
+    "unit": "Hour",
+    "hire": "53.90",
+    "fuel": "214.80",
+    "crew": "259.70",
+    "total": "528.40"
+   },
+   {
+    "sl": "46",
+    "name": "Pneumatic placer 0.5 cum",
+    "unit": "Hour",
+    "hire": "213.80",
+    "fuel": "0.00",
+    "crew": "163.80",
+    "total": "377.60"
+   },
+   {
+    "sl": "47",
+    "name": "Pneumatic tamper",
+    "unit": "Hour",
+    "hire": "25.00",
+    "fuel": "0.00",
+    "crew": "497.60",
+    "total": "522.60"
+   },
+   {
+    "sl": "48",
+    "name": "Pug cutting machine",
+    "unit": "Hour",
+    "hire": "8.70",
+    "fuel": "5.40",
+    "crew": "0.00",
+    "total": "14.10"
+   },
+   {
+    "sl": "49",
+    "name": "Pusher leg",
+    "unit": "Hour",
+    "hire": "14.90",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "14.90"
+   },
+   {
+    "sl": "50",
+    "name": "Road roller diesel 10 t",
+    "unit": "Hour",
+    "hire": "253.10",
+    "fuel": "1284.80",
+    "crew": "416.80",
+    "total": "1954.70"
+   },
+   {
+    "sl": "51",
+    "name": "Shovel 0.50 cum 75 hp",
+    "unit": "Hour",
+    "hire": "1143.70",
+    "fuel": "856.50",
+    "crew": "434.20",
+    "total": "2434.40"
+   },
+   {
+    "sl": "52",
+    "name": "Shovel 0.85 cum 110 hp",
+    "unit": "Hour",
+    "hire": "1964.80",
+    "fuel": "1570.30",
+    "crew": "434.20",
+    "total": "3969.30"
+   },
+   {
+    "sl": "53",
+    "name": "Stationery derric crane",
+    "unit": "Hour",
+    "hire": "96.30",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "96.30"
+   },
+   {
+    "sl": "54",
+    "name": "Tipper 5 cum",
+    "unit": "Hour",
+    "hire": "581.30",
+    "fuel": "539.60",
+    "crew": "324.70",
+    "total": "1445.60"
+   },
+   {
+    "sl": "55",
+    "name": "Tipping tub 1.5 cum",
+    "unit": "Hour",
+    "hire": "83.60",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "83.60"
+   },
+   {
+    "sl": "56",
+    "name": "Tower crane 5 tonne",
+    "unit": "Hour",
+    "hire": "1009.00",
+    "fuel": "279.30",
+    "crew": "346.30",
+    "total": "1634.60"
+   },
+   {
+    "sl": "57",
+    "name": "Transformer 250 KVA",
+    "unit": "Hour",
+    "hire": "6018.70",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "6018.70"
+   },
+   {
+    "sl": "58",
+    "name": "Truck 10 t",
+    "unit": "Hour",
+    "hire": "530.20",
+    "fuel": "539.60",
+    "crew": "324.70",
+    "total": "1394.50"
+   },
+   {
+    "sl": "59",
+    "name": "Truck mounted derric crane 5 t",
+    "unit": "Hour",
+    "hire": "717.60",
+    "fuel": "539.60",
+    "crew": "324.70",
+    "total": "1581.90"
+   },
+   {
+    "sl": "60",
+    "name": "Upright drilling machine/Grinder",
+    "unit": "Hour",
+    "hire": "28.60",
+    "fuel": "53.70",
+    "crew": "351.00",
+    "total": "433.30"
+   },
+   {
+    "sl": "61",
+    "name": "Ventilation fan 20 hp",
+    "unit": "Hour",
+    "hire": "13.70",
+    "fuel": "214.80",
+    "crew": "53.60",
+    "total": "282.10"
+   },
+   {
+    "sl": "62",
+    "name": "Vibratory pad foot roller 8 t",
+    "unit": "Hour",
+    "hire": "1571.60",
+    "fuel": "1855.80",
+    "crew": "499.20",
+    "total": "3926.60"
+   },
+   {
+    "sl": "63",
+    "name": "Wagon drill",
+    "unit": "Hour",
+    "hire": "219.80",
+    "fuel": "0.00",
+    "crew": "519.50",
+    "total": "739.30"
+   },
+   {
+    "sl": "64",
+    "name": "Water tanker 8000 ltr",
+    "unit": "Hour",
+    "hire": "495.60",
+    "fuel": "539.60",
+    "crew": "324.70",
+    "total": "1359.90"
+   },
+   {
+    "sl": "65",
+    "name": "Welding set",
+    "unit": "Hour",
+    "hire": "18.50",
+    "fuel": "128.90",
+    "crew": "0.00",
+    "total": "147.40"
+   },
+   {
+    "sl": "66",
+    "name": "Winch 35 hp ( electric )",
+    "unit": "Hour",
+    "hire": "158.20",
+    "fuel": "263.20",
+    "crew": "497.60",
+    "total": "919.00"
+   },
+   {
+    "sl": "68",
+    "name": "Hydraulic Truck Crane 30T",
+    "unit": "Hour",
+    "hire": "3821.80",
+    "fuel": "118.80",
+    "crew": "988.40",
+    "total": "4929.00"
+   },
+   {
+    "sl": "69",
+    "name": "Hydraulic Truck Crane 16T",
+    "unit": "Hour",
+    "hire": "2576.50",
+    "fuel": "75.00",
+    "crew": "988.40",
+    "total": "3639.90"
+   },
+   {
+    "sl": "70",
+    "name": "Heavy Duty Airless Spray Painting",
+    "unit": "Hour",
+    "hire": "147.10",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "147.10"
+   }
+  ],
+  "II": [
+   {
+    "sl": "1",
+    "name": "Agitator car / Transit mixer 2 cum",
+    "unit": "Hour",
+    "hire": "952.20",
+    "fuel": "1570.30",
+    "crew": "494.50",
+    "total": "3017.00"
+   },
+   {
+    "sl": "2",
+    "name": "Air compressor 5 cmm ( electric )",
+    "unit": "Hour",
+    "hire": "127.90",
+    "fuel": "362.60",
+    "crew": "295.40",
+    "total": "785.90"
+   },
+   {
+    "sl": "3",
+    "name": "Air compressor 7 cmm ( diesel )",
+    "unit": "Hour",
+    "hire": "285.10",
+    "fuel": "1284.80",
+    "crew": "378.10",
+    "total": "1948.00"
+   },
+   {
+    "sl": "4",
+    "name": "Air compressor 7 cmm ( electric )",
+    "unit": "Hour",
+    "hire": "166.40",
+    "fuel": "483.40",
+    "crew": "295.40",
+    "total": "945.20"
+   },
+   {
+    "sl": "5",
+    "name": "Air compressor 8.5 cmm ( diesel",
+    "unit": "Hour",
+    "hire": "323.10",
+    "fuel": "1606.00",
+    "crew": "378.10",
+    "total": "2307.20"
+   },
+   {
+    "sl": "6",
+    "name": "Air compressor 8.5 cmm ( electric)",
+    "unit": "Hour",
+    "hire": "197.40",
+    "fuel": "604.30",
+    "crew": "295.40",
+    "total": "1097.10"
+   },
+   {
+    "sl": "7",
+    "name": "Air compressor 15 cmm ( electric)",
+    "unit": "Hour",
+    "hire": "158.70",
+    "fuel": "1342.80",
+    "crew": "315.10",
+    "total": "1816.60"
+   },
+   {
+    "sl": "8",
+    "name": "Angle Dozer 90 hp",
+    "unit": "Hour",
+    "hire": "2011.60",
+    "fuel": "1098.50",
+    "crew": "413.40",
+    "total": "3523.50"
+   },
+   {
+    "sl": "9",
+    "name": "Batching plant 0.5 cum( 6 cum/hr)",
+    "unit": "Hour",
+    "hire": "136.00",
+    "fuel": "161.10",
+    "crew": "593.30",
+    "total": "890.40"
+   },
+   {
+    "sl": "10",
+    "name": " cum/hr) cum/hr)",
+    "unit": "Hour",
+    "hire": "455.00",
+    "fuel": "483.40",
+    "crew": "593.30",
+    "total": "1531.70"
+   },
+   {
+    "sl": "11",
+    "name": "",
+    "unit": "Hour",
+    "hire": "587.90",
+    "fuel": "590.80",
+    "crew": "593.30",
+    "total": "1772.00"
+   },
+   {
+    "sl": "12",
+    "name": "* Newly added Batching plants are shown as Sl.No.71,72 &73 Bending machine 3000 x 12 mm",
+    "unit": "Hour",
+    "hire": "48.60",
+    "fuel": "161.10",
+    "crew": "236.30",
+    "total": "446.00"
+   },
+   {
+    "sl": "13",
+    "name": "Clamp shell and hoisting ropes",
+    "unit": "Hour",
+    "hire": "7.10",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "7.10"
+   },
+   {
+    "sl": "14",
+    "name": "Concrete bucket 1.5 cum",
+    "unit": "Hour",
+    "hire": "18.70",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "18.70"
+   },
+   {
+    "sl": "15",
+    "name": "Concrete hand mixer 45 / 30 ltr",
+    "unit": "Hour",
+    "hire": "7.40",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "7.40"
+   },
+   {
+    "sl": "16",
+    "name": "Concrete mixer 300 / 200 ( diesel)",
+    "unit": "Hour",
+    "hire": "67.20",
+    "fuel": "142.80",
+    "crew": "396.50",
+    "total": "606.50"
+   },
+   {
+    "sl": "17",
+    "name": "Concrete mixer 300 / 200 ltr ( electric)",
+    "unit": "Hour",
+    "hire": "66.60",
+    "fuel": "53.70",
+    "crew": "396.50",
+    "total": "516.80"
+   },
+   {
+    "sl": "18",
+    "name": "Concrete mixer 600 / 400 ( diesel)",
+    "unit": "Hour",
+    "hire": "109.80",
+    "fuel": "285.50",
+    "crew": "396.50",
+    "total": "791.80"
+   },
+   {
+    "sl": "19",
+    "name": "Concrete mixer 600 / 400 ltr ( electric",
+    "unit": "Hour",
+    "hire": "107.50",
+    "fuel": "107.40",
+    "crew": "396.50",
+    "total": "611.40"
+   },
+   {
+    "sl": "20",
+    "name": "Concrete paver 100 sqm / hr",
+    "unit": "Hour",
+    "hire": "401.40",
+    "fuel": "0.00",
+    "crew": "761.30",
+    "total": "1162.70"
+   },
+   {
+    "sl": "21",
+    "name": "Convey mucker",
+    "unit": "Hour",
+    "hire": "982.70",
+    "fuel": "373.80",
+    "crew": "317.20",
+    "total": "1673.70"
+   },
+   {
+    "sl": "22",
+    "name": "Core drilling machine",
+    "unit": "Hour",
+    "hire": "380.70",
+    "fuel": "428.30",
+    "crew": "494.50",
+    "total": "1303.50"
+   },
+   {
+    "sl": "23",
+    "name": "Diesel generating set 30 KVA",
+    "unit": "Hour",
+    "hire": "79.20",
+    "fuel": "1142.00",
+    "crew": "236.30",
+    "total": "1457.50"
+   },
+   {
+    "sl": "24",
+    "name": "Diesel generating set 50 KVA",
+    "unit": "Hour",
+    "hire": "116.50",
+    "fuel": "1713.00",
+    "crew": "236.30",
+    "total": "2065.80"
+   },
+   {
+    "sl": "25",
+    "name": "Diesel Loco 45 hp",
+    "unit": "Hour",
+    "hire": "438.30",
+    "fuel": "963.60",
+    "crew": "295.40",
+    "total": "1697.30"
+   },
+   {
+    "sl": "26",
+    "name": "Dewatering pump 5 hp ( diesel )",
+    "unit": "Hour",
+    "hire": "10.70",
+    "fuel": "142.80",
+    "crew": "197.20",
+    "total": "350.70"
+   },
+   {
+    "sl": "27",
+    "name": "Dewatering pump 5 hp ( electric )",
+    "unit": "Hour",
+    "hire": "3.70",
+    "fuel": "53.70",
+    "crew": "147.90",
+    "total": "205.30"
+   },
+   {
+    "sl": "28",
+    "name": "Dewatering pump 10 hp ( diesel )",
+    "unit": "Hour",
+    "hire": "18.30",
+    "fuel": "285.50",
+    "crew": "197.20",
+    "total": "501.00"
+   },
+   {
+    "sl": "29",
+    "name": "Dewatering pump 10 hp ( electric",
+    "unit": "Hour",
+    "hire": "7.90",
+    "fuel": "107.40",
+    "crew": "147.90",
+    "total": "263.20"
+   },
+   {
+    "sl": "30",
+    "name": "Dewatering pump 20 hp ( diesel )",
+    "unit": "Hour",
+    "hire": "58.50",
+    "fuel": "571.00",
+    "crew": "197.20",
+    "total": "826.70"
+   },
+   {
+    "sl": "31",
+    "name": "Dewatering pump 20 hp ( electric",
+    "unit": "Hour",
+    "hire": "15.50",
+    "fuel": "214.80",
+    "crew": "147.90",
+    "total": "378.20"
+   },
+   {
+    "sl": "32",
+    "name": "Drifter",
+    "unit": "Hour",
+    "hire": "380.20",
+    "fuel": "0.00",
+    "crew": "618.20",
+    "total": "998.40"
+   },
+   {
+    "sl": "33",
+    "name": "Drilling jumbo",
+    "unit": "Hour",
+    "hire": "444.10",
+    "fuel": "77.10",
+    "crew": "315.10",
+    "total": "836.30"
+   },
+   {
+    "sl": "34",
+    "name": "Dumper 4.5 cum",
+    "unit": "Hour",
+    "hire": "740.00",
+    "fuel": "719.50",
+    "crew": "395.60",
+    "total": "1855.10"
+   },
+   {
+    "sl": "35",
+    "name": "in Rs in Rs in Rs. Geophysical Electric resistivity meter",
+    "unit": "Hour",
+    "hire": "124.30",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "124.30"
+   },
+   {
+    "sl": "36",
+    "name": "Grouting pump",
+    "unit": "Hour",
+    "hire": "41.80",
+    "fuel": "53.70",
+    "crew": "472.70",
+    "total": "568.20"
+   },
+   {
+    "sl": "37",
+    "name": "Guniting / sand blast equipment",
+    "unit": "Hour",
+    "hire": "135.40",
+    "fuel": "0.00",
+    "crew": "393.90",
+    "total": "529.30"
+   },
+   {
+    "sl": "38",
+    "name": "Ice plant & accessories 30 t/day",
+    "unit": "Hour",
+    "hire": "213.60",
+    "fuel": "1530.80",
+    "crew": "237.90",
+    "total": "1982.30"
+   },
+   {
+    "sl": "39",
+    "name": "Jack hammer",
+    "unit": "Hour",
+    "hire": "24.60",
+    "fuel": "0.00",
+    "crew": "590.90",
+    "total": "615.50"
+   },
+   {
+    "sl": "40",
+    "name": "Needle vibrator 40 mm (petrol)",
+    "unit": "Hour",
+    "hire": "7.30",
+    "fuel": "31.80",
+    "crew": "285.40",
+    "total": "324.50"
+   },
+   {
+    "sl": "41",
+    "name": "Needle vibrator 40 mm (electric)",
+    "unit": "Hour",
+    "hire": "6.80",
+    "fuel": "10.70",
+    "crew": "285.40",
+    "total": "302.90"
+   },
+   {
+    "sl": "42",
+    "name": "Needle vibrator 60 mm (petrol)",
+    "unit": "Hour",
+    "hire": "7.70",
+    "fuel": "47.70",
+    "crew": "285.40",
+    "total": "340.80"
+   },
+   {
+    "sl": "43",
+    "name": "Needle vibrator 60 mm (electric)",
+    "unit": "Hour",
+    "hire": "7.50",
+    "fuel": "16.10",
+    "crew": "285.40",
+    "total": "309.00"
+   },
+   {
+    "sl": "44",
+    "name": "Planing machine 4 m stroke",
+    "unit": "Hour",
+    "hire": "131.30",
+    "fuel": "161.10",
+    "crew": "378.10",
+    "total": "670.50"
+   },
+   {
+    "sl": "45",
+    "name": "Plate shearing machine upto 12 mm",
+    "unit": "Hour",
+    "hire": "53.90",
+    "fuel": "214.80",
+    "crew": "247.30",
+    "total": "516.00"
+   },
+   {
+    "sl": "46",
+    "name": "Pneumatic placer 0.5 cum",
+    "unit": "Hour",
+    "hire": "213.80",
+    "fuel": "0.00",
+    "crew": "156.00",
+    "total": "369.80"
+   },
+   {
+    "sl": "47",
+    "name": "Pneumatic tamper",
+    "unit": "Hour",
+    "hire": "25.00",
+    "fuel": "0.00",
+    "crew": "472.70",
+    "total": "497.70"
+   },
+   {
+    "sl": "48",
+    "name": "Pug cutting machine",
+    "unit": "Hour",
+    "hire": "8.70",
+    "fuel": "5.40",
+    "crew": "0.00",
+    "total": "14.10"
+   },
+   {
+    "sl": "49",
+    "name": "Pusher leg",
+    "unit": "Hour",
+    "hire": "14.90",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "14.90"
+   },
+   {
+    "sl": "50",
+    "name": "Road roller diesel 10 t",
+    "unit": "Hour",
+    "hire": "253.10",
+    "fuel": "1284.80",
+    "crew": "396.90",
+    "total": "1934.80"
+   },
+   {
+    "sl": "51",
+    "name": "Shovel 0.50 cum 75 hp",
+    "unit": "Hour",
+    "hire": "1143.70",
+    "fuel": "856.50",
+    "crew": "413.40",
+    "total": "2413.60"
+   },
+   {
+    "sl": "52",
+    "name": "Shovel 0.85 cum 110 hp",
+    "unit": "Hour",
+    "hire": "1964.80",
+    "fuel": "1570.30",
+    "crew": "413.40",
+    "total": "3948.50"
+   },
+   {
+    "sl": "53",
+    "name": "Stationery derric crane",
+    "unit": "Hour",
+    "hire": "96.30",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "96.30"
+   },
+   {
+    "sl": "54",
+    "name": "Tipper 5 cum",
+    "unit": "Hour",
+    "hire": "581.30",
+    "fuel": "539.60",
+    "crew": "309.10",
+    "total": "1430.00"
+   },
+   {
+    "sl": "55",
+    "name": "Tipping tub 1.5 cum",
+    "unit": "Hour",
+    "hire": "83.60",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "83.60"
+   },
+   {
+    "sl": "56",
+    "name": "Tower crane 5 tonne",
+    "unit": "Hour",
+    "hire": "1009.00",
+    "fuel": "279.30",
+    "crew": "329.70",
+    "total": "1618.00"
+   },
+   {
+    "sl": "57",
+    "name": "Transformer 250 KVA",
+    "unit": "Hour",
+    "hire": "6018.70",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "6018.70"
+   },
+   {
+    "sl": "58",
+    "name": "Truck 10 t",
+    "unit": "Hour",
+    "hire": "530.20",
+    "fuel": "539.60",
+    "crew": "309.10",
+    "total": "1378.90"
+   },
+   {
+    "sl": "59",
+    "name": "Truck mounted derric crane 5 t",
+    "unit": "Hour",
+    "hire": "717.60",
+    "fuel": "539.60",
+    "crew": "309.10",
+    "total": "1566.30"
+   },
+   {
+    "sl": "60",
+    "name": "Upright drilling machine/Grinder",
+    "unit": "Hour",
+    "hire": "28.60",
+    "fuel": "53.70",
+    "crew": "335.40",
+    "total": "417.70"
+   },
+   {
+    "sl": "61",
+    "name": "Ventilation fan 20 hp",
+    "unit": "Hour",
+    "hire": "13.70",
+    "fuel": "214.80",
+    "crew": "51.00",
+    "total": "279.50"
+   },
+   {
+    "sl": "62",
+    "name": "Vibratory pad foot roller 8 t",
+    "unit": "Hour",
+    "hire": "1571.60",
+    "fuel": "1855.80",
+    "crew": "474.20",
+    "total": "3901.60"
+   },
+   {
+    "sl": "63",
+    "name": "Wagon drill",
+    "unit": "Hour",
+    "hire": "219.80",
+    "fuel": "0.00",
+    "crew": "494.50",
+    "total": "714.30"
+   },
+   {
+    "sl": "64",
+    "name": "Water tanker 8000 ltr",
+    "unit": "Hour",
+    "hire": "495.60",
+    "fuel": "539.60",
+    "crew": "309.10",
+    "total": "1344.30"
+   },
+   {
+    "sl": "65",
+    "name": "Welding set",
+    "unit": "Hour",
+    "hire": "18.50",
+    "fuel": "128.90",
+    "crew": "0.00",
+    "total": "147.40"
+   },
+   {
+    "sl": "66",
+    "name": "Winch 35 hp ( electric )",
+    "unit": "Hour",
+    "hire": "158.20",
+    "fuel": "263.20",
+    "crew": "472.70",
+    "total": "894.10"
+   },
+   {
+    "sl": "68",
+    "name": "Hydraulic Truck Crane 30T",
+    "unit": "Hour",
+    "hire": "3821.80",
+    "fuel": "118.80",
+    "crew": "938.50",
+    "total": "4879.10"
+   },
+   {
+    "sl": "69",
+    "name": "Hydraulic Truck Crane 16T",
+    "unit": "Hour",
+    "hire": "2576.50",
+    "fuel": "75.00",
+    "crew": "938.50",
+    "total": "3590.00"
+   },
+   {
+    "sl": "70",
+    "name": "Heavy Duty Airless Spray Painting",
+    "unit": "Hour",
+    "hire": "147.10",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "147.10"
+   }
+  ],
+  "III": [
+   {
+    "sl": "1",
+    "name": "Agitator car / Transit mixer 2 cum",
+    "unit": "Hour",
+    "hire": "952.20",
+    "fuel": "1570.30",
+    "crew": "469.60",
+    "total": "2992.10"
+   },
+   {
+    "sl": "2",
+    "name": "Air compressor 5 cmm ( electric )",
+    "unit": "Hour",
+    "hire": "127.90",
+    "fuel": "362.60",
+    "crew": "279.80",
+    "total": "770.30"
+   },
+   {
+    "sl": "3",
+    "name": "Air compressor 7 cmm ( diesel )",
+    "unit": "Hour",
+    "hire": "285.10",
+    "fuel": "1284.80",
+    "crew": "358.20",
+    "total": "1928.10"
+   },
+   {
+    "sl": "4",
+    "name": "Air compressor 7 cmm ( electric )",
+    "unit": "Hour",
+    "hire": "166.40",
+    "fuel": "483.40",
+    "crew": "279.80",
+    "total": "929.60"
+   },
+   {
+    "sl": "5",
+    "name": "Air compressor 8.5 cmm ( diesel",
+    "unit": "Hour",
+    "hire": "323.10",
+    "fuel": "1606.00",
+    "crew": "358.20",
+    "total": "2287.30"
+   },
+   {
+    "sl": "6",
+    "name": "Air compressor 8.5 cmm ( electric)",
+    "unit": "Hour",
+    "hire": "197.40",
+    "fuel": "604.30",
+    "crew": "279.80",
+    "total": "1081.50"
+   },
+   {
+    "sl": "7",
+    "name": "Air compressor 15 cmm ( electric)",
+    "unit": "Hour",
+    "hire": "158.70",
+    "fuel": "1342.80",
+    "crew": "298.50",
+    "total": "1800.00"
+   },
+   {
+    "sl": "8",
+    "name": "Angle Dozer 90 hp",
+    "unit": "Hour",
+    "hire": "2011.60",
+    "fuel": "1098.50",
+    "crew": "392.60",
+    "total": "3502.70"
+   },
+   {
+    "sl": "9",
+    "name": "Batching plant 0.5 cum( 6 cum/hr)",
+    "unit": "Hour",
+    "hire": "136.00",
+    "fuel": "161.10",
+    "crew": "563.40",
+    "total": "860.50"
+   },
+   {
+    "sl": "10",
+    "name": " cum/hr) cum/hr)",
+    "unit": "Hour",
+    "hire": "455.00",
+    "fuel": "483.40",
+    "crew": "563.40",
+    "total": "1501.80"
+   },
+   {
+    "sl": "11",
+    "name": "",
+    "unit": "Hour",
+    "hire": "587.90",
+    "fuel": "590.80",
+    "crew": "563.40",
+    "total": "1742.10"
+   },
+   {
+    "sl": "12",
+    "name": "* Newly added Batching plants are shown as Sl.No.71,72 &73 Bending machine 3000 x 12 mm",
+    "unit": "Hour",
+    "hire": "48.60",
+    "fuel": "161.10",
+    "crew": "223.90",
+    "total": "433.60"
+   },
+   {
+    "sl": "13",
+    "name": "Clamp shell and hoisting ropes",
+    "unit": "Hour",
+    "hire": "7.10",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "7.10"
+   },
+   {
+    "sl": "14",
+    "name": "Concrete bucket 1.5 cum",
+    "unit": "Hour",
+    "hire": "18.70",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "18.70"
+   },
+   {
+    "sl": "15",
+    "name": "Concrete hand mixer 45 / 30 ltr",
+    "unit": "Hour",
+    "hire": "7.40",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "7.40"
+   },
+   {
+    "sl": "16",
+    "name": "Concrete mixer 300 / 200 ( diesel)",
+    "unit": "Hour",
+    "hire": "67.20",
+    "fuel": "142.80",
+    "crew": "375.70",
+    "total": "585.70"
+   },
+   {
+    "sl": "17",
+    "name": "Concrete mixer 300 / 200 ltr ( electric)",
+    "unit": "Hour",
+    "hire": "66.60",
+    "fuel": "53.70",
+    "crew": "375.70",
+    "total": "496.00"
+   },
+   {
+    "sl": "18",
+    "name": "Concrete mixer 600 / 400 ( diesel)",
+    "unit": "Hour",
+    "hire": "109.80",
+    "fuel": "285.50",
+    "crew": "375.70",
+    "total": "771.00"
+   },
+   {
+    "sl": "19",
+    "name": "Concrete mixer 600 / 400 ltr ( electric",
+    "unit": "Hour",
+    "hire": "107.50",
+    "fuel": "107.40",
+    "crew": "375.70",
+    "total": "590.60"
+   },
+   {
+    "sl": "20",
+    "name": "Concrete paver 100 sqm / hr",
+    "unit": "Hour",
+    "hire": "401.40",
+    "fuel": "0.00",
+    "crew": "721.30",
+    "total": "1122.70"
+   },
+   {
+    "sl": "21",
+    "name": "Convey mucker",
+    "unit": "Hour",
+    "hire": "982.70",
+    "fuel": "373.80",
+    "crew": "300.60",
+    "total": "1657.10"
+   },
+   {
+    "sl": "22",
+    "name": "Core drilling machine",
+    "unit": "Hour",
+    "hire": "380.70",
+    "fuel": "428.30",
+    "crew": "469.60",
+    "total": "1278.60"
+   },
+   {
+    "sl": "23",
+    "name": "Diesel generating set 30 KVA",
+    "unit": "Hour",
+    "hire": "79.20",
+    "fuel": "1142.00",
+    "crew": "223.90",
+    "total": "1445.10"
+   },
+   {
+    "sl": "24",
+    "name": "Diesel generating set 50 KVA",
+    "unit": "Hour",
+    "hire": "116.50",
+    "fuel": "1713.00",
+    "crew": "223.90",
+    "total": "2053.40"
+   },
+   {
+    "sl": "25",
+    "name": "Diesel Loco 45 hp",
+    "unit": "Hour",
+    "hire": "438.30",
+    "fuel": "963.60",
+    "crew": "279.80",
+    "total": "1681.70"
+   },
+   {
+    "sl": "26",
+    "name": "Dewatering pump 5 hp ( diesel )",
+    "unit": "Hour",
+    "hire": "10.70",
+    "fuel": "142.80",
+    "crew": "187.20",
+    "total": "340.70"
+   },
+   {
+    "sl": "27",
+    "name": "Dewatering pump 5 hp ( electric )",
+    "unit": "Hour",
+    "hire": "3.70",
+    "fuel": "53.70",
+    "crew": "140.40",
+    "total": "197.80"
+   },
+   {
+    "sl": "28",
+    "name": "Dewatering pump 10 hp ( diesel )",
+    "unit": "Hour",
+    "hire": "18.30",
+    "fuel": "285.50",
+    "crew": "187.20",
+    "total": "491.00"
+   },
+   {
+    "sl": "29",
+    "name": "Dewatering pump 10 hp ( electric",
+    "unit": "Hour",
+    "hire": "7.90",
+    "fuel": "107.40",
+    "crew": "140.40",
+    "total": "255.70"
+   },
+   {
+    "sl": "30",
+    "name": "Dewatering pump 20 hp ( diesel )",
+    "unit": "Hour",
+    "hire": "58.50",
+    "fuel": "571.00",
+    "crew": "187.20",
+    "total": "816.70"
+   },
+   {
+    "sl": "31",
+    "name": "Dewatering pump 20 hp ( electric",
+    "unit": "Hour",
+    "hire": "15.50",
+    "fuel": "214.80",
+    "crew": "140.40",
+    "total": "370.70"
+   },
+   {
+    "sl": "32",
+    "name": "Drifter",
+    "unit": "Hour",
+    "hire": "380.20",
+    "fuel": "0.00",
+    "crew": "587.00",
+    "total": "967.20"
+   },
+   {
+    "sl": "33",
+    "name": "Drilling jumbo",
+    "unit": "Hour",
+    "hire": "444.10",
+    "fuel": "77.10",
+    "crew": "298.50",
+    "total": "819.70"
+   },
+   {
+    "sl": "34",
+    "name": "Dumper 4.5 cum",
+    "unit": "Hour",
+    "hire": "740.00",
+    "fuel": "719.50",
+    "crew": "375.60",
+    "total": "1835.10"
+   },
+   {
+    "sl": "35",
+    "name": "in Rs in Rs in Rs. Geophysical Electric resistivity meter",
+    "unit": "Hour",
+    "hire": "124.30",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "124.30"
+   },
+   {
+    "sl": "36",
+    "name": "Grouting pump",
+    "unit": "Hour",
+    "hire": "41.80",
+    "fuel": "53.70",
+    "crew": "447.70",
+    "total": "543.20"
+   },
+   {
+    "sl": "37",
+    "name": "Guniting / sand blast equipment",
+    "unit": "Hour",
+    "hire": "135.40",
+    "fuel": "0.00",
+    "crew": "373.10",
+    "total": "508.50"
+   },
+   {
+    "sl": "38",
+    "name": "Ice plant & accessories 30 t/day",
+    "unit": "Hour",
+    "hire": "213.60",
+    "fuel": "1530.80",
+    "crew": "225.40",
+    "total": "1969.80"
+   },
+   {
+    "sl": "39",
+    "name": "Jack hammer",
+    "unit": "Hour",
+    "hire": "24.60",
+    "fuel": "0.00",
+    "crew": "559.70",
+    "total": "584.30"
+   },
+   {
+    "sl": "40",
+    "name": "Needle vibrator 40 mm (petrol)",
+    "unit": "Hour",
+    "hire": "7.30",
+    "fuel": "31.80",
+    "crew": "270.40",
+    "total": "309.50"
+   },
+   {
+    "sl": "41",
+    "name": "Needle vibrator 40 mm (electric)",
+    "unit": "Hour",
+    "hire": "6.80",
+    "fuel": "10.70",
+    "crew": "270.40",
+    "total": "287.90"
+   },
+   {
+    "sl": "42",
+    "name": "Needle vibrator 60 mm (petrol)",
+    "unit": "Hour",
+    "hire": "7.70",
+    "fuel": "47.70",
+    "crew": "270.40",
+    "total": "325.80"
+   },
+   {
+    "sl": "43",
+    "name": "Needle vibrator 60 mm (electric)",
+    "unit": "Hour",
+    "hire": "7.50",
+    "fuel": "16.10",
+    "crew": "270.40",
+    "total": "294.00"
+   },
+   {
+    "sl": "44",
+    "name": "Planing machine 4 m stroke",
+    "unit": "Hour",
+    "hire": "131.30",
+    "fuel": "161.10",
+    "crew": "358.20",
+    "total": "650.60"
+   },
+   {
+    "sl": "45",
+    "name": "Plate shearing machine upto 12 mm",
+    "unit": "Hour",
+    "hire": "53.90",
+    "fuel": "214.80",
+    "crew": "234.80",
+    "total": "503.50"
+   },
+   {
+    "sl": "46",
+    "name": "Pneumatic placer 0.5 cum",
+    "unit": "Hour",
+    "hire": "213.80",
+    "fuel": "0.00",
+    "crew": "148.20",
+    "total": "362.00"
+   },
+   {
+    "sl": "47",
+    "name": "Pneumatic tamper",
+    "unit": "Hour",
+    "hire": "25.00",
+    "fuel": "0.00",
+    "crew": "447.70",
+    "total": "472.70"
+   },
+   {
+    "sl": "48",
+    "name": "Pug cutting machine",
+    "unit": "Hour",
+    "hire": "8.70",
+    "fuel": "5.40",
+    "crew": "0.00",
+    "total": "14.10"
+   },
+   {
+    "sl": "49",
+    "name": "Pusher leg",
+    "unit": "Hour",
+    "hire": "14.90",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "14.90"
+   },
+   {
+    "sl": "50",
+    "name": "Road roller diesel 10 t",
+    "unit": "Hour",
+    "hire": "253.10",
+    "fuel": "1284.80",
+    "crew": "376.90",
+    "total": "1914.80"
+   },
+   {
+    "sl": "51",
+    "name": "Shovel 0.50 cum 75 hp",
+    "unit": "Hour",
+    "hire": "1143.70",
+    "fuel": "856.50",
+    "crew": "392.60",
+    "total": "2392.80"
+   },
+   {
+    "sl": "52",
+    "name": "Shovel 0.85 cum 110 hp",
+    "unit": "Hour",
+    "hire": "1964.80",
+    "fuel": "1570.30",
+    "crew": "392.60",
+    "total": "3927.70"
+   },
+   {
+    "sl": "53",
+    "name": "Stationery derric crane",
+    "unit": "Hour",
+    "hire": "96.30",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "96.30"
+   },
+   {
+    "sl": "54",
+    "name": "Tipper 5 cum",
+    "unit": "Hour",
+    "hire": "581.30",
+    "fuel": "539.60",
+    "crew": "293.50",
+    "total": "1414.40"
+   },
+   {
+    "sl": "55",
+    "name": "Tipping tub 1.5 cum",
+    "unit": "Hour",
+    "hire": "83.60",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "83.60"
+   },
+   {
+    "sl": "56",
+    "name": "Tower crane 5 tonne",
+    "unit": "Hour",
+    "hire": "1009.00",
+    "fuel": "279.30",
+    "crew": "313.00",
+    "total": "1601.30"
+   },
+   {
+    "sl": "57",
+    "name": "Transformer 250 KVA",
+    "unit": "Hour",
+    "hire": "6018.70",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "6018.70"
+   },
+   {
+    "sl": "58",
+    "name": "Truck 10 t",
+    "unit": "Hour",
+    "hire": "530.20",
+    "fuel": "539.60",
+    "crew": "293.50",
+    "total": "1363.30"
+   },
+   {
+    "sl": "59",
+    "name": "Truck mounted derric crane 5 t",
+    "unit": "Hour",
+    "hire": "717.60",
+    "fuel": "539.60",
+    "crew": "293.50",
+    "total": "1550.70"
+   },
+   {
+    "sl": "60",
+    "name": "Upright drilling machine/Grinder",
+    "unit": "Hour",
+    "hire": "28.60",
+    "fuel": "53.70",
+    "crew": "319.80",
+    "total": "402.10"
+   },
+   {
+    "sl": "61",
+    "name": "Ventilation fan 20 hp",
+    "unit": "Hour",
+    "hire": "13.70",
+    "fuel": "214.80",
+    "crew": "48.40",
+    "total": "276.90"
+   },
+   {
+    "sl": "62",
+    "name": "Vibratory pad foot roller 8 t",
+    "unit": "Hour",
+    "hire": "1571.60",
+    "fuel": "1855.80",
+    "crew": "449.30",
+    "total": "3876.70"
+   },
+   {
+    "sl": "63",
+    "name": "Wagon drill",
+    "unit": "Hour",
+    "hire": "219.80",
+    "fuel": "0.00",
+    "crew": "469.60",
+    "total": "689.40"
+   },
+   {
+    "sl": "64",
+    "name": "Water tanker 8000 ltr",
+    "unit": "Hour",
+    "hire": "495.60",
+    "fuel": "539.60",
+    "crew": "293.50",
+    "total": "1328.70"
+   },
+   {
+    "sl": "65",
+    "name": "Welding set",
+    "unit": "Hour",
+    "hire": "18.50",
+    "fuel": "128.90",
+    "crew": "0.00",
+    "total": "147.40"
+   },
+   {
+    "sl": "66",
+    "name": "Winch 35 hp ( electric )",
+    "unit": "Hour",
+    "hire": "158.20",
+    "fuel": "263.20",
+    "crew": "447.70",
+    "total": "869.10"
+   },
+   {
+    "sl": "68",
+    "name": "Hydraulic Truck Crane 30T",
+    "unit": "Hour",
+    "hire": "3821.80",
+    "fuel": "118.80",
+    "crew": "888.60",
+    "total": "4829.20"
+   },
+   {
+    "sl": "69",
+    "name": "Hydraulic Truck Crane 16T",
+    "unit": "Hour",
+    "hire": "2576.50",
+    "fuel": "75.00",
+    "crew": "888.60",
+    "total": "3540.10"
+   },
+   {
+    "sl": "70",
+    "name": "Heavy Duty Airless Spray Painting",
+    "unit": "Hour",
+    "hire": "147.10",
+    "fuel": "0.00",
+    "crew": "0.00",
+    "total": "147.10"
+   }
+  ]
+ },
+ "lead": {
+  "mechanical_classes": {
+   "earth_sand": "Earth / Sand / Gravel / Murrum / Lime / Surki (per cum)",
+   "aggregate_stone": "Rubble / Size stones / Cut stones / Coarse aggregate (per cum)",
+   "col5": "Column 5 of COM-LDLFT-2 (per cum) - label to be confirmed",
+   "cement_steel": "Cement / Steel / RCC poles / AC & GI sheets / packed materials (per tonne)",
+   "col7": "Column 7 of COM-LDLFT-2 - label to be confirmed",
+   "col8": "Column 8 of COM-LDLFT-2 - label to be confirmed"
+  },
+  "mechanical": {
+   "I": {
+    "1": {
+     "earth_sand": "49.30",
+     "aggregate_stone": "47.50",
+     "col5": "29.70",
+     "cement_steel": "69.90",
+     "col7": "29.00",
+     "col8": "79.20"
+    },
+    "2": {
+     "earth_sand": "69.00",
+     "aggregate_stone": "66.50",
+     "col5": "41.60",
+     "cement_steel": "97.90",
+     "col7": "40.60",
+     "col8": "110.90"
+    },
+    "3": {
+     "earth_sand": "92.00",
+     "aggregate_stone": "92.00",
+     "col5": "57.50",
+     "cement_steel": "135.30",
+     "col7": "54.10",
+     "col8": "147.90"
+    },
+    "4": {
+     "earth_sand": "111.70",
+     "aggregate_stone": "111.70",
+     "col5": "69.80",
+     "cement_steel": "164.20",
+     "col7": "65.70",
+     "col8": "179.60"
+    },
+    "5": {
+     "earth_sand": "131.40",
+     "aggregate_stone": "131.40",
+     "col5": "82.10",
+     "cement_steel": "193.20",
+     "col7": "77.30",
+     "col8": "211.20"
+    },
+    "per_km_5_30": {
+     "earth_sand": "19.70",
+     "aggregate_stone": "19.70",
+     "col5": "12.30",
+     "cement_steel": "29.00",
+     "col7": "11.60",
+     "col8": "31.70"
+    },
+    "per_km_beyond_30": {
+     "earth_sand": "16.40",
+     "aggregate_stone": "16.40",
+     "col5": "10.30",
+     "cement_steel": "24.20",
+     "col7": "9.70",
+     "col8": "26.40"
+    }
+   },
+   "II": {
+    "1": {
+     "earth_sand": "48.70",
+     "aggregate_stone": "47.00",
+     "col5": "29.40",
+     "cement_steel": "69.10",
+     "col7": "28.60",
+     "col8": "78.30"
+    },
+    "2": {
+     "earth_sand": "68.20",
+     "aggregate_stone": "65.80",
+     "col5": "41.10",
+     "cement_steel": "96.80",
+     "col7": "40.10",
+     "col8": "109.70"
+    },
+    "3": {
+     "earth_sand": "91.00",
+     "aggregate_stone": "91.00",
+     "col5": "56.90",
+     "cement_steel": "133.80",
+     "col7": "53.50",
+     "col8": "146.20"
+    },
+    "4": {
+     "earth_sand": "110.50",
+     "aggregate_stone": "110.50",
+     "col5": "69.00",
+     "cement_steel": "162.50",
+     "col7": "64.90",
+     "col8": "177.60"
+    },
+    "5": {
+     "earth_sand": "130.00",
+     "aggregate_stone": "130.00",
+     "col5": "81.20",
+     "cement_steel": "191.10",
+     "col7": "76.40",
+     "col8": "208.90"
+    },
+    "per_km_5_30": {
+     "earth_sand": "19.50",
+     "aggregate_stone": "19.50",
+     "col5": "12.20",
+     "cement_steel": "28.70",
+     "col7": "11.50",
+     "col8": "31.30"
+    },
+    "per_km_beyond_30": {
+     "earth_sand": "16.30",
+     "aggregate_stone": "16.30",
+     "col5": "10.20",
+     "cement_steel": "23.90",
+     "col7": "9.50",
+     "col8": "26.10"
+    }
+   },
+   "III": {
+    "1": {
+     "earth_sand": "48.20",
+     "aggregate_stone": "46.50",
+     "col5": "29.00",
+     "cement_steel": "68.30",
+     "col7": "28.30",
+     "col8": "77.40"
+    },
+    "2": {
+     "earth_sand": "67.50",
+     "aggregate_stone": "65.10",
+     "col5": "40.70",
+     "cement_steel": "95.70",
+     "col7": "39.60",
+     "col8": "108.40"
+    },
+    "3": {
+     "earth_sand": "90.00",
+     "aggregate_stone": "90.00",
+     "col5": "56.20",
+     "cement_steel": "132.30",
+     "col7": "52.80",
+     "col8": "144.60"
+    },
+    "4": {
+     "earth_sand": "109.30",
+     "aggregate_stone": "109.30",
+     "col5": "68.30",
+     "cement_steel": "160.70",
+     "col7": "64.20",
+     "col8": "175.50"
+    },
+    "5": {
+     "earth_sand": "128.60",
+     "aggregate_stone": "128.60",
+     "col5": "80.30",
+     "cement_steel": "189.10",
+     "col7": "75.50",
+     "col8": "206.50"
+    },
+    "per_km_5_30": {
+     "earth_sand": "19.30",
+     "aggregate_stone": "19.30",
+     "col5": "12.10",
+     "cement_steel": "28.40",
+     "col7": "11.30",
+     "col8": "31.00"
+    },
+    "per_km_beyond_30": {
+     "earth_sand": "16.10",
+     "aggregate_stone": "16.10",
+     "col5": "10.00",
+     "cement_steel": "23.60",
+     "col7": "9.40",
+     "col8": "25.80"
+    }
+   }
+  },
+  "head_load": {
+   "classes": {
+    "earth_sand": "Earth / Sand / Gravel / Murrum / Lime / Surki / Size stone / Rubble / Coarse aggregate (per cum)",
+    "cement_steel": "Cement / Reinforcement steel / Structural steel (per tonne)",
+    "slabs": "PCC slab / Shahbad slab / CC block / BS slab / Laterite / Wood (per cum)"
+   },
+   "I": {
+    "100": {
+     "earth_sand": "116.10",
+     "cement_steel": "67.70",
+     "slabs": "147.70"
+    },
+    "150": {
+     "earth_sand": "232.10",
+     "cement_steel": "135.40",
+     "slabs": "295.40"
+    }
+   },
+   "II": {
+    "100": {
+     "earth_sand": "109.60",
+     "cement_steel": "63.90",
+     "slabs": "139.40"
+    },
+    "150": {
+     "earth_sand": "219.10",
+     "cement_steel": "127.80",
+     "slabs": "278.90"
+    }
+   },
+   "III": {
+    "100": {
+     "earth_sand": "103.10",
+     "cement_steel": "60.10",
+     "slabs": "131.20"
+    },
+    "150": {
+     "earth_sand": "206.10",
+     "cement_steel": "120.20",
+     "slabs": "262.30"
+    }
+   }
+  },
+  "loading": {
+   "classes": {
+    "earth_sand": "Earth / Sand / Gravel / Murrum / Surki (per cum)",
+    "stone_aggregate": "Rubble / Size stone / Cut stone / Coarse aggregate / Lime (per cum)",
+    "cement": "Cement (per tonne)",
+    "steel": "Steel (per tonne)",
+    "bricks": "Bricks (per 1000 Nos)"
+   },
+   "manual": {
+    "I": {
+     "loading": [
+      "38.50",
+      "77.00",
+      "127.10",
+      "152.30",
+      "105.90"
+     ],
+     "unloading": [
+      "19.25",
+      "38.50",
+      "127.10",
+      "152.30",
+      "105.90"
+     ]
+    },
+    "II": {
+     "loading": [
+      "36.40",
+      "72.70",
+      "120.00",
+      "143.80",
+      "100.00"
+     ],
+     "unloading": [
+      "18.20",
+      "36.35",
+      "120.00",
+      "143.80",
+      "100.00"
+     ]
+    },
+    "III": {
+     "loading": [
+      "34.20",
+      "68.40",
+      "112.90",
+      "135.30",
+      "94.10"
+     ],
+     "unloading": [
+      "17.10",
+      "34.20",
+      "112.90",
+      "135.30",
+      "94.10"
+     ]
+    }
+   },
+   "manual_with_idle_hire": {
+    "I": {
+     "loading": [
+      "182.50",
+      "221.00",
+      "285.50",
+      "310.70",
+      "367.30"
+     ],
+     "unloading": [
+      "67.10",
+      "110.50",
+      "285.50",
+      "310.70",
+      "367.30"
+     ]
+    },
+    "II": {
+     "loading": [
+      "178.80",
+      "215.10",
+      "276.60",
+      "300.50",
+      "358.50"
+     ],
+     "unloading": [
+      "65.50",
+      "107.55",
+      "276.60",
+      "300.50",
+      "358.50"
+     ]
+    },
+    "III": {
+     "loading": [
+      "175.00",
+      "209.20",
+      "267.80",
+      "290.20",
+      "349.60"
+     ],
+     "unloading": [
+      "63.90",
+      "104.60",
+      "267.80",
+      "290.20",
+      "349.60"
+     ]
+    }
+   },
+   "mechanical": {
+    "I": {
+     "loading": [
+      "80.60",
+      "151.60"
+     ],
+     "unloading": [
+      "24.80",
+      "24.80"
+     ]
+    },
+    "II": {
+     "loading": [
+      "80.00",
+      "150.50"
+     ],
+     "unloading": [
+      "24.50",
+      "24.50"
+     ]
+    },
+    "III": {
+     "loading": [
+      "79.40",
+      "149.40"
+     ],
+     "unloading": [
+      "24.30",
+      "24.30"
+     ]
+    }
+   }
+  },
+  "lift": {
+   "classes": {
+    "earth_sand": "Earth / Sand / Gravel / Murrum / Lime / Surki / Size stone / Rubble / Coarse aggregate (per cum)",
+    "cement_steel": "Cement / Reinforcement steel / Structural steel (per tonne)",
+    "slabs": "PCC slab / Shahbad slab / CC block / BS slab / Laterite / Wood (per cum)"
+   },
+   "I": {
+    "earth_sand": "13.50",
+    "cement_steel": "9.80",
+    "slabs": "18.10"
+   },
+   "II": {
+    "earth_sand": "12.80",
+    "cement_steel": "9.20",
+    "slabs": "17.00"
+   },
+   "III": {
+    "earth_sand": "12.00",
+    "cement_steel": "8.70",
+    "slabs": "16.00"
+   }
+  }
+ },
+ "area_allowances": [
+  {
+   "key": "none",
+   "label": "Rural and other areas",
+   "pct": "0"
+  },
+  {
+   "key": "corporation",
+   "label": "Municipal Corporations (except Greater Hyderabad)",
+   "pct": "25"
+  },
+  {
+   "key": "ghmc",
+   "label": "Greater Hyderabad (up to 12 km belt)",
+   "pct": "40"
+  },
+  {
+   "key": "municipality",
+   "label": "District headquarters and other municipalities",
+   "pct": "20"
+  },
+  {
+   "key": "industrial",
+   "label": "Notified industrial areas (10 km belt)",
+   "pct": "20"
+  },
+  {
+   "key": "jail",
+   "label": "Jail compounds (on labour rates)",
+   "pct": "20"
+  },
+  {
+   "key": "agency_16",
+   "label": "Agency / Tribal, within 16 km of an all-weather route",
+   "pct": "25"
+  },
+  {
+   "key": "agency_beyond_16",
+   "label": "Agency / Tribal, beyond 16 km",
+   "pct": "40"
+  }
+ ],
+ "seigniorage_defaults": {
+  "status": "from sample estimates; confirm against the current G.O.",
+  "rates": {
+   "metal": {
+    "label": "Metal / coarse aggregate",
+    "unit": "cum",
+    "rate": "117"
+   },
+   "sand": {
+    "label": "Natural sand",
+    "unit": "cum",
+    "rate": "40"
+   },
+   "m_sand": {
+    "label": "Manufactured sand",
+    "unit": "cum",
+    "rate": "117"
+   },
+   "earth": {
+    "label": "Earth / gravel",
+    "unit": "cum",
+    "rate": "39"
+   },
+   "stone": {
+    "label": "Dressed stone (km / hectometre stones)",
+    "unit": "MT",
+    "rate": "156"
+   }
+  },
+  "dmf_pct": "30",
+  "smet_pct": "2",
+  "permit_fee_pct": "80",
+  "permit_fee_on": "metal"
+ }
+}

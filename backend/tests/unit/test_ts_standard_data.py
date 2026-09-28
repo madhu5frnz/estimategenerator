@@ -60,3 +60,32 @@ def test_most_data_sheets_verify(sheets: dict[str, dict]) -> None:
     for s in verified:
         diff = abs(Decimal(s["recomputed_rate"]) - Decimal(s["rate"].replace(",", "")))
         assert diff <= Decimal("0.06"), s["code"]
+
+
+@pytest.fixture(scope="module")
+def basic() -> dict:
+    return json.loads((DATA / "basic_rates.json").read_text())  # type: ignore[no-any-return]
+
+
+def test_sor_basic_rates(basic: dict) -> None:
+    materials = {r["name"].split(" (")[0].split(" *")[0]: r for r in basic["materials"]}
+    assert materials["Ordinary Portland Cement"]["rate"] == "5100.00"
+    assert materials["Coarse aggregate 40-20 mm"]["rate"] == "1107.00"
+    mixer = next(
+        r for r in basic["hire_charges"]["III"] if r["name"].startswith("Concrete mixer 300")
+    )
+    # The same hire, fuel and crew rates appear in data sheet IRR-CCDW-2-3.
+    assert (mixer["hire"], mixer["fuel"], mixer["crew"]) == ("67.20", "142.80", "375.70")
+    mazdoor = next(
+        r for r in basic["labour"] if "mazdoor" in r["name"].lower() and r["zone_3"] == "635"
+    )
+    assert (mazdoor["zone_1"], mazdoor["zone_2"]) == ("715", "675")
+
+
+def test_zone_iii_lead_matches_the_ut_estimate(basic: dict) -> None:
+    # UT Km 8.388 lead statement: sand 16 km -> 128.6 - 48.2 + 11 x 19.3 = 292.7
+    lead = basic["lead"]["mechanical"]["III"]
+    sand = {k: Decimal(v["earth_sand"]) for k, v in lead.items()}
+    assert sand["5"] - sand["1"] + 11 * sand["per_km_5_30"] == Decimal("292.7")
+    metal = {k: Decimal(v["aggregate_stone"]) for k, v in lead.items()}
+    assert metal["5"] - metal["1"] + 20 * metal["per_km_5_30"] == Decimal("468.1")
