@@ -47,6 +47,7 @@ class EstimateVersion(Base):
     change_note: Mapped[str | None]
     parent_version_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("estimate_versions.id"))
     gst_config: Mapped[dict[str, Any]] = mapped_column(JSONB, server_default='{"applicable":false}')
+    method_config: Mapped[dict[str, Any]] = mapped_column(JSONB, server_default="{}")
     rounding_config: Mapped[dict[str, Any]] = mapped_column(
         JSONB, server_default='{"quantity_dp":3,"amount_dp":2,"grand_total":"nearest_rupee"}'
     )
@@ -192,3 +193,66 @@ class EstimateCharge(Base):
     )
     enabled: Mapped[bool] = mapped_column(server_default="true")
     sequence: Mapped[int]
+
+
+class ItemAnalysis(Base):
+    """The rate analysis (data sheet) of one BOQ item; an editable copy of the book's."""
+
+    __tablename__ = "item_analyses"
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True)
+    organization_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("organizations.id"))
+    version_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("estimate_versions.id", ondelete="CASCADE")
+    )
+    boq_item_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("boq_items.id", ondelete="CASCADE"))
+    source_rate_item_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("rate_items.id", ondelete="SET NULL")
+    )
+    code: Mapped[str]
+    analysis: Mapped[dict[str, Any]] = mapped_column(JSONB)
+    status: Mapped[str]
+    created_at: Mapped[datetime] = mapped_column(server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(server_default=func.now(), onupdate=func.now())
+
+
+class LeadEntry(Base):
+    """One line of the estimate's lead statement (material, source, distance)."""
+
+    __tablename__ = "lead_entries"
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True)
+    organization_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("organizations.id"))
+    version_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("estimate_versions.id", ondelete="CASCADE")
+    )
+    line_key: Mapped[uuid.UUID]
+    sequence: Mapped[int]
+    material: Mapped[str]
+    source: Mapped[str | None]
+    unit: Mapped[str] = mapped_column(server_default="cum")
+    material_class: Mapped[str]
+    distance_km: Mapped[Decimal | None] = mapped_column(Numeric(8, 2))
+    initial_km: Mapped[int] = mapped_column(server_default="1")
+    manual_amount: Mapped[Decimal | None] = mapped_column(Numeric(12, 2))
+    note: Mapped[str | None]
+
+
+class SeigniorageLine(Base):
+    """One line of the seigniorage statement; its quantity can follow a BOQ item."""
+
+    __tablename__ = "seigniorage_lines"
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True)
+    organization_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("organizations.id"))
+    version_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("estimate_versions.id", ondelete="CASCADE")
+    )
+    line_key: Mapped[uuid.UUID]
+    sequence: Mapped[int]
+    label: Mapped[str]
+    material: Mapped[str]
+    boq_item_line_key: Mapped[uuid.UUID | None]
+    item_quantity: Mapped[Decimal | None] = mapped_column(Numeric(18, 4))
+    factor: Mapped[Decimal] = mapped_column(Numeric(10, 4))
+    rate: Mapped[Decimal] = mapped_column(Numeric(10, 2))

@@ -12,6 +12,7 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.exc import DBAPIError
 
 from app.domain.quantity import BUILTIN_TEMPLATES
+from app.domain.units import default_registry
 from tests.conftest import REPO_ROOT
 
 DB_URL = os.environ.get("TEST_DATABASE_URL")
@@ -51,12 +52,22 @@ def test_upgrade_downgrade_upgrade() -> None:
         ).scalar_one()
         units = conn.execute(text("SELECT count(*) FROM units")).scalar_one()
         plans = conn.execute(text("SELECT count(*) FROM plans")).scalar_one()
+        book = conn.execute(
+            text(
+                "SELECT count(*) AS n, count(*) FILTER (WHERE analysis_status = 'verified') AS ok"
+                " FROM rate_items i JOIN rate_sources s ON s.id = i.rate_source_id"
+                " WHERE s.sor_name = 'TS Standard Data (I&CAD) Zone III'"
+            )
+        ).one()
+        unit_codes = set(conn.execute(text("SELECT code FROM units")).scalars())
         templates = {
             (row.id, row.version)
             for row in conn.execute(text("SELECT id, version FROM calculation_templates"))
         }
-    assert tables == 37
-    assert units == 20
+    assert tables == 40  # 37 reviewed + item_analyses, lead_entries, seigniorage_lines
+    assert units == 22
+    assert unit_codes == {u.code for u in default_registry().units}
+    assert book.n == 363 and book.ok >= 266
     assert plans == 4
     assert templates == {(t.id, t.version) for t in BUILTIN_TEMPLATES}
 

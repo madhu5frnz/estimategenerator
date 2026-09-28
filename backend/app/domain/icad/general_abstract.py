@@ -103,16 +103,22 @@ def compute(
     amounts = tuple(_round(i.quantity * i.rate, s.item_rounding) for i in items)
     ecv = sum(amounts, Decimal(0))
     part_b = [
-        AbstractLine(f"Provision for Labour Cess @ {s.labour_cess_pct.normalize()} %",
-                     _round(ecv * s.labour_cess_pct / HUNDRED, s.cess_rounding), "provision"),
-        AbstractLine(f"Provision for NAC @ {s.nac_pct.normalize()} %",
-                     _round(ecv * s.nac_pct / HUNDRED, s.nac_rounding), "provision"),
+        AbstractLine(
+            f"Provision for Labour Cess @ {s.labour_cess_pct.normalize()} %",
+            _round(ecv * s.labour_cess_pct / HUNDRED, s.cess_rounding),
+            "provision",
+        ),
+        AbstractLine(
+            f"Provision for NAC @ {s.nac_pct.normalize()} %",
+            _round(ecv * s.nac_pct / HUNDRED, s.nac_rounding),
+            "provision",
+        ),
         AbstractLine("Provision for Seigniorage charges", seigniorage, "provision"),
         AbstractLine("Provision for DMF on Seigniorage charges", dmf, "provision"),
         AbstractLine("Provision for SMET on Seigniorage charges", smet, "provision"),
         AbstractLine("Permit fee payable", permit_fee, "provision"),
         *(AbstractLine(p.label, p.amount, "provision") for p in before_gst),
-    ]  # fmt: skip
+    ]
     part_b_total = sum((line.amount for line in part_b), Decimal(0))
     subtotal = ecv + part_b_total
     gst = _round(subtotal * s.gst_pct / HUNDRED, s.gst_rounding)
@@ -123,7 +129,13 @@ def compute(
         thousands = (before_rounding / 1000).quantize(Decimal(1), rounding=ROUND_CEILING)
         rounding_off = thousands * 1000 - before_rounding + s.unforeseen
     return AbstractResult(
-        item_amounts=amounts, ecv=ecv, part_b=tuple(part_b), part_b_total=part_b_total,
-        subtotal=subtotal, gst=gst, after_gst=after, rounding_off=rounding_off,
+        item_amounts=amounts,
+        ecv=ecv,
+        part_b=tuple(part_b),
+        part_b_total=part_b_total,
+        subtotal=subtotal,
+        gst=gst,
+        after_gst=after,
+        rounding_off=rounding_off,
         total=before_rounding + rounding_off,
-    )  # fmt: skip
+    )

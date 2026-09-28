@@ -7,8 +7,11 @@ from app.models.estimate import (
     EstimateCharge,
     EstimateSection,
     EstimateVersion,
+    ItemAnalysis,
+    LeadEntry,
     Measurement,
     QuantityInput,
+    SeigniorageLine,
 )
 from app.models.identity import (
     OAuthAccount,
@@ -30,6 +33,8 @@ __all__ = [
     "EstimateCharge",
     "EstimateSection",
     "EstimateVersion",
+    "ItemAnalysis",
+    "LeadEntry",
     "Measurement",
     "OAuthAccount",
     "Organization",
@@ -41,6 +46,7 @@ __all__ = [
     "RateItem",
     "RateSource",
     "RefreshToken",
+    "SeigniorageLine",
     "Setting",
     "Subscription",
     "UsageCounter",

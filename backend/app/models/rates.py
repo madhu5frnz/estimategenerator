@@ -3,9 +3,10 @@ from __future__ import annotations
 import uuid
 from datetime import date, datetime
 from decimal import Decimal
+from typing import Any
 
 from sqlalchemy import ForeignKey, Numeric, func
-from sqlalchemy.dialects.postgresql import ENUM
+from sqlalchemy.dialects.postgresql import ENUM, JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
@@ -50,4 +51,10 @@ class RateItem(Base):
     basic_rate: Mapped[Decimal] = mapped_column(Numeric(14, 2))
     gst_pct: Mapped[Decimal | None] = mapped_column(Numeric(7, 4))
     total_rate: Mapped[Decimal] = mapped_column(Numeric(14, 2))
+    sl_no: Mapped[int | None]
+    group_title: Mapped[str | None]
+    labour_component: Mapped[Decimal | None] = mapped_column(Numeric(14, 2))
+    analysis: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
+    analysis_status: Mapped[str] = mapped_column(server_default="none")
+    analysis_note: Mapped[str | None]
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())

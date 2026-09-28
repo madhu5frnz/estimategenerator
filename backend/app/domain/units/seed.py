@@ -30,6 +30,8 @@ UNITS: tuple[Unit, ...] = (
     Unit("kgpm", "kg/m", Dimension.LINEAR_DENSITY, True, 3, ("kg/m", "kg/rm", "kg per metre")),
     Unit("nos", "Nos", Dimension.COUNT, True, 0, ("no", "number", "numbers", "each")),
     Unit("set", "Set", Dimension.COUNT, False, 0, ("sets",)),
+    Unit("joint", "Joints", Dimension.COUNT, False, 0, ("joints",)),
+    Unit("kwh", "kWh", Dimension.OTHER, False, 2, ("kwhr", "kilowatt hour")),
     Unit("ls", "LS", Dimension.LUMP_SUM, True, 0, ("lump sum", "lumpsum")),
 )
 

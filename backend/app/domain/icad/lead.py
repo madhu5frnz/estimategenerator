@@ -56,8 +56,15 @@ def mechanical_lead(
         raise LeadError(f"No lead rates for '{material_class}'.") from exc
     km = distance_km.quantize(Decimal(1), rounding=ROUND_CEILING)
     if km <= initial_km:
-        return LeadCharge(distance_km, km, initial_km, Decimal(0), rate["per_km_5_30"],
-                          rate["per_km_beyond_30"], Decimal("0.00"))  # fmt: skip
+        return LeadCharge(
+            distance_km,
+            km,
+            initial_km,
+            Decimal(0),
+            rate["per_km_5_30"],
+            rate["per_km_beyond_30"],
+            Decimal("0.00"),
+        )
     initial = rate[str(initial_km)] if initial_km >= 1 else Decimal(0)
     up_to_5 = rate[str(min(int(km), 5))] - initial
     amount = up_to_5
@@ -65,5 +72,12 @@ def mechanical_lead(
         amount += (min(km, Decimal(30)) - 5) * rate["per_km_5_30"]
     if km > 30:
         amount += (km - 30) * rate["per_km_beyond_30"]
-    return LeadCharge(distance_km, km, initial_km, up_to_5, rate["per_km_5_30"],
-                      rate["per_km_beyond_30"], amount.quantize(Decimal("0.01")))  # fmt: skip
+    return LeadCharge(
+        distance_km,
+        km,
+        initial_km,
+        up_to_5,
+        rate["per_km_5_30"],
+        rate["per_km_beyond_30"],
+        amount.quantize(Decimal("0.01")),
+    )

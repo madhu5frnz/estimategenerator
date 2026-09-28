@@ -64,6 +64,15 @@ class Addition:
 
 
 @dataclass(frozen=True)
+class Extra:
+    """A fixed amount added after overheads for the whole analysis quantity (e.g. the
+    book's 'Lead charges for 1 km for FA 84 cum @ 48.2')."""
+
+    description: str
+    amount: Decimal
+
+
+@dataclass(frozen=True)
 class PerUnitAdjustment:
     """Added after the unit rate: a correction or conveyance for one unit of the item."""
 
@@ -86,6 +95,7 @@ class DataSheet:
     analysis_qty: Decimal
     rows: Sequence[Row] = ()
     additions: Sequence[Addition] = ()
+    extras: Sequence[Extra] = ()
     adjustments: Sequence[PerUnitAdjustment] = ()
     ohp_pct: Decimal = OHP_PCT
     or_say_step: Decimal = Decimal("0.1")
@@ -109,6 +119,7 @@ class DataResult:
     additions: tuple[tuple[Addition, Decimal], ...]
     subtotal: Decimal  # A + B + C + additions
     ohp: Decimal
+    extras: Decimal
     total: Decimal
     rate_before_adjustments: Decimal  # unrounded
     adjustments: tuple[tuple[PerUnitAdjustment, Decimal], ...]
@@ -151,7 +162,8 @@ def compute(sheet: DataSheet) -> DataResult:
     adds = tuple((ad, r2(base * ad.pct / HUNDRED)) for ad in sheet.additions)
     subtotal = base + sum((x for _, x in adds), Decimal(0))
     ohp = r2(subtotal * sheet.ohp_pct / HUNDRED)
-    grand = subtotal + ohp
+    extras = sum((e.amount for e in sheet.extras), Decimal(0))
+    grand = subtotal + ohp + extras
     unit_rate = ENGINE_CONTEXT.divide(grand, sheet.analysis_qty)
     adjustments = tuple((adj, adj.amount) for adj in sheet.adjustments)
     exact = unit_rate + sum((x for _, x in adjustments), Decimal(0))
@@ -161,12 +173,22 @@ def compute(sheet: DataSheet) -> DataResult:
     labour_unit = or_say(ENGINE_CONTEXT.divide(labour, sheet.analysis_qty), tenth)
     labour_ohp = or_say(labour_unit * sheet.ohp_pct / HUNDRED, tenth)
     return DataResult(
-        rows=tuple(results), materials=a, machinery=b, labour=c, additions=adds,
-        subtotal=subtotal, ohp=ohp, total=grand, rate_before_adjustments=unit_rate,
-        adjustments=adjustments, rate_exact=exact, rate=or_say(exact, sheet.or_say_step),
+        rows=tuple(results),
+        materials=a,
+        machinery=b,
+        labour=c,
+        additions=adds,
+        subtotal=subtotal,
+        ohp=ohp,
+        extras=extras,
+        total=grand,
+        rate_before_adjustments=unit_rate,
+        adjustments=adjustments,
+        rate_exact=exact,
+        rate=or_say(exact, sheet.or_say_step),
         labour_per_unit=labour_unit,
         labour_per_unit_with_ohp=labour_unit + labour_ohp,
-    )  # fmt: skip
+    )
 
 
 def sor_item_rate(
