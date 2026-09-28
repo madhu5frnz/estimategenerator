@@ -5,7 +5,7 @@ AI-assisted estimate, BOQ and quantity generation for Indian civil engineers and
 > **AI interprets. The deterministic engine calculates. The rate database supplies rates. The user verifies.**
 > Every important number traces back to a formula or a source.
 
-**Status:** M0 (foundation), M1 (units and quantity engine), M2 (accounts, projects, dashboard), M3 (estimates, BOQ, measurements, parameters, versions), M4 (AI estimate) M5 (rates, abstract, GST and charges, validation) and M5b (Telangana I&CAD method: Standard Data 2026-27, data sheets, lead statement, seigniorage, General Abstract) are done. Next: M6 (exports: PDF, Excel, Word). See [milestones](docs/design/08-development-milestones.md).
+**Status:** M0 (foundation), M1 (units and quantity engine), M2 (accounts, projects, dashboard), M3 (estimates, BOQ, measurements, parameters, versions), M4 (AI estimate), M5 (rates, abstract, GST and charges, validation) and M5b (Telangana I&CAD method: Standard Data 2026-27, data sheets, lead statement, seigniorage, General Abstract) are done. Next: M6 (exports: PDF, Excel, Word). See [milestones](docs/design/08-development-milestones.md).
 
 No AI API key is needed to develop or run the app. Without one, the rules-based extractor is used (see [doc 06 §6.3](docs/design/06-ai-prompt-architecture.md)).
 
